@@ -4,6 +4,11 @@
  */
 package desktopapplication;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.Timer;
+
 /**
  *
  * @author mkvn
@@ -13,8 +18,92 @@ public class SplashScreen extends javax.swing.JFrame {
     /**
      * Creates new form SplashScreen
      */
+    
+    int position = 0 ;
+    Timer timer;
+    
+    private final String[] Images= {
+            "slide-0.jpg",
+            "slide-1.jpg",
+            "slide-2.jpg",
+            "slide-3.jpg",
+            "slide-4.jpg",
+            "slide-5.jpg",
+            "slide-6.jpg",
+            "slide-7.jpg",
+            "slide-8.jpg",
+            "slide-9.jpg",
+            "slide-10.jpg",
+            "slide-11.jpg",
+        };
+    
+    
+    
     public SplashScreen() {
         initComponents();
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setLayout(null);
+        java.awt.EventQueue.invokeLater(() ->{
+            show(position);
+            play();
+            StartAfterDelay();
+            
+        });
+    }
+    
+    private void show(int index) {
+        
+        if (Images.length == 0 || index >= Images.length) {
+            System.out.println("No images to show");
+            return ;
+        }
+        String img = Images[index];
+        ImageIcon icon = new ImageIcon(getClass().getResource("/imagepath/"+ img));
+        Image image = icon.getImage().getScaledInstance(frame.getWidth(), frame.getHeight(), Image.SCALE_SMOOTH);
+        frame.setIcon(new ImageIcon(image));
+    }
+
+    private void play() {
+    
+        timer = new Timer(2000, e ->{
+            position++;
+            if (position >= Images.length) {
+                position = 0;
+            }
+            show(position);
+        });
+        timer.start();
+        
+    }
+
+    private void StartAfterDelay() {
+        
+        Timer delay = new Timer(2000, e -> {
+            fadeInWindow();
+            
+        });
+        delay.setRepeats(false);
+        delay.start();
+    
+    }
+    
+    private void fadeInWindow() {
+        
+        AuthenticationWindow auth = new AuthenticationWindow();
+        auth.setOpacity(0f);
+        auth.setVisible(true);
+        
+        new Thread(() -> {
+          try{
+              for(float i=0;i<=0.85f;i+=0.05f){
+                  Thread.sleep(50);
+                  auth.setOpacity(i);
+              }
+          }catch(InterruptedException ex){
+              ex.printStackTrace();
+          }
+        }).start();
+    
     }
 
     /**
@@ -26,18 +115,18 @@ public class SplashScreen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        frame = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        frame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/desktopapplication/orange_sky.jpg"))); // NOI18N
+        frame.setMaximumSize(new java.awt.Dimension(0, 0));
+        frame.setMinimumSize(new java.awt.Dimension(0, 0));
+        frame.setPreferredSize(new java.awt.Dimension(0, 0));
+        getContentPane().add(frame, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 1080));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -70,13 +159,18 @@ public class SplashScreen extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SplashScreen().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() ->{
+            new SplashScreen().setVisible(true);
         });
+        
     }
 
+    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel frame;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+
+   
 }
