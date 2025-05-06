@@ -13,7 +13,7 @@ public class DBConnection {
         try {
             if (conn == null || conn.isClosed()) {
                 Class.forName("com.mysql.jdbc.Driver");
-                conn=DriverManager.getConnection("jdbc:mysql://localhost/travel","root","");
+                conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/travel","root","");
             }
         } catch (ClassNotFoundException ex) {
             System.out.println(ex.getMessage());

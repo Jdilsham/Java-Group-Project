@@ -41,7 +41,9 @@ public class SplashScreen extends javax.swing.JFrame {
     
     public SplashScreen() {
         initComponents();
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        //setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setSize(1820, 980);
+        setLocation(50, 50);
         setLayout(null);
         java.awt.EventQueue.invokeLater(() ->{
             show(position);
@@ -61,6 +63,7 @@ public class SplashScreen extends javax.swing.JFrame {
         ImageIcon icon = new ImageIcon(getClass().getResource("/imagepath/"+ img));
         Image image = icon.getImage().getScaledInstance(frame.getWidth(), frame.getHeight(), Image.SCALE_SMOOTH);
         frame.setIcon(new ImageIcon(image));
+        
     }
 
     private void play() {

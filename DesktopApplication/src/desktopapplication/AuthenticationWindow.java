@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package desktopapplication;
 
 import java.awt.Color;
@@ -36,7 +33,7 @@ public class AuthenticationWindow extends JFrame{
         setBackground(new Color(0,0,0,0));
         
         JPanel panel = new JPanel(new GridBagLayout());
-        panel.setBackground(new Color(255,255,255,200));
+        panel.setBackground(new Color(0,0,0,200));
         
         JLabel text = new JLabel("TOURIST MANAGEMENT SYSTEM",JLabel.CENTER);
         JButton login = new JButton("LOG IN");
@@ -48,7 +45,7 @@ public class AuthenticationWindow extends JFrame{
         gbc.fill = GridBagConstraints.HORIZONTAL;
         
         
-        text.setForeground(Color.red);
+        text.setForeground(Color.WHITE);
         text.setFont(new Font("serif", Font.BOLD, 18)) ;
         gbc.gridy=0;
         panel.add(text,gbc);
