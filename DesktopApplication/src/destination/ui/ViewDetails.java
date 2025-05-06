@@ -1,6 +1,7 @@
 
 package destination.ui;
-
+import API.SeaConditionPanel;
+import GUI.Dashboard;
 import java.awt.Color;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
@@ -9,6 +10,7 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
@@ -209,6 +211,11 @@ slideshowLbl.repaint();
         weatherbtn.setBackground(new java.awt.Color(0, 51, 51));
         weatherbtn.setForeground(new java.awt.Color(255, 255, 255));
         weatherbtn.setText(" Check Weather");
+        weatherbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                weatherbtnActionPerformed(evt);
+            }
+        });
         jPanel2.add(weatherbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 540, -1, -1));
 
         backbtn.setBackground(new java.awt.Color(0, 51, 51));
@@ -256,6 +263,15 @@ slideshowLbl.repaint();
         Book book =new Book(namelbl.getText());
         book.setVisible(true);
     }//GEN-LAST:event_bookbtnActionPerformed
+
+    private void weatherbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_weatherbtnActionPerformed
+        
+        Dashboard dashboard = new Dashboard();
+
+        dashboard.setVisible(true);
+
+        
+    }//GEN-LAST:event_weatherbtnActionPerformed
 
    
     public static void main(String args[]) {
