@@ -1,0 +1,208 @@
+package desktopapplication;
+
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.Insets;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class DashBoard extends JFrame{
+    public DashBoard() {
+//        setBounds(0,0,1600,1000);
+//        setLocation(100, 50);
+
+        setExtendedState(JFrame.MAXIMIZED_BOTH);    //setting up the window to fill the screen (any size screen).
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE); //after closing the program the process will be terminated
+        setLayout(null);
+        
+        //top panel
+        JPanel p1 = new JPanel();
+        p1.setLayout(null);
+        p1.setBackground(new Color(0,0,102));
+        p1.setBounds(0,0,1920,65);
+        add(p1);
+        
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/dashboard.png"));
+        Image i2 = i1.getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT);
+        ImageIcon i3 = new ImageIcon(i2);
+        JLabel icon = new JLabel(i3);
+        icon.setBounds(5,0,70,70);
+        p1.add(icon);
+        
+        
+        
+        
+        JLabel heading = new JLabel("DashBoard");
+        heading.setBounds(80,10,300,40);
+        heading.setForeground(Color.WHITE);
+        heading.setFont(new Font("Tahoma" , Font.BOLD , 30));
+        p1.add(heading);
+        
+        
+        //search button structure
+        JButton login = new JButton("Search");
+        login.setBounds(1580,10,150,40);
+        //login.setForeground(Color.WHITE);
+        login.setFont(new Font("Tahoma" , Font.BOLD , 20));
+        p1.add(login);
+        
+        
+        //Log out button structure
+        JButton signup = new JButton("Log Out");
+        signup.setBounds(1750,10,150,40);
+        //signup.setForeground(Color.WHITE);
+        signup.setFont(new Font("Tahoma" , Font.BOLD , 20));
+        p1.add(signup);
+        
+        
+        
+        //side panel structure containing the navigation buttons
+        JPanel p2 = new JPanel();
+        p2.setLayout(null);
+        p2.setBackground(new Color(0,0,102));
+        p2.setBounds(0,65,300,1015);
+        add(p2);
+        
+        
+        //add details button structure
+        JButton addDetails = new JButton("Add  Details");
+        addDetails.setBounds(0,0,300,50);
+        addDetails.setBackground(new Color(0,0,102));
+        addDetails.setForeground(Color.WHITE);
+        addDetails.setFont(new Font("Tahoma" , Font.PLAIN , 20));
+        addDetails.setMargin(new Insets(0,0,0,130));
+        p2.add(addDetails);
+        
+        
+        //update details button structure
+        JButton updateDetails = new JButton("Update  Details");
+        updateDetails.setBounds(0,60,300,50);
+        updateDetails.setBackground(new Color(0,0,102));
+        updateDetails.setForeground(Color.WHITE);
+        updateDetails.setFont(new Font("Tahoma" , Font.PLAIN , 20));
+        updateDetails.setMargin(new Insets(0,0,0,110));
+        p2.add(updateDetails);
+        
+        
+        //view details button structure
+        JButton viewDetails = new JButton("View  Details");
+        viewDetails.setBounds(0,120,300,50);
+        viewDetails.setBackground(new Color(0,0,102));
+        viewDetails.setForeground(Color.WHITE);
+        viewDetails.setFont(new Font("Tahoma" , Font.PLAIN , 20));
+        viewDetails.setMargin(new Insets(0,0,0,130));
+        p2.add(viewDetails);
+        
+        
+        //delete details button structure
+        JButton DeleteDetails = new JButton("Delete  Details");
+        DeleteDetails.setBounds(0,180,300,50);
+        DeleteDetails.setBackground(new Color(0,0,102));
+        DeleteDetails.setForeground(Color.WHITE);
+        DeleteDetails.setFont(new Font("Tahoma" , Font.PLAIN , 20));
+        DeleteDetails.setMargin(new Insets(0,0,0,110));
+        p2.add(DeleteDetails);
+        
+        
+        //check package button structure
+        JButton checkPackage = new JButton("Check Packages");
+        checkPackage.setBounds(0,240,300,50);
+        checkPackage.setBackground(new Color(0,0,102));
+        checkPackage.setForeground(Color.WHITE);
+        checkPackage.setFont(new Font("Tahoma" , Font.PLAIN , 20));
+        checkPackage.setMargin(new Insets(0,0,0,110));
+        p2.add(checkPackage);
+        
+        
+        //update package button structure
+        JButton updatePackage = new JButton("Update Packages");
+        updatePackage.setBounds(0,300,300,50);
+        updatePackage.setBackground(new Color(0,0,102));
+        updatePackage.setForeground(Color.WHITE);
+        updatePackage.setFont(new Font("Tahoma" , Font.PLAIN , 20));
+        updatePackage.setMargin(new Insets(0,0,0,100));
+        p2.add(updatePackage);
+        
+        
+        //view package button structure
+        JButton viewPackage = new JButton("View Packages");
+        viewPackage.setBounds(0,360,300,50);
+        viewPackage.setBackground(new Color(0,0,102));
+        viewPackage.setForeground(Color.WHITE);
+        viewPackage.setFont(new Font("Tahoma" , Font.PLAIN , 20));
+        viewPackage.setMargin(new Insets(0,10,0,130));
+        p2.add(viewPackage);
+        
+        
+        //add destination button structure
+        JButton addDestination = new JButton("Add Destination");
+        addDestination.setBounds(0,420,300,50);
+        addDestination.setBackground(new Color(0,0,102));
+        addDestination.setForeground(Color.WHITE);
+        addDestination.setFont(new Font("Tahoma" , Font.PLAIN , 20));
+        addDestination.setMargin(new Insets(0,0,0,105));
+        p2.add(addDestination);
+        
+        
+        //update map button structure
+        JButton updateDestination = new JButton("Update Map");
+        updateDestination.setBounds(0,480,300,50);
+        updateDestination.setBackground(new Color(0,0,102));
+        updateDestination.setForeground(Color.WHITE);
+        updateDestination.setFont(new Font("Tahoma" , Font.PLAIN , 20));
+        updateDestination.setMargin(new Insets(0,0,0,140));
+        p2.add(updateDestination);
+        
+        
+        //view destination button structure
+        JButton viewDestination = new JButton("View Destination");
+        viewDestination.setBounds(0,540,300,50);
+        viewDestination.setBackground(new Color(0,0,102));
+        viewDestination.setForeground(Color.WHITE);
+        viewDestination.setFont(new Font("Tahoma" , Font.PLAIN , 20));
+        viewDestination.setMargin(new Insets(0,0,0,110));
+        p2.add(viewDestination);
+        
+        
+        //view hotel button structure
+        JButton viewHotel = new JButton("View Hotels");
+        viewHotel.setBounds(0,600,300,50);
+        viewHotel.setBackground(new Color(0,0,102));
+        viewHotel.setForeground(Color.WHITE);
+        viewHotel.setFont(new Font("Tahoma" , Font.PLAIN , 20));
+        viewHotel.setMargin(new Insets(0,0,0,140));
+        p2.add(viewHotel);
+        
+        
+        //transport button structure
+        JButton viewTransport = new JButton("Transport");
+        viewTransport.setBounds(0,660,300,50);
+        viewTransport.setBackground(new Color(0,0,102));
+        viewTransport.setForeground(Color.WHITE);
+        viewTransport.setFont(new Font("Tahoma" , Font.PLAIN , 20));
+        viewTransport.setMargin(new Insets(0,0,0,160));
+        p2.add(viewTransport);
+        
+        //about us button structure
+        JButton about = new JButton("About Us");
+        about.setBounds(0,890,300,50);
+        about.setBackground(new Color(0,0,102));
+        about.setForeground(Color.WHITE);
+        about.setFont(new Font("Tahoma" , Font.PLAIN , 20));
+        about.setMargin(new Insets(0,10,0,180));
+        p2.add(about);
+        
+
+        
+        setVisible(true);  
+    }
+    
+     
+    public static void main(String[] args) {
+        new DashBoard();
+    }
+}
