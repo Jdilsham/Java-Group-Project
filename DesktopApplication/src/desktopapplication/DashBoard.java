@@ -1,10 +1,10 @@
 package desktopapplication;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Image;
-import java.awt.Insets;
-import javax.swing.ImageIcon;
+import java.awt.Color; //used to get colors
+import java.awt.Font;   // used to ge various fonts
+import java.awt.Image;  // used to handle images
+import java.awt.Insets; // used to set margins
+import javax.swing.ImageIcon; 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 public class DashBoard extends JFrame{
     public DashBoard() {
         setSize(1280, 900);
-        setLocationRelativeTo(null);//setting up the window to fill the screen (any size screen).
+        setLocationRelativeTo(null);//setting up the window to fill the screen at 1280 x 900 p.
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE); //after closing the program the process will be terminated
         setLayout(null);
         
@@ -42,19 +42,27 @@ public class DashBoard extends JFrame{
         
         
         //search button structure
-        JButton login = new JButton("Search");
-        login.setBounds(1580,10,150,40);
+        JButton search = new JButton("Search");
+        search.setBounds(1580,10,150,40);
         //login.setForeground(Color.WHITE);
-        login.setFont(new Font("Tahoma" , Font.BOLD , 20));
-        p1.add(login);
+        search.setFont(new Font("Tahoma" , Font.BOLD , 20));
+        p1.add(search);
+        search.addActionListener(e -> {
+            //new AddDetails();
+            setVisible(false);
+        });
         
         
         //Log out button structure
-        JButton signup = new JButton("Log Out");
-        signup.setBounds(1750,10,150,40);
+        JButton logout = new JButton("Log Out");
+        logout.setBounds(1750,10,150,40);
         //signup.setForeground(Color.WHITE);
-        signup.setFont(new Font("Tahoma" , Font.BOLD , 20));
-        p1.add(signup);
+        logout.setFont(new Font("Tahoma" , Font.BOLD , 20));
+        p1.add(logout);
+        logout.addActionListener(e -> {
+           // new AddDetails();
+            setVisible(false);
+        });
         
         
         
@@ -74,6 +82,10 @@ public class DashBoard extends JFrame{
         addDetails.setFont(new Font("Tahoma" , Font.PLAIN , 20));
         addDetails.setMargin(new Insets(0,0,0,130));
         p2.add(addDetails);
+        addDetails.addActionListener(e -> {
+//            new AddDetails();
+            setVisible(false);
+        });
         
         
         //update details button structure
@@ -84,6 +96,10 @@ public class DashBoard extends JFrame{
         updateDetails.setFont(new Font("Tahoma" , Font.PLAIN , 20));
         updateDetails.setMargin(new Insets(0,0,0,110));
         p2.add(updateDetails);
+        updateDetails.addActionListener(e -> {
+//            new AddDetails();
+            setVisible(false);
+        });
         
         
         //view details button structure
@@ -94,6 +110,10 @@ public class DashBoard extends JFrame{
         viewDetails.setFont(new Font("Tahoma" , Font.PLAIN , 20));
         viewDetails.setMargin(new Insets(0,0,0,130));
         p2.add(viewDetails);
+        viewDetails.addActionListener(e -> {
+//            new AddDetails();
+            setVisible(false);
+        });
         
         
         //delete details button structure
@@ -104,6 +124,10 @@ public class DashBoard extends JFrame{
         DeleteDetails.setFont(new Font("Tahoma" , Font.PLAIN , 20));
         DeleteDetails.setMargin(new Insets(0,0,0,110));
         p2.add(DeleteDetails);
+        DeleteDetails.addActionListener(e -> {
+//            new AddDetails();
+            setVisible(false);
+        });
         
         
         //check package button structure
@@ -114,6 +138,10 @@ public class DashBoard extends JFrame{
         checkPackage.setFont(new Font("Tahoma" , Font.PLAIN , 20));
         checkPackage.setMargin(new Insets(0,0,0,110));
         p2.add(checkPackage);
+        checkPackage.addActionListener(e -> {
+//            new AddDetails();
+            setVisible(false);
+        });       
         
         
         //update package button structure
@@ -124,6 +152,10 @@ public class DashBoard extends JFrame{
         updatePackage.setFont(new Font("Tahoma" , Font.PLAIN , 20));
         updatePackage.setMargin(new Insets(0,0,0,100));
         p2.add(updatePackage);
+        updatePackage.addActionListener(e -> {
+//            new AddDetails();
+            setVisible(false);
+        });
         
         
         //view package button structure
@@ -134,36 +166,52 @@ public class DashBoard extends JFrame{
         viewPackage.setFont(new Font("Tahoma" , Font.PLAIN , 20));
         viewPackage.setMargin(new Insets(0,10,0,130));
         p2.add(viewPackage);
+        viewPackage.addActionListener(e -> {
+//            new AddDetails();
+            setVisible(false);
+        });
         
         
         //add destination button structure
-        JButton addDestination = new JButton("Add Destination");
-        addDestination.setBounds(0,420,300,50);
-        addDestination.setBackground(new Color(0,0,102));
-        addDestination.setForeground(Color.WHITE);
-        addDestination.setFont(new Font("Tahoma" , Font.PLAIN , 20));
-        addDestination.setMargin(new Insets(0,0,0,105));
-        p2.add(addDestination);
+        JButton bookDestination = new JButton("Book Destination");
+        bookDestination.setBounds(0,420,300,50);
+        bookDestination.setBackground(new Color(0,0,102));
+        bookDestination.setForeground(Color.WHITE);
+        bookDestination.setFont(new Font("Tahoma" , Font.PLAIN , 20));
+        bookDestination.setMargin(new Insets(0,0,0,105));
+        p2.add(bookDestination);
+        bookDestination.addActionListener(e -> {
+            new destination.ui.Book();
+            setVisible(false);
+        });
         
         
         //update map button structure
-        JButton updateDestination = new JButton("Update Map");
-        updateDestination.setBounds(0,480,300,50);
-        updateDestination.setBackground(new Color(0,0,102));
-        updateDestination.setForeground(Color.WHITE);
-        updateDestination.setFont(new Font("Tahoma" , Font.PLAIN , 20));
-        updateDestination.setMargin(new Insets(0,0,0,140));
-        p2.add(updateDestination);
+        JButton checkMap = new JButton("Check Map");
+        checkMap.setBounds(0,480,300,50);
+        checkMap.setBackground(new Color(0,0,102));
+        checkMap.setForeground(Color.WHITE);
+        checkMap.setFont(new Font("Tahoma" , Font.PLAIN , 20));
+        checkMap.setMargin(new Insets(0,0,0,140));
+        p2.add(checkMap);
+        checkMap.addActionListener(e -> {
+//            new AddDetails();
+            setVisible(false);
+        });
         
         
         //view destination button structure
-        JButton viewDestination = new JButton("View Destination");
-        viewDestination.setBounds(0,540,300,50);
-        viewDestination.setBackground(new Color(0,0,102));
-        viewDestination.setForeground(Color.WHITE);
-        viewDestination.setFont(new Font("Tahoma" , Font.PLAIN , 20));
-        viewDestination.setMargin(new Insets(0,0,0,110));
-        p2.add(viewDestination);
+        JButton viewBooking = new JButton("View Booking");
+        viewBooking.setBounds(0,540,300,50);
+        viewBooking.setBackground(new Color(0,0,102));
+        viewBooking.setForeground(Color.WHITE);
+        viewBooking.setFont(new Font("Tahoma" , Font.PLAIN , 20));
+        viewBooking.setMargin(new Insets(0,0,0,110));
+        p2.add(viewBooking);
+        viewBooking.addActionListener(e -> {
+            new destination.ui.ViewDetails();
+            setVisible(false);
+        });
         
         
         //view hotel button structure
@@ -174,6 +222,10 @@ public class DashBoard extends JFrame{
         viewHotel.setFont(new Font("Tahoma" , Font.PLAIN , 20));
         viewHotel.setMargin(new Insets(0,0,0,140));
         p2.add(viewHotel);
+        viewHotel.addActionListener(e -> {
+//            new AddDetails();
+            setVisible(false);
+        });
         
         
         //transport button structure
@@ -184,6 +236,10 @@ public class DashBoard extends JFrame{
         viewTransport.setFont(new Font("Tahoma" , Font.PLAIN , 20));
         viewTransport.setMargin(new Insets(0,0,0,160));
         p2.add(viewTransport);
+        viewTransport.addActionListener(e -> {
+//            new AddDetails();
+            setVisible(false);
+        });
         
         //about us button structure
         JButton about = new JButton("About Us");
@@ -193,6 +249,10 @@ public class DashBoard extends JFrame{
         about.setFont(new Font("Tahoma" , Font.PLAIN , 20));
         about.setMargin(new Insets(0,10,0,180));
         p2.add(about);
+        about .addActionListener(e -> {
+//            new AddDetails();
+            setVisible(false);
+        });
         
 
         

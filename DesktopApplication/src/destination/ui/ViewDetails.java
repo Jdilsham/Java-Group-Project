@@ -36,15 +36,21 @@ private class GradientPanel extends JPanel {
     }
 }
 
+    /**
+     *
+     */
     public ViewDetails() {
         initComponents();
+         
          SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 startSlideshow(); // Now starts after the GUI is shown
     }
 });
-
+      
     }
+    
+    
     
      private Timer timer;
     
@@ -72,10 +78,10 @@ private class GradientPanel extends JPanel {
     };
     
     private String[] imageArugam = {
-        "/images/arugam/a2.jpg",
-        "/images/arugam/a3.jpg",
-        "/images/arugam/a1.jpg",
-        "/images/arugam/a4.jpg"
+        "/images.arugam/a2.jpg",
+        "/images.arugam/a3.jpg",
+        "/images.arugam/a1.jpg",
+        "/images.arugam/a4.jpg"
     };
     
    private void startSlideshow() {

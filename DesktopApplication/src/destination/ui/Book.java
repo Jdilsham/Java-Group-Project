@@ -18,6 +18,10 @@ public class Book extends javax.swing.JFrame {
         initComponents();
     }
 
+    public Book() {
+        new Book(destinationName).setVisible(true);
+    }
+
       class GradientPanel extends javax.swing.JPanel {
     @Override
     protected void paintComponent(Graphics g) {
@@ -243,7 +247,8 @@ public class Book extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-        dispose();
+        new desktopapplication.DashBoard().setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_backbtnActionPerformed
 
     private void bookbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookbtnActionPerformed
