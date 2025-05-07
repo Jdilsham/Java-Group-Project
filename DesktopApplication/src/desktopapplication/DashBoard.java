@@ -12,10 +12,8 @@ import javax.swing.JPanel;
 
 public class DashBoard extends JFrame{
     public DashBoard() {
-//        setBounds(0,0,1600,1000);
-//        setLocation(100, 50);
-
-        setExtendedState(JFrame.MAXIMIZED_BOTH);    //setting up the window to fill the screen (any size screen).
+        setSize(1280, 900);
+        setLocationRelativeTo(null);//setting up the window to fill the screen (any size screen).
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE); //after closing the program the process will be terminated
         setLayout(null);
         
