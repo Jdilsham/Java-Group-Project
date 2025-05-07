@@ -30,7 +30,7 @@ public class AuthenticationWindow extends JFrame{
         
         setShape(new RoundRectangle2D.Double(0,0,getWidth(),getHeight(),45,45));
         
-        setBackground(new Color(0,0,0,0));
+        setBackground(new Color(0,0,0,50));
         
         JPanel panel = new JPanel(new GridBagLayout());
         panel.setBackground(new Color(0,0,0,200));
@@ -50,9 +50,14 @@ public class AuthenticationWindow extends JFrame{
         gbc.gridy=0;
         panel.add(text,gbc);
         
+        login.setForeground(Color.BLUE);
+        login.setFont(new Font("",Font.BOLD,14));
         gbc.gridy=2;
         panel.add(login,gbc);
         
+        
+        signup.setForeground(Color.BLUE);
+        signup.setFont(new Font("",Font.BOLD,14));
         gbc.gridy =3 ; 
         panel.add(signup,gbc);
         
