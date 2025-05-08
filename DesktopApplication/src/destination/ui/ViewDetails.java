@@ -40,15 +40,15 @@ private class GradientPanel extends JPanel {
      *
      */
     public ViewDetails() {
+//        new ViewDetails().setVisible(true);
         initComponents();
-         
-         SwingUtilities.invokeLater(new Runnable() {
+        SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 startSlideshow(); // Now starts after the GUI is shown
     }
 });
-      
     }
+    
     
     
     
@@ -237,6 +237,11 @@ slideshowLbl.repaint();
         bookbtn.setBackground(new java.awt.Color(0, 51, 51));
         bookbtn.setForeground(new java.awt.Color(255, 255, 255));
         bookbtn.setText("Book");
+        bookbtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bookbtnMouseClicked(evt);
+            }
+        });
         bookbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bookbtnActionPerformed(evt);
@@ -268,6 +273,7 @@ slideshowLbl.repaint();
     private void bookbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookbtnActionPerformed
         Book book =new Book(namelbl.getText());
         book.setVisible(true);
+        setVisible(false);
     }//GEN-LAST:event_bookbtnActionPerformed
 
     private void weatherbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_weatherbtnActionPerformed
@@ -279,9 +285,14 @@ slideshowLbl.repaint();
         
     }//GEN-LAST:event_weatherbtnActionPerformed
 
+    private void bookbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookbtnMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bookbtnMouseClicked
+
    
     public static void main(String args[]) {
-     
+        
+           
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {

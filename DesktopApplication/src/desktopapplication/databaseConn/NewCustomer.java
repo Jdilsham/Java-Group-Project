@@ -150,6 +150,11 @@ public class NewCustomer extends javax.swing.JFrame {
         jPanel1.add(submit, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 553, 130, 30));
 
         cancel.setText("Cancel");
+        cancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cancelMouseClicked(evt);
+            }
+        });
         cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelActionPerformed(evt);
@@ -159,7 +164,7 @@ public class NewCustomer extends javax.swing.JFrame {
 
         loadingLabel.setBackground(new java.awt.Color(255, 255, 255));
         loadingLabel.setForeground(new java.awt.Color(255, 255, 255));
-        loadingLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/desktopapplication/images/loading.gif"))); // NOI18N
+        loadingLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/desktopapplication/images/loading.gif")));
         loadingLabel.setMaximumSize(new java.awt.Dimension(40, 40));
         loadingLabel.setMinimumSize(new java.awt.Dimension(40, 40));
         jPanel1.add(loadingLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 80, 100));
@@ -247,6 +252,7 @@ public class NewCustomer extends javax.swing.JFrame {
 
             try {
                 Connection conn = DatabaseCon.getConnection();
+                
                 String sql = "INSERT INTO personal_data (first_name, last_name, gender, country, address, phone_number, email, nic) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement pstmt = conn.prepareStatement(sql);
                 pstmt.setString(1, First_name);
@@ -285,6 +291,11 @@ public class NewCustomer extends javax.swing.JFrame {
         
     }//GEN-LAST:event_submitActionPerformed
 
+    private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
+        new desktopapplication.DashBoard().setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_cancelMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -294,6 +305,7 @@ public class NewCustomer extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -311,7 +323,7 @@ public class NewCustomer extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(NewCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

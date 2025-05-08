@@ -35,6 +35,7 @@ public class Search extends javax.swing.JFrame {
              
 
     public Search() {
+        
         initComponents();
         scrollPane.setVisible(false);
         
@@ -219,6 +220,7 @@ public class Search extends javax.swing.JFrame {
 
    
     public static void main(String args[]) {
+//        new Search().setVisible(true);
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

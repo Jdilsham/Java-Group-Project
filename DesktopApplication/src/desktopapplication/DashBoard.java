@@ -1,6 +1,7 @@
 package desktopapplication;
 
 import java.awt.Color; //used to get colors
+import java.awt.Dimension;
 import java.awt.Font;   // used to ge various fonts
 import java.awt.Image;  // used to handle images
 import java.awt.Insets; // used to set margins
@@ -12,8 +13,9 @@ import javax.swing.JPanel;
 
 public class DashBoard extends JFrame{
     public DashBoard() {
-        setSize(1280, 900);
-        setLocationRelativeTo(null);//setting up the window to fill the screen at 1280 x 900 p.
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setMinimumSize(new Dimension(1000,700));
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE); //after closing the program the process will be terminated
         setLayout(null);
         
@@ -48,7 +50,7 @@ public class DashBoard extends JFrame{
         search.setFont(new Font("Tahoma" , Font.BOLD , 20));
         p1.add(search);
         search.addActionListener(e -> {
-            //new AddDetails();
+            new destination.ui.Search().setVisible(true);
             setVisible(false);
         });
         
@@ -83,7 +85,7 @@ public class DashBoard extends JFrame{
         addDetails.setMargin(new Insets(0,0,0,130));
         p2.add(addDetails);
         addDetails.addActionListener(e -> {
-//            new AddDetails();
+            new desktopapplication.databaseConn.NewCustomer().setVisible(true);
             setVisible(false);
         });
         
@@ -111,7 +113,7 @@ public class DashBoard extends JFrame{
         viewDetails.setMargin(new Insets(0,0,0,130));
         p2.add(viewDetails);
         viewDetails.addActionListener(e -> {
-//            new AddDetails();
+            new destination.ui.ViewDetails();
             setVisible(false);
         });
         
@@ -209,7 +211,7 @@ public class DashBoard extends JFrame{
         viewBooking.setMargin(new Insets(0,0,0,110));
         p2.add(viewBooking);
         viewBooking.addActionListener(e -> {
-            new destination.ui.ViewDetails();
+            new destination.ui.ViewDetails().setVisible(true);
             setVisible(false);
         });
         
@@ -254,6 +256,13 @@ public class DashBoard extends JFrame{
             setVisible(false);
         });
         
+        
+        ImageIcon i4 = new ImageIcon(ClassLoader.getSystemResource("imagepath/home.jpg"));
+        Image i5 = i4.getImage().getScaledInstance(1620, 1015, Image.SCALE_SMOOTH);
+        ImageIcon i6 = new ImageIcon(i5);
+        JLabel image = new JLabel(i6);
+        image.setBounds(300, 0, 1620, 1015);
+        add(image);
 
         
         setVisible(true);  

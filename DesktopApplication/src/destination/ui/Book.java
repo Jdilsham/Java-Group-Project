@@ -11,15 +11,18 @@ import javax.swing.JOptionPane;
 
 
 public class Book extends javax.swing.JFrame {
+    
     private static String destinationName;
     
     public Book(String destinationName) {
+        
         this.destinationName=destinationName;
         initComponents();
     }
 
     public Book() {
         new Book(destinationName).setVisible(true);
+        
     }
 
       class GradientPanel extends javax.swing.JPanel {
