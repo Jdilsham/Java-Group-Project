@@ -4,6 +4,7 @@
  */
 package GUI;
 
+import destination.ui.ViewDetails;
 import API.SeaConditionPanel;
 import java.awt.CardLayout;
 import java.io.BufferedReader;
@@ -43,7 +44,7 @@ public final class Dashboard extends javax.swing.JFrame {
         initComponents();
 
         loadSeaConditionChart();
-        loadWeatherForecastList();
+        //loadWeatherForecastList();
 
     }
 
@@ -73,7 +74,7 @@ public final class Dashboard extends javax.swing.JFrame {
         seeConditionChart.validate();
     }
 
-    private void loadWeatherForecastList() {
+    private void loadWeatherForecastList(String city) {
         new Thread(() -> { // Perform network operation in a separate thread
             try {
                 if (apiKey.equals("")) {
@@ -83,7 +84,7 @@ public final class Dashboard extends javax.swing.JFrame {
                     return; // Stop execution if API key is missing
                 }
 
-                String city = "Colombo";
+                //String city = "Colombo";
                 String urlString = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=metric&appid=" + apiKey;
 
                 URL url = new URL(urlString);
@@ -152,18 +153,24 @@ public final class Dashboard extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         seeConditionChart = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        searcharea = new javax.swing.JPanel();
+        search = new javax.swing.JTextField();
+        searchbtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.setBackground(new java.awt.Color(224, 247, 250));
 
+        weatherDetails.setBackground(new java.awt.Color(2, 136, 209));
         weatherDetails.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
         jLabel5.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         jLabel5.setText("Weather Details");
 
         weatherPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+
+        weatherScroller.setBackground(new java.awt.Color(176, 190, 197));
         weatherPanel.setViewportView(weatherScroller);
 
         javax.swing.GroupLayout weatherDetailsLayout = new javax.swing.GroupLayout(weatherDetails);
@@ -173,11 +180,12 @@ public final class Dashboard extends javax.swing.JFrame {
             .addGroup(weatherDetailsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(weatherDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(weatherPanel)
                     .addGroup(weatherDetailsLayout.createSequentialGroup()
                         .addComponent(jLabel5)
-                        .addGap(0, 213, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(216, 216, 216))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, weatherDetailsLayout.createSequentialGroup()
+                        .addComponent(weatherPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         weatherDetailsLayout.setVerticalGroup(
             weatherDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,27 +193,41 @@ public final class Dashboard extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
-                .addComponent(weatherPanel)
+                .addComponent(weatherPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jPanel2.add(weatherDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 54, -1, 462));
+        jPanel7.setBackground(new java.awt.Color(2, 136, 209));
 
         jLabel10.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
         jLabel10.setText("Sea Condition");
 
-        seeConditionChart.setLayout(new java.awt.BorderLayout());
+        seeConditionChart.setBackground(new java.awt.Color(176, 190, 197));
+
+        javax.swing.GroupLayout seeConditionChartLayout = new javax.swing.GroupLayout(seeConditionChart);
+        seeConditionChart.setLayout(seeConditionChartLayout);
+        seeConditionChartLayout.setHorizontalGroup(
+            seeConditionChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        seeConditionChartLayout.setVerticalGroup(
+            seeConditionChartLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 371, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(seeConditionChart, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addGap(6, 6, 6)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(seeConditionChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addGap(375, 375, 375))))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,25 +235,128 @@ public final class Dashboard extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addComponent(jLabel10)
                 .addGap(18, 18, 18)
-                .addComponent(seeConditionChart, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                .addComponent(seeConditionChart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 54, -1, -1));
+        jButton1.setBackground(new java.awt.Color(38, 166, 154));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton1.setText("Back");
+        jButton1.setBorder(null);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        searcharea.setBackground(new java.awt.Color(224, 247, 250));
+
+        search.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 204), 1, true));
+        search.setMargin(new java.awt.Insets(2, 15, 2, 6));
+        search.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchActionPerformed(evt);
+            }
+        });
+
+        searchbtn.setBackground(new java.awt.Color(38, 166, 154));
+        searchbtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        searchbtn.setText("Search");
+        searchbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchbtnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout searchareaLayout = new javax.swing.GroupLayout(searcharea);
+        searcharea.setLayout(searchareaLayout);
+        searchareaLayout.setHorizontalGroup(
+            searchareaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchareaLayout.createSequentialGroup()
+                .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(searchbtn)
+                .addContainerGap(62, Short.MAX_VALUE))
+        );
+        searchareaLayout.setVerticalGroup(
+            searchareaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchareaLayout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addGroup(searchareaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(searchbtn))
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(weatherDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(searcharea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(17, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(weatherDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(searcharea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 984, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        ViewDetails dest = new ViewDetails();
+        dest.setVisible(true);
+        this.dispose();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void searchbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchbtnActionPerformed
+        String city = search.getText().trim(); // Get the city name entered by the user
+
+    if (city.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Please enter a city name to search.", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+    } else {
+        loadWeatherForecastList(city); // Call the method to load weather for the searched city
+    }
+    }//GEN-LAST:event_searchbtnActionPerformed
+
+    private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchActionPerformed
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -265,10 +390,14 @@ public final class Dashboard extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JTextField search;
+    private javax.swing.JPanel searcharea;
+    private javax.swing.JButton searchbtn;
     private javax.swing.JPanel seeConditionChart;
     private javax.swing.JPanel weatherDetails;
     private javax.swing.JScrollPane weatherPanel;
