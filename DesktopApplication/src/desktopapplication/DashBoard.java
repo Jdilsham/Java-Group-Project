@@ -11,10 +11,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-/**
- *
- * @author mkvn
- */
 public class DashBoard extends JFrame{
     public DashBoard() {
         setExtendedState(JFrame.MAXIMIZED_BOTH);

@@ -1,3 +1,5 @@
+package login;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -101,7 +103,7 @@ public class AboutPage extends JFrame {
         backButton.setBackground(new Color(255, 102, 102));
         backButton.setForeground(Color.WHITE);
         backButton.addActionListener(e -> {
-            new LoginPage().setVisible(true);
+            new login.LoginPage();
             dispose();
         });
 

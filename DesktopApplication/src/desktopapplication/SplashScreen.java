@@ -41,8 +41,8 @@ public class SplashScreen extends javax.swing.JFrame {
     public SplashScreen() {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-       // setSize(1280, 900); //seting the window size to 1280x900 p 
-        setLocationRelativeTo(null);
+//        setSize(1280, 900); //seting the window size to 1280x900 p 
+//        setLocationRelativeTo(null);
         setLayout(null);
         java.awt.EventQueue.invokeLater(() ->{
             show(position);

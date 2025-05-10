@@ -6,12 +6,14 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+
 import java.awt.geom.RoundRectangle2D;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
 
 /**
  *
@@ -56,7 +58,7 @@ public class AuthenticationWindow extends JFrame{
         gbc.gridy=2;
         panel.add(login,gbc);
         login.addActionListener( e -> {
-            
+            new login.LoginPage().setVisible(true);
             setVisible(false);
         });
         
@@ -65,10 +67,11 @@ public class AuthenticationWindow extends JFrame{
         signup.setFont(new Font("",Font.BOLD,14));
         gbc.gridy =3 ; 
         panel.add(signup,gbc);
-        signup.addActionListener( e -> {
-//            SplashScreen().setVisible(false);
-            setVisible(false);
-        });
+        
+              
+           
+            
+     
         
         add(panel);
         
