@@ -42,18 +42,19 @@ public class AboutPage extends JFrame {
 
         JTextArea aboutText = new JTextArea();
         aboutText.setText(
-                "Welcome to the Tourism App!\n\n" +
+                "Welcome to the Tourism App! \n\n" +
                 "This application helps travelers discover amazing places, plan trips, and explore cities with ease.\n\n" +
                 "Key Features:\n" +
                 "✓ Find popular tourist spots\n" +
                 "✓ Get travel recommendations\n" +
                 "✓ Book tours and experiences\n\n" +
                 "Developed by:\n" +
-                "• Anupa Supul (SC/2022/12867)\n" +
-                "• Janitha Deshan (SC/2022/12868)\n" +
-                "• Member 3 Name (SC/2022/XXXXX)\n" +
-                "• Member 4 Name (SC/2022/XXXXX)\n" +
-                "• Jayashan MK (SC/2022/12868)\n\n" +
+                "• Anupa Supul \t\t (SC/2022/12867)\n" +
+                "• M.K.K.L. Jayashan \t (SC/2022/12868)\n" +
+                "• Wanniarachchi J.D. \t (SC/2022/12911)\n" +
+                "• Maheshi Wickramarathna \t (SC/2022/12903)\n" +
+                "• Jayani Anuththara \t (SC/2022/12843)\n" +
+                "• Shehara Frenando \t (SC/2022/12890)\n\n" +
                 "Version 1.0\n" +
                 "© 2025 Tourism App Team"
         );
@@ -103,7 +104,7 @@ public class AboutPage extends JFrame {
         backButton.setBackground(new Color(255, 102, 102));
         backButton.setForeground(Color.WHITE);
         backButton.addActionListener(e -> {
-            new login.LoginPage();
+            new desktopapplication.DashBoard().setVisible(true);
             dispose();
         });
 

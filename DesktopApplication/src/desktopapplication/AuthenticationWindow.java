@@ -39,6 +39,7 @@ public class AuthenticationWindow extends JFrame{
         panel.setBackground(new Color(0,0,0,200));
         
         JLabel text = new JLabel("TOURIST MANAGEMENT SYSTEM",JLabel.CENTER);
+        JLabel text1 = new JLabel("Wellcome to Sri Lanka",JLabel.CENTER);
         JButton login = new JButton("LOG IN");
         JButton signup = new JButton("SIGN UP");
         
@@ -52,6 +53,11 @@ public class AuthenticationWindow extends JFrame{
         text.setFont(new Font("serif", Font.BOLD, 18)) ;
         gbc.gridy=0;
         panel.add(text,gbc);
+        
+        text1.setForeground(Color.WHITE);
+        text1.setFont(new Font("serif", Font.BOLD, 18)) ;
+        gbc.gridy=1;
+        panel.add(text1,gbc);
         
         login.setForeground(Color.BLUE);
         login.setFont(new Font("",Font.BOLD,14));
@@ -67,6 +73,10 @@ public class AuthenticationWindow extends JFrame{
         signup.setFont(new Font("",Font.BOLD,14));
         gbc.gridy =3 ; 
         panel.add(signup,gbc);
+//        signup.addActionListener( e -> {
+//            new login..setVisible(true);
+//            setVisible(false);
+//        });
         
               
            
