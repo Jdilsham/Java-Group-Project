@@ -10,8 +10,8 @@ public class LoginPage extends JFrame implements ActionListener {
     private JPasswordField passwordField;
     private JCheckBox showPassword;
     private RoundedButton loginButton;
-    public RoundedButton signupButton;
-    private RoundedButton forgotPasswordButton; 
+    private RoundedButton signupButton;
+    private RoundedButton forgotPasswordButton;
     private float opacity = 0f; 
 
     public LoginPage() {
@@ -58,8 +58,8 @@ public class LoginPage extends JFrame implements ActionListener {
         JLabel passLabel = new JLabel("Password:");
         passLabel.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 
-        usernameField = new JTextField(30);
-        passwordField = new JPasswordField(30);
+        usernameField = new JTextField(15);
+        passwordField = new JPasswordField(15);
 
         showPassword = new JCheckBox("Show Password");
         showPassword.addActionListener(e -> passwordField.setEchoChar(showPassword.isSelected() ? (char) 0 : '•'));
@@ -173,9 +173,9 @@ public class LoginPage extends JFrame implements ActionListener {
     }
 }
 
- 
 
- class SignUpPage extends JFrame implements ActionListener {
+
+class SignUpPage extends JFrame implements ActionListener {
 
     private JTextField emailField;
     private JTextField newUsernameField;
@@ -194,7 +194,6 @@ public class LoginPage extends JFrame implements ActionListener {
         JPanel mainPanel = new JPanel(new GridLayout(1, 2));
 
         JPanel leftPanel = new JPanel() {
-            @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 ImageIcon icon = new ImageIcon("beach1.jpg");
@@ -205,7 +204,6 @@ public class LoginPage extends JFrame implements ActionListener {
         leftPanel.setLayout(new BorderLayout());
 
         JPanel rightPanel = new JPanel() {
-            @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 Graphics2D g2d = (Graphics2D) g;
@@ -392,31 +390,31 @@ class ForgotPasswordPage extends JFrame implements ActionListener {
     }
 }
 
-//class RoundedButton extends JButton {
-//    public RoundedButton(String text) {
-//        super(text);
-//        setContentAreaFilled(false);
-//        setFocusPainted(false);
-//        setOpaque(false);
-//        setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
-//    }
-//
-//    @Override
-//    protected void paintComponent(Graphics g) {
-//        Graphics2D g2 = (Graphics2D) g.create();
-//        g2.setColor(getBackground());
-//        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-//        g2.fillRoundRect(0, 0, getWidth(), getHeight(), 40, 40);
-//        super.paintComponent(g);
-//        g2.dispose();
-//    }
-//
-//    @Override
-//    protected void paintBorder(Graphics g) {
-//        Graphics2D g2 = (Graphics2D) g.create();
-//        g2.setColor(getForeground());
-//        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-//        g2.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 40, 40);
-//        g2.dispose();
-//    }
-//}
+class RoundedButton extends JButton {
+    public RoundedButton(String text) {
+        super(text);
+        setContentAreaFilled(false);
+        setFocusPainted(false);
+        setOpaque(false);
+        setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        Graphics2D g2 = (Graphics2D) g.create();
+        g2.setColor(getBackground());
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2.fillRoundRect(0, 0, getWidth(), getHeight(), 40, 40);
+        super.paintComponent(g);
+        g2.dispose();
+    }
+
+    @Override
+    protected void paintBorder(Graphics g) {
+        Graphics2D g2 = (Graphics2D) g.create();
+        g2.setColor(getForeground());
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 40, 40);
+        g2.dispose();
+    }
+}

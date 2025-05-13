@@ -22,7 +22,7 @@ public class AboutPage extends JFrame {
         JPanel leftPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon imageIcon = new ImageIcon("travel.jpg"); // Replace with your image
+                ImageIcon imageIcon = new ImageIcon("travel.jpg");
                 Image image = imageIcon.getImage();
                 g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
             }
@@ -173,44 +173,44 @@ public class AboutPage extends JFrame {
 }
 
 // Rounded Button Class
-class RoundedButton extends JButton {
-
-    private Color hoverBackgroundColor;
-    private Color normalBackgroundColor;
-
-    public RoundedButton(String text) {
-        super(text);
-        setContentAreaFilled(false);
-        setFocusPainted(false);
-        setBorderPainted(false);
-        normalBackgroundColor = new Color(255, 102, 102);
-        hoverBackgroundColor = new Color(255, 80, 80);
-
-        addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                setBackground(hoverBackgroundColor);
-            }
-
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                setBackground(normalBackgroundColor);
-            }
-        });
-        setBackground(normalBackgroundColor);
-    }
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        if (getModel().isArmed()) {
-            g.setColor(getBackground().darker());
-        } else {
-            g.setColor(getBackground());
-        }
-        g.fillRoundRect(0, 0, getWidth(), getHeight(), 40, 40);
-        super.paintComponent(g);
-    }
-
-    @Override
-    public void paintBorder(Graphics g) {
-        g.setColor(getBackground());
-    }
-}
+//class RoundedButton extends JButton {
+//
+//    private Color hoverBackgroundColor;
+//    private Color normalBackgroundColor;
+//
+//    public RoundedButton(String text) {
+//        super(text);
+//        setContentAreaFilled(false);
+//        setFocusPainted(false);
+//        setBorderPainted(false);
+//        normalBackgroundColor = new Color(255, 102, 102);
+//        hoverBackgroundColor = new Color(255, 80, 80);
+//
+//        addMouseListener(new java.awt.event.MouseAdapter() {
+//            public void mouseEntered(java.awt.event.MouseEvent evt) {
+//                setBackground(hoverBackgroundColor);
+//            }
+//
+//            public void mouseExited(java.awt.event.MouseEvent evt) {
+//                setBackground(normalBackgroundColor);
+//            }
+//        });
+//        setBackground(normalBackgroundColor);
+//    }
+//
+//    @Override
+//    protected void paintComponent(Graphics g) {
+//        if (getModel().isArmed()) {
+//            g.setColor(getBackground().darker());
+//        } else {
+//            g.setColor(getBackground());
+//        }
+//        g.fillRoundRect(0, 0, getWidth(), getHeight(), 40, 40);
+//        super.paintComponent(g);
+//    }
+//
+//    @Override
+//    public void paintBorder(Graphics g) {
+//        g.setColor(getBackground());
+//    }
+//}
