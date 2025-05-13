@@ -54,7 +54,7 @@ public class AboutPage extends JFrame {
                 "• Wanniarachchi J.D. \t (SC/2022/12911)\n" +
                 "• Maheshi Wickramarathna \t (SC/2022/12903)\n" +
                 "• Jayani Anuththara \t (SC/2022/12843)\n" +
-                "• Shehara Frenando \t (SC/2022/12890)\n\n" +
+                "• Shehara Fernando \t (SC/2022/12890)\n\n" +
                 "Version 1.0\n" +
                 "© 2025 Tourism App Team"
         );
@@ -172,45 +172,47 @@ public class AboutPage extends JFrame {
     }
 }
 
-// Rounded Button Class
-//class RoundedButton extends JButton {
-//
-//    private Color hoverBackgroundColor;
-//    private Color normalBackgroundColor;
-//
-//    public RoundedButton(String text) {
-//        super(text);
-//        setContentAreaFilled(false);
-//        setFocusPainted(false);
-//        setBorderPainted(false);
-//        normalBackgroundColor = new Color(255, 102, 102);
-//        hoverBackgroundColor = new Color(255, 80, 80);
-//
-//        addMouseListener(new java.awt.event.MouseAdapter() {
-//            public void mouseEntered(java.awt.event.MouseEvent evt) {
-//                setBackground(hoverBackgroundColor);
-//            }
-//
-//            public void mouseExited(java.awt.event.MouseEvent evt) {
-//                setBackground(normalBackgroundColor);
-//            }
-//        });
-//        setBackground(normalBackgroundColor);
-//    }
-//
-//    @Override
-//    protected void paintComponent(Graphics g) {
-//        if (getModel().isArmed()) {
-//            g.setColor(getBackground().darker());
-//        } else {
-//            g.setColor(getBackground());
-//        }
-//        g.fillRoundRect(0, 0, getWidth(), getHeight(), 40, 40);
-//        super.paintComponent(g);
-//    }
-//
-//    @Override
-//    public void paintBorder(Graphics g) {
-//        g.setColor(getBackground());
-//    }
-//}
+/*
+ Rounded Button Class
+class RoundedButton extends JButton {
+
+    private Color hoverBackgroundColor;
+    private Color normalBackgroundColor;
+
+    public RoundedButton(String text) {
+        super(text);
+        setContentAreaFilled(false);
+        setFocusPainted(false);
+        setBorderPainted(false);
+        normalBackgroundColor = new Color(255, 102, 102);
+        hoverBackgroundColor = new Color(255, 80, 80);
+
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                setBackground(hoverBackgroundColor);
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                setBackground(normalBackgroundColor);
+            }
+        });
+        setBackground(normalBackgroundColor);
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        if (getModel().isArmed()) {
+            g.setColor(getBackground().darker());
+        } else {
+            g.setColor(getBackground());
+        }
+        g.fillRoundRect(0, 0, getWidth(), getHeight(), 40, 40);
+        super.paintComponent(g);
+    }
+
+    @Override
+    public void paintBorder(Graphics g) {
+        g.setColor(getBackground());
+    }
+}
+*/
