@@ -164,7 +164,7 @@ public class NewCustomer extends javax.swing.JFrame {
 
         loadingLabel.setBackground(new java.awt.Color(255, 255, 255));
         loadingLabel.setForeground(new java.awt.Color(255, 255, 255));
-        loadingLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/desktopapplication/images/loading.gif")));
+        loadingLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/desktopapplication/images/loading.gif"))); // NOI18N
         loadingLabel.setMaximumSize(new java.awt.Dimension(40, 40));
         loadingLabel.setMinimumSize(new java.awt.Dimension(40, 40));
         jPanel1.add(loadingLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 80, 100));
@@ -226,14 +226,6 @@ public class NewCustomer extends javax.swing.JFrame {
         @Override
         protected Void doInBackground() {
             
-            try {
-                
-                Thread.sleep(1000);
-                
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
             String First_name = first_name.getText().trim();
             String Last_name = last_name.getText().trim();
             String Country = (String) country.getSelectedItem();
@@ -249,6 +241,8 @@ public class NewCustomer extends javax.swing.JFrame {
                 Gender = "Female";
                 //a
             }
+
+            
 
             try {
                 Connection conn = DatabaseCon.getConnection();

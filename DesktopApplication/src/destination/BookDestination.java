@@ -1,12 +1,13 @@
 
 package destination;
 
+import java.sql.*;
 import Connection.DBConnection;
-import com.mysql.jdbc.Connection;
+/*import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
 import java.sql.SQLException;
-import java.util.Date;
+import java.util.Date;*/
 
 
 public class BookDestination {
