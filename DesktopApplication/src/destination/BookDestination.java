@@ -1,17 +1,17 @@
 
 package destination;
 
+import java.sql.*;
 import Connection.DBConnection;
-import com.mysql.jdbc.Connection;
+/*import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
-import java.sql.DriverManager;
+
 import java.sql.SQLException;
-import com.mysql.jdbc.Statement;
-import java.util.Date;
+import java.util.Date;*/
 
 
 public class BookDestination {
-    private Connection conn;
+    public Connection conn;
 
     public BookDestination() {
         this.conn=(Connection) DBConnection.getConnection();

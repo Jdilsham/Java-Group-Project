@@ -2,7 +2,7 @@
 package project;
 import java.sql.*;
 
-public class DatabaseConn {
+public class DBConnection {
     private static final String SERVER_URL = "jdbc:mysql://localhost:3306/";
     private static final String DATABASE_NAME = "customer_data";
     private static final String FULL_URL = SERVER_URL + DATABASE_NAME;

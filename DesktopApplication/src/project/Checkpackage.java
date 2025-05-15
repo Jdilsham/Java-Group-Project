@@ -6,7 +6,7 @@ import java.awt.*;
 
 public class Checkpackage extends JFrame {
     
-    Checkpackage(){
+    public Checkpackage(){
         //setBounds(450,200,900,600);
         
         Toolkit toolkit = Toolkit.getDefaultToolkit();
@@ -14,10 +14,10 @@ public class Checkpackage extends JFrame {
         setSize(screenSize.width, screenSize.height);
         setLocation(0, 0);
         
-        String[] package1 ={"GOLD PACKAGE","🏝 Duration: 7 Days and 6 Nights","📍 Locations: Colombo, Galle, Bentota, Mirissa","🛎 Included Services:","✅ - Airport Pickup & Drop","🍽 - Daily Breakfast + Dinner Buffets","🏨 - 4-Star Hotel Accommodation","🧃 - Welcome Drinks on Arrival","🗣 - English / Sinhala Speaking Tour Guide","💰 Price: Rs. 12,000/- per person (All Inclusive)","📞 Book via tab or call: ‪+94 77 123 4567‬","Book Now"};
+        String[] package1 ={"BRONZE PACKAGE","🏝 Duration: 7 Days and 6 Nights","📍 Locations: Colombo, Galle, Bentota, Mirissa","🛎 Included Services:","✅ - Airport Pickup & Drop","🍽 - Daily Breakfast + Dinner Buffets","🏨 - 4-Star Hotel Accommodation","🧃 - Welcome Drinks on Arrival","🗣 - English / Sinhala Speaking Tour Guide","💰 Price: Rs. 12,000/- per person (All Inclusive)","📞 Book via tab or call: ‪+94 77 123 4567‬","Book Now"};
         String[] package2 ={"SILVER PACKAGE","🏝 Duration: 5 Days and 6 Nights","📍 Locations: Colombo, Galle, Bentota, Mirissa","🛎 Included Services:","✅ - Airport Pickup & Drop", "🍽 - All Meals Included","🏨 - 5-Star Hotel Accommodation","🧖‍♂ - Spa & Wellness Sessions","🗣 - Multilingual Tour Guide","💰 Price: Rs. 25,000/- per person (All Inclusive)","📞 Book via tab or call: ‪‪+94 76 987 6543‬‬","Book Now"};
 
-        String[] package3 ={"BRONZE PACKAGE","🏝 Duration: 5 Days and 4 Nights","📍 Locations: Colombo, Galle, Bentota, Mirissa","🛎 Included Services:","🎁 Special Offers: Free Entry Tickets for Turtle Hatchery & Museum","🍽 - All Meals Included","🏨 - 5-Star Hotel Accommodation", "📸 Professional Photography Session","🔖 Summer Promo – 10% Off for Groups (3+)","💰 Price: Rs. 30,000/- per person (All Inclusive)","📞 Book via tab or call: ‪‪+94 76 987 6543‬‬","Book Now"};
+        String[] package3 ={"GOLD PACKAGE","🏝 Duration: 5 Days and 4 Nights","📍 Locations: Colombo, Galle, Bentota, Mirissa","🛎 Included Services:","🎁 Special Offers: Free Entry Tickets for Turtle Hatchery & Museum","🍽 - All Meals Included","🏨 - 5-Star Hotel Accommodation", "📸 Professional Photography Session","🔖 Summer Promo – 10% Off for Groups (3+)","💰 Price: Rs. 30,000/- per person (All Inclusive)","📞 Book via tab or call: ‪‪+94 76 987 6543‬‬","Book Now"};
 
 
         

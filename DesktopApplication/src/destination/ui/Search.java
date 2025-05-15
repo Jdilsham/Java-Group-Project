@@ -1,7 +1,7 @@
 package destination.ui;
-
+import java.sql.*;
 import Connection.DBConnection;
-import com.mysql.jdbc.Connection;
+//import com.mysql.jdbc.Connection;
 import destination.ViewDestination;
 import destination.ui.controller.ResultController;
 import java.awt.Color;

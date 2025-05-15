@@ -1,11 +1,7 @@
 package desktopapplication;
 
 import java.awt.*;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class DashBoard extends JFrame{
     public DashBoard() {
@@ -78,7 +74,8 @@ public class DashBoard extends JFrame{
         addCustomer.setBackground(new Color(0,0,102));
         addCustomer.setForeground(Color.WHITE);
         addCustomer.setFont(new Font("Tahoma" , Font.PLAIN , 20));
-        addCustomer.setMargin(new Insets(0,0,0,130));
+        addCustomer.setHorizontalAlignment(SwingConstants.LEFT);
+        addCustomer.setMargin(new Insets(0,15,0,0));
         p2.add(addCustomer);
         addCustomer.addActionListener(e -> {
             new desktopapplication.databaseConn.NewCustomer().setVisible(true);
@@ -92,10 +89,11 @@ public class DashBoard extends JFrame{
         viewCustomer.setBackground(new Color(0,0,102));
         viewCustomer.setForeground(Color.WHITE);
         viewCustomer.setFont(new Font("Tahoma" , Font.PLAIN , 20));
-        viewCustomer.setMargin(new Insets(0,0,0,110));
+        viewCustomer.setHorizontalAlignment(SwingConstants.LEFT);
+        viewCustomer.setMargin(new Insets(0,15,0,0));
         p2.add(viewCustomer);
         viewCustomer.addActionListener(e -> {
-//            new desktopapplication.databaseConn.().setVisible(true);
+//            new desktopapplication.databaseConn.
             setVisible(false);
         });
 
@@ -106,49 +104,67 @@ public class DashBoard extends JFrame{
         viewDetails.setBackground(new Color(0,0,102));
         viewDetails.setForeground(Color.WHITE);
         viewDetails.setFont(new Font("Tahoma" , Font.PLAIN , 20));
-        viewDetails.setMargin(new Insets(0,0,0,130));
+        viewDetails.setHorizontalAlignment(SwingConstants.LEFT);
+        viewDetails.setMargin(new Insets(0,15,0,0));
         p2.add(viewDetails);
         viewDetails.addActionListener(e -> {
-            new destination.ui.ViewDetails();
+            new destination.ui.ViewDetails().setVisible(true);
             setVisible(false);
         });
 
 
-        //delete details button structure
-        JButton bookings = new JButton("Bookings");
-        bookings.setBounds(0,180,300,50);
-        bookings.setBackground(new Color(0,0,102));
-        bookings.setForeground(Color.WHITE);
-        bookings.setFont(new Font("Tahoma" , Font.PLAIN , 20));
-        bookings.setMargin(new Insets(0,0,0,110));
-        p2.add(bookings);
-        bookings.addActionListener(e -> {
-//            new AddDetails();
+        //book package button structure
+        JButton bookHotel = new JButton("Book Hotels");
+        bookHotel.setBounds(0,180,300,50);
+        bookHotel.setBackground(new Color(0,0,102));
+        bookHotel.setForeground(Color.WHITE);
+        bookHotel.setFont(new Font("Tahoma" , Font.PLAIN , 20));
+        bookHotel.setHorizontalAlignment(SwingConstants.LEFT);
+        bookHotel.setMargin(new Insets(0,15,0,0));
+        p2.add(bookHotel);
+        bookHotel.addActionListener(e -> {
+            new project.Bookpackage().setVisible(true);
+            setVisible(false);
+        });
+
+        //book destination button structure
+        JButton bookDestinations = new JButton("Book Destinations");
+        bookDestinations.setBounds(0,240,300,50);
+        bookDestinations.setBackground(new Color(0,0,102));
+        bookDestinations.setForeground(Color.WHITE);
+        bookDestinations.setFont(new Font("Tahoma" , Font.PLAIN , 20));
+        bookDestinations.setHorizontalAlignment(SwingConstants.LEFT);
+        bookDestinations.setMargin(new Insets(0,15,0,0));
+        p2.add(bookDestinations);
+        bookDestinations.addActionListener(e -> {
+            new destination.ui.Book().setVisible(true);
             setVisible(false);
         });
 
 
         //check package button structure
         JButton checkPackage = new JButton("Check Packages");
-        checkPackage.setBounds(0,240,300,50);
+        checkPackage.setBounds(0,300,300,50);
         checkPackage.setBackground(new Color(0,0,102));
         checkPackage.setForeground(Color.WHITE);
         checkPackage.setFont(new Font("Tahoma" , Font.PLAIN , 20));
-        checkPackage.setMargin(new Insets(0,0,0,110));
+        checkPackage.setHorizontalAlignment(SwingConstants.LEFT);
+        checkPackage.setMargin(new Insets(0,15,0,0));
         p2.add(checkPackage);
         checkPackage.addActionListener(e -> {
-//            new AddDetails();
+            new project.Checkpackage().setVisible(true);
             setVisible(false);
         });
 
 
-        //update package button structure
+        //view destination button structure
         JButton viewDestination = new JButton("View Destination");
-        viewDestination.setBounds(0,300,300,50);
+        viewDestination.setBounds(0,360,300,50);
         viewDestination.setBackground(new Color(0,0,102));
         viewDestination.setForeground(Color.WHITE);
         viewDestination.setFont(new Font("Tahoma" , Font.PLAIN , 20));
-        viewDestination.setMargin(new Insets(0,0,0,100));
+        viewDestination.setHorizontalAlignment(SwingConstants.LEFT);
+        viewDestination.setMargin(new Insets(0,15,0,0));
         p2.add(viewDestination);
         viewDestination.addActionListener(e -> {
 //            new AddDetails();
@@ -158,11 +174,12 @@ public class DashBoard extends JFrame{
 
         //view package button structure
         JButton checkMap = new JButton("Check Map");
-        checkMap.setBounds(0,360,300,50);
+        checkMap.setBounds(0,420,300,50);
         checkMap.setBackground(new Color(0,0,102));
         checkMap.setForeground(Color.WHITE);
         checkMap.setFont(new Font("Tahoma" , Font.PLAIN , 20));
-        checkMap.setMargin(new Insets(0,10,0,130));
+        checkMap.setHorizontalAlignment(SwingConstants.LEFT);
+        checkMap.setMargin(new Insets(0,15,0,0));
         p2.add(checkMap);
         checkMap.addActionListener(e -> {
 //            new AddDetails();
@@ -172,11 +189,12 @@ public class DashBoard extends JFrame{
 
         //add destination button structure
         JButton viewHotel = new JButton("View Hotels");
-        viewHotel.setBounds(0,420,300,50);
+        viewHotel.setBounds(0,480,300,50);
         viewHotel.setBackground(new Color(0,0,102));
         viewHotel.setForeground(Color.WHITE);
         viewHotel.setFont(new Font("Tahoma" , Font.PLAIN , 20));
-        viewHotel.setMargin(new Insets(0,0,0,105));
+        viewHotel.setHorizontalAlignment(SwingConstants.LEFT);
+        viewHotel.setMargin(new Insets(0,15,0,0));
         p2.add(viewHotel);
         viewHotel.addActionListener(e -> {
             new destination.ui.Book();
@@ -186,11 +204,12 @@ public class DashBoard extends JFrame{
 
         //update map button structure
         JButton aboutUS = new JButton("About US");
-        aboutUS.setBounds(0,480,300,50);
+        aboutUS.setBounds(0,540,300,50);
         aboutUS.setBackground(new Color(0,0,102));
         aboutUS.setForeground(Color.WHITE);
         aboutUS.setFont(new Font("Tahoma" , Font.PLAIN , 20));
-        aboutUS.setMargin(new Insets(0,0,0,140));
+        aboutUS.setHorizontalAlignment(SwingConstants.LEFT);
+        aboutUS.setMargin(new Insets(0,15,0,0));
         p2.add(aboutUS);
         aboutUS.addActionListener(e -> {
 //            new AddDetails();

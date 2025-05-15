@@ -62,7 +62,7 @@ public class DatabaseCon {
         if (testConnection != null) {
             System.out.println("Test connection successful!");
             try {
-                testConnection.close(); // Good practice to close after testing
+                testConnection.close(); 
             } catch (SQLException e) {
                 e.printStackTrace();
             }

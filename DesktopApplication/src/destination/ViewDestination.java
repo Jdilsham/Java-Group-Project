@@ -1,11 +1,12 @@
 package destination;
 
-import com.mysql.jdbc.Connection;
+import java.sql.*;
+/*import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
-import com.mysql.jdbc.ResultSet;
+import com.mysql.jdbc.ResultSet;*/
 import destination.ui.ViewDetails;
-import java.sql.SQLException;
-import java.sql.DriverManager;
+//import java.sql.SQLException;
+//import java.sql.DriverManager;
 
 public class ViewDestination {
     private static Connection conn;
