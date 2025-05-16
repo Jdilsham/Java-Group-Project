@@ -1,7 +1,9 @@
 package desktopapplication;
 
+
 import java.awt.*;
 import javax.swing.*;
+import MAPmain.Main;
 
 public class DashBoard extends JFrame{
     public DashBoard() {
@@ -182,8 +184,10 @@ public class DashBoard extends JFrame{
         checkMap.setMargin(new Insets(0,15,0,0));
         p2.add(checkMap);
         checkMap.addActionListener(e -> {
-//            new AddDetails();
-            setVisible(false);
+            Main map = new Main();
+            map.setVisible(true);
+            this.dispose();
+            
         });
 
 

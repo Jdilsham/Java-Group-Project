@@ -22,6 +22,7 @@ import org.jxmapviewer.viewer.WaypointPainter;
 import waypoint.EventWaypoint;
 import waypoint.MyWaypoint;
 import waypoint.WaypointRender;
+import desktopapplication.DashBoard;
 
 public class Main extends javax.swing.JFrame {
 
@@ -122,6 +123,7 @@ public class Main extends javax.swing.JFrame {
         cmdAdd = new javax.swing.JButton();
         cmdClear = new javax.swing.JButton();
         comboMapType = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
 
         menuStart.setText("Start");
         menuStart.addActionListener(new java.awt.event.ActionListener() {
@@ -147,6 +149,8 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        cmdAdd.setBackground(new java.awt.Color(38, 166, 154));
+        cmdAdd.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         cmdAdd.setText("Add Waypoint");
         cmdAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,6 +158,8 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        cmdClear.setBackground(new java.awt.Color(38, 166, 154));
+        cmdClear.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         cmdClear.setText("Clear Waypoint");
         cmdClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,6 +167,8 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        comboMapType.setBackground(new java.awt.Color(38, 166, 154));
+        comboMapType.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         comboMapType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Open Stree", "Virtual Earth", "Hybrid", "Satellite" }));
         comboMapType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,17 +176,31 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setBackground(new java.awt.Color(38, 166, 154));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jXMapViewerLayout = new javax.swing.GroupLayout(jXMapViewer);
         jXMapViewer.setLayout(jXMapViewerLayout);
         jXMapViewerLayout.setHorizontalGroup(
             jXMapViewerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jXMapViewerLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jXMapViewerLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(cmdAdd)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmdClear)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 761, Short.MAX_VALUE)
-                .addComponent(comboMapType, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jXMapViewerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jXMapViewerLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jXMapViewerLayout.createSequentialGroup()
+                        .addComponent(cmdAdd)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmdClear)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 758, Short.MAX_VALUE)
+                        .addComponent(comboMapType, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jXMapViewerLayout.setVerticalGroup(
@@ -189,7 +211,9 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(comboMapType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmdAdd)
                     .addComponent(cmdClear))
-                .addContainerGap(626, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 586, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(17, 17, 17))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -256,6 +280,12 @@ public class Main extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jXMapViewerMouseReleased
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        DashBoard dashboard = new DashBoard();
+        dashboard.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -295,6 +325,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton cmdAdd;
     private javax.swing.JButton cmdClear;
     private javax.swing.JComboBox<String> comboMapType;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private data.JXMapViewerCustom jXMapViewer;
     private javax.swing.JMenuItem menuEnd;
