@@ -2,12 +2,10 @@
 package destination.ui;
 
 import destination.BookDestination;
-import java.awt.Color;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+
+import javax.swing.*;
+import java.awt.*;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 
 
 public class Book extends javax.swing.JFrame {
@@ -251,7 +249,7 @@ public class Book extends javax.swing.JFrame {
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
         new desktopapplication.DashBoard().setVisible(true);
-        setVisible(false);
+        dispose();
     }//GEN-LAST:event_backbtnActionPerformed
 
     private void bookbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookbtnActionPerformed

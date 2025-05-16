@@ -1,18 +1,9 @@
 
 package desktopapplication;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-
+import javax.swing.*;
+import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 
 /**
@@ -74,7 +65,7 @@ public class AuthenticationWindow extends JFrame{
         gbc.gridy =3 ; 
         panel.add(signup,gbc);
         signup.addActionListener( e -> {
-//            new login.
+            new login.SignUpPage().setVisible(true);
             setVisible(false);
         });
         

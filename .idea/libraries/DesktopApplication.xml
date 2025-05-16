@@ -8,6 +8,7 @@
       <root url="jar://$PROJECT_DIR$/DesktopApplication/Beprocode.jar!/" />
       <root url="jar://$PROJECT_DIR$/DesktopApplication/json-20231013.jar!/" />
       <root url="jar://$PROJECT_DIR$/DesktopApplication/flatlaf-2.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/AbsoluteLayout.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

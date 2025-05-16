@@ -4,8 +4,9 @@
  */
 package desktopapplication.databaseConn;
 
-import javax.swing.JOptionPane;
-import java.sql.*;
+import javax.swing.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 /**
  *
  * @author Shehara PC
@@ -17,9 +18,9 @@ public class NewCustomer extends javax.swing.JFrame {
      */
     public NewCustomer() {
         initComponents();
-        setLocationRelativeTo(null); 
+        setLocationRelativeTo(null);
         loadingLabel.setVisible(false);
-        
+
     }
 
     /**
@@ -213,19 +214,19 @@ public class NewCustomer extends javax.swing.JFrame {
     email.setText("");
     nic.setText("");
 }
-    
-    
+
+
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
-        
+
         loadingLabel.setVisible(true);
-        
-        
-        
+
+
+
     // Run DB save in a background thread
     new javax.swing.SwingWorker<Void, Void>() {
         @Override
         protected Void doInBackground() {
-            
+
             String First_name = first_name.getText().trim();
             String Last_name = last_name.getText().trim();
             String Country = (String) country.getSelectedItem();
@@ -242,11 +243,11 @@ public class NewCustomer extends javax.swing.JFrame {
                 //a
             }
 
-            
+
 
             try {
                 Connection conn = DatabaseCon.getConnection();
-                
+
                 String sql = "INSERT INTO personal_data (first_name, last_name, gender, country, address, phone_number, email, nic) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement pstmt = conn.prepareStatement(sql);
                 pstmt.setString(1, First_name);
@@ -282,7 +283,7 @@ public class NewCustomer extends javax.swing.JFrame {
             loadingLabel.setVisible(false);  // Hide loader after completion
         }
     }.execute();
-        
+
     }//GEN-LAST:event_submitActionPerformed
 
     private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
@@ -297,9 +298,9 @@ public class NewCustomer extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
-        
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -317,12 +318,12 @@ public class NewCustomer extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(NewCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new NewCustomer().setVisible(true);
-                
+
             }
         });
     }

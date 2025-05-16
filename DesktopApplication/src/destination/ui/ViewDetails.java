@@ -1,19 +1,12 @@
 
 package destination.ui;
-import API.SeaConditionPanel;
+
 import GUI.Dashboard;
-import java.awt.Color;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Image;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-import javax.swing.Timer;
 
 
 public class ViewDetails extends javax.swing.JFrame {
@@ -267,7 +260,8 @@ slideshowLbl.repaint();
     }// </editor-fold>//GEN-END:initComponents
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-        dispose();
+       new desktopapplication.DashBoard().setVisible(true);
+       dispose();
     }//GEN-LAST:event_backbtnActionPerformed
 
     private void bookbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookbtnActionPerformed
