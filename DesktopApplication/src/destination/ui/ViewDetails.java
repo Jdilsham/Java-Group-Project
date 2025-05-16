@@ -71,10 +71,10 @@ private class GradientPanel extends JPanel {
     };
     
     private String[] imageArugam = {
-        "/images.arugam/a2.jpg",
-        "/images.arugam/a3.jpg",
-        "/images.arugam/a1.jpg",
-        "/images.arugam/a4.jpg"
+        "/images/arugam/a2.jpg",
+        "/images/arugam/a3.jpg",
+        "/images/arugam/a1.jpg",
+        "/images/arugam/a4.jpg"
     };
     
    private void startSlideshow() {

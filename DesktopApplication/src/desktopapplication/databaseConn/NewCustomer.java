@@ -4,10 +4,12 @@
  */
 package desktopapplication.databaseConn;
 
-import javax.swing.*;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
+import java.sql.*;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 /**
+ * 
  *
  * @author Shehara PC
  */
@@ -18,9 +20,9 @@ public class NewCustomer extends javax.swing.JFrame {
      */
     public NewCustomer() {
         initComponents();
-        setLocationRelativeTo(null);
+        setLocationRelativeTo(null); 
         loadingLabel.setVisible(false);
-
+        
     }
 
     /**
@@ -214,19 +216,19 @@ public class NewCustomer extends javax.swing.JFrame {
     email.setText("");
     nic.setText("");
 }
-
-
+    
+    
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
-
+        
         loadingLabel.setVisible(true);
-
-
-
+        
+        
+        
     // Run DB save in a background thread
     new javax.swing.SwingWorker<Void, Void>() {
         @Override
         protected Void doInBackground() {
-
+            
             String First_name = first_name.getText().trim();
             String Last_name = last_name.getText().trim();
             String Country = (String) country.getSelectedItem();
@@ -243,11 +245,14 @@ public class NewCustomer extends javax.swing.JFrame {
                 //a
             }
 
-
+            if (!isValidEmail(Email)) {
+                JOptionPane.showMessageDialog(NewCustomer.this, "Invalid Email !!!");
+                return null;
+            }
 
             try {
                 Connection conn = DatabaseCon.getConnection();
-
+                
                 String sql = "INSERT INTO personal_data (first_name, last_name, gender, country, address, phone_number, email, nic) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
                 PreparedStatement pstmt = conn.prepareStatement(sql);
                 pstmt.setString(1, First_name);
@@ -260,10 +265,14 @@ public class NewCustomer extends javax.swing.JFrame {
                 pstmt.setString(8, NIC);
 
                 int result = pstmt.executeUpdate();
+                
+                
+                
                 if (result > 0) {
                     JOptionPane.showMessageDialog(NewCustomer.this, "Customer saved successfully.");
                     clearForm();
                 } else {
+                  
                     JOptionPane.showMessageDialog(NewCustomer.this, "Failed to save customer.");
                 }
 
@@ -283,7 +292,7 @@ public class NewCustomer extends javax.swing.JFrame {
             loadingLabel.setVisible(false);  // Hide loader after completion
         }
     }.execute();
-
+        
     }//GEN-LAST:event_submitActionPerformed
 
     private void cancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cancelMouseClicked
@@ -291,6 +300,14 @@ public class NewCustomer extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_cancelMouseClicked
 
+    private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+
+    public static boolean isValidEmail(String email) {
+        Pattern pattern = Pattern.compile(EMAIL_REGEX);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -298,9 +315,9 @@ public class NewCustomer extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -318,12 +335,12 @@ public class NewCustomer extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(NewCustomer.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new NewCustomer().setVisible(true);
-
+                
             }
         });
     }
