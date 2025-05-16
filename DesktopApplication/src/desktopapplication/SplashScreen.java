@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package desktopapplication;
 
 import java.awt.Image;
@@ -22,6 +19,8 @@ public class SplashScreen extends javax.swing.JFrame {
     int position = 0 ;
     Timer timer;
     
+    
+    //array that contains the images in the slideshow in splash screen
     private final String[] Images= {
             "slide-0.jpg",
             "slide-1.jpg",
@@ -42,6 +41,8 @@ public class SplashScreen extends javax.swing.JFrame {
     public SplashScreen() {
         initComponents();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
+//        setSize(1280, 900); //seting the window size to 1280x900 p 
+//        setLocationRelativeTo(null);
         setLayout(null);
         java.awt.EventQueue.invokeLater(() ->{
             show(position);
@@ -52,19 +53,22 @@ public class SplashScreen extends javax.swing.JFrame {
     }
     
     private void show(int index) {
-        
+        //check wheather the array is empty or not
         if (Images.length == 0 || index >= Images.length) {
             System.out.println("No images to show");
             return ;
         }
+        
         String img = Images[index];
         ImageIcon icon = new ImageIcon(getClass().getResource("/imagepath/"+ img));
         Image image = icon.getImage().getScaledInstance(frame.getWidth(), frame.getHeight(), Image.SCALE_SMOOTH);
-        frame.setIcon(new ImageIcon(image));
+        frame.setIcon(new ImageIcon(image)); // set the icon to fill the frame
+        
     }
 
     private void play() {
     
+        //timer for 2sec for each picture in the slide show
         timer = new Timer(2000, e ->{
             position++;
             if (position >= Images.length) {
@@ -78,6 +82,7 @@ public class SplashScreen extends javax.swing.JFrame {
 
     private void StartAfterDelay() {
         
+        //making the delay that causes the authentication window to fade in after 2 seconds
         Timer delay = new Timer(2000, e -> {
             fadeInWindow();
             
@@ -89,6 +94,7 @@ public class SplashScreen extends javax.swing.JFrame {
     
     private void fadeInWindow() {
         
+        //this function is responsible for the fade in  animation 
         AuthenticationWindow auth = new AuthenticationWindow();
         auth.setOpacity(0f);
         auth.setVisible(true);

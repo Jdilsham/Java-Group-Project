@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="DesktopApplication">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/jfreechart-1.0.19.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/mysql-connector-java-8.0.28.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/jcommon-1.0.24.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/jcalendar-1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/Beprocode.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/json-20231013.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/flatlaf-2.6.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

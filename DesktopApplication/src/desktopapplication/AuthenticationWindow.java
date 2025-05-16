@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package desktopapplication;
 
 import java.awt.Color;
@@ -9,11 +6,14 @@ import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+
 import java.awt.geom.RoundRectangle2D;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
 
 /**
  *
@@ -33,12 +33,13 @@ public class AuthenticationWindow extends JFrame{
         
         setShape(new RoundRectangle2D.Double(0,0,getWidth(),getHeight(),45,45));
         
-        setBackground(new Color(0,0,0,0));
+        setBackground(new Color(0,0,0,50));
         
         JPanel panel = new JPanel(new GridBagLayout());
-        panel.setBackground(new Color(255,255,255,200));
+        panel.setBackground(new Color(0,0,0,200));
         
         JLabel text = new JLabel("TOURIST MANAGEMENT SYSTEM",JLabel.CENTER);
+        JLabel text1 = new JLabel("Welcome to Sri Lanka",JLabel.CENTER);
         JButton login = new JButton("LOG IN");
         JButton signup = new JButton("SIGN UP");
         
@@ -48,16 +49,39 @@ public class AuthenticationWindow extends JFrame{
         gbc.fill = GridBagConstraints.HORIZONTAL;
         
         
-        text.setForeground(Color.red);
+        text.setForeground(Color.WHITE);
         text.setFont(new Font("serif", Font.BOLD, 18)) ;
         gbc.gridy=0;
         panel.add(text,gbc);
         
+        text1.setForeground(Color.WHITE);
+        text1.setFont(new Font("serif", Font.BOLD, 18)) ;
+        gbc.gridy=1;
+        panel.add(text1,gbc);
+        
+        login.setForeground(Color.BLUE);
+        login.setFont(new Font("",Font.BOLD,14));
         gbc.gridy=2;
         panel.add(login,gbc);
+        login.addActionListener( e -> {
+            new login.LoginPage().setVisible(true);
+            setVisible(false);
+        });
         
+        
+        signup.setForeground(Color.BLUE);
+        signup.setFont(new Font("",Font.BOLD,14));
         gbc.gridy =3 ; 
         panel.add(signup,gbc);
+        signup.addActionListener( e -> {
+//            new login.
+            setVisible(false);
+        });
+        
+              
+           
+            
+     
         
         add(panel);
         
