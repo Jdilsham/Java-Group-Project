@@ -6,7 +6,10 @@ package desktopapplication.databaseConn;
 
 import javax.swing.JOptionPane;
 import java.sql.*;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 /**
+ * 
  *
  * @author Shehara PC
  */
@@ -242,7 +245,10 @@ public class NewCustomer extends javax.swing.JFrame {
                 //a
             }
 
-            
+            if (!isValidEmail(Email)) {
+                JOptionPane.showMessageDialog(NewCustomer.this, "Invalid Email !!!");
+                return null;
+            }
 
             try {
                 Connection conn = DatabaseCon.getConnection();
@@ -259,10 +265,14 @@ public class NewCustomer extends javax.swing.JFrame {
                 pstmt.setString(8, NIC);
 
                 int result = pstmt.executeUpdate();
+                
+                
+                
                 if (result > 0) {
                     JOptionPane.showMessageDialog(NewCustomer.this, "Customer saved successfully.");
                     clearForm();
                 } else {
+                  
                     JOptionPane.showMessageDialog(NewCustomer.this, "Failed to save customer.");
                 }
 
@@ -290,6 +300,14 @@ public class NewCustomer extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_cancelMouseClicked
 
+    private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+
+    public static boolean isValidEmail(String email) {
+        Pattern pattern = Pattern.compile(EMAIL_REGEX);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+    
     /**
      * @param args the command line arguments
      */
