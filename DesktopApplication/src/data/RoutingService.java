@@ -27,7 +27,7 @@ public class RoutingService {
     }
 
     private RoutingService() {
-        hopper = createGraphHopperInstance("osm file/cambodia-latest.osm.pbf");
+        hopper = createGraphHopperInstance("osm file/sri-lanka-latest.osm.pbf");
     }
 
     private GraphHopper createGraphHopperInstance(String ghLoc) {
