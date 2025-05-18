@@ -25,7 +25,7 @@ public class SignUpPage extends JFrame implements ActionListener {
         JPanel leftPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                ImageIcon icon = new ImageIcon("beach1.jpg"); 
+                ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("icons/beach1.jpg"));
                 Image img = icon.getImage();
                 g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
             }
@@ -144,6 +144,7 @@ public class SignUpPage extends JFrame implements ActionListener {
            
             
             dispose();
+            new desktopapplication.DashBoard().setVisible(true);
         }
     }
 
@@ -155,31 +156,3 @@ public class SignUpPage extends JFrame implements ActionListener {
 }
 
 
-//class RoundedButton extends JButton {
-//    public RoundedButton(String text) {
-//        super(text);
-//        setContentAreaFilled(false);
-//        setFocusPainted(false);
-//        setOpaque(false);
-//        setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
-//    }
-//
-//    @Override
-//    protected void paintComponent(Graphics g) {
-//        Graphics2D g2 = (Graphics2D) g.create();
-//        g2.setColor(getBackground());
-//        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-//        g2.fillRoundRect(0, 0, getWidth(), getHeight(), 40, 40);
-//        super.paintComponent(g);
-//        g2.dispose();
-//    }
-//
-//    @Override
-//    protected void paintBorder(Graphics g) {
-//        Graphics2D g2 = (Graphics2D) g.create();
-//        g2.setColor(getForeground());
-//        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-//        g2.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 40, 40);
-//        g2.dispose();
-//    }
-//}

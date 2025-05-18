@@ -56,7 +56,7 @@ public class DashBoard extends JFrame{
         logout.setFont(new Font("Tahoma" , Font.BOLD , 20));
         p1.add(logout);
         logout.addActionListener(e -> {
-           // new AddDetails();
+            new login.LoginPage().setVisible(true);
             setVisible(false);
         });
         
@@ -216,7 +216,7 @@ public class DashBoard extends JFrame{
         aboutUS.setMargin(new Insets(0,15,0,0));
         p2.add(aboutUS);
         aboutUS.addActionListener(e -> {
-//            new AddDetails();
+            new login.AboutPage().setVisible(true);
             setVisible(false);
         });
 

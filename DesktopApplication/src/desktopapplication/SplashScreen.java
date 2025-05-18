@@ -1,10 +1,9 @@
 
 package desktopapplication;
 
-import java.awt.Image;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.Timer;
+import java.awt.*;
+import java.awt.geom.RoundRectangle2D;
+import javax.swing.*;
 
 /**
  *
@@ -40,6 +39,7 @@ public class SplashScreen extends javax.swing.JFrame {
     
     public SplashScreen() {
         initComponents();
+
         setExtendedState(JFrame.MAXIMIZED_BOTH);
 //        setSize(1280, 900); //seting the window size to 1280x900 p 
 //        setLocationRelativeTo(null);
@@ -95,7 +95,7 @@ public class SplashScreen extends javax.swing.JFrame {
     private void fadeInWindow() {
         
         //this function is responsible for the fade in  animation 
-        AuthenticationWindow auth = new AuthenticationWindow();
+        AuthenticationWindow auth = new AuthenticationWindow(this);
         auth.setOpacity(0f);
         auth.setVisible(true);
         
@@ -110,6 +110,81 @@ public class SplashScreen extends javax.swing.JFrame {
           }
         }).start();
     
+    }
+
+
+    class AuthenticationWindow extends JFrame{
+
+        public AuthenticationWindow(SplashScreen splashScreen) {
+
+            setUndecorated(true);
+
+            setTitle("authentication");
+            setSize(500,300);
+
+            setLocationRelativeTo(null);
+            setOpacity(0.85f);
+
+            setShape(new RoundRectangle2D.Double(0,0,getWidth(),getHeight(),45,45));
+
+            setBackground(new Color(0,0,0,50));
+
+            JPanel panel = new JPanel(new GridBagLayout());
+            panel.setBackground(new Color(0,0,0,200));
+
+            JLabel text = new JLabel("TOURIST MANAGEMENT SYSTEM",JLabel.CENTER);
+            JLabel text1 = new JLabel("Welcome to Sri Lanka",JLabel.CENTER);
+            JButton login = new JButton("LOG IN");
+            JButton signup = new JButton("SIGN UP");
+
+            GridBagConstraints gbc = new GridBagConstraints();
+            gbc.insets = new Insets(10, 20, 10, 20);
+            gbc.gridx = 0;
+            gbc.fill = GridBagConstraints.HORIZONTAL;
+
+
+            text.setForeground(Color.WHITE);
+            text.setFont(new Font("serif", Font.BOLD, 18)) ;
+            gbc.gridy=0;
+            panel.add(text,gbc);
+
+            text1.setForeground(Color.WHITE);
+            text1.setFont(new Font("serif", Font.BOLD, 18)) ;
+            gbc.gridy=1;
+            panel.add(text1,gbc);
+
+            login.setForeground(Color.BLUE);
+            login.setFont(new Font("",Font.BOLD,14));
+            gbc.gridy=2;
+            panel.add(login,gbc);
+            login.addActionListener( e -> {
+                new login.LoginPage().setVisible(true);
+                this.dispose();
+                splashScreen.setVisible(false);
+            });
+
+
+            signup.setForeground(Color.BLUE);
+            signup.setFont(new Font("",Font.BOLD,14));
+            gbc.gridy =3 ;
+            panel.add(signup,gbc);
+            signup.addActionListener( e -> {
+                new login.SignUpPage().setVisible(true);
+                this.dispose();
+                splashScreen.setVisible(false);
+            });
+
+
+
+
+
+
+            add(panel);
+
+
+        }
+
+
     }
 
     /**
