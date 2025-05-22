@@ -20,18 +20,13 @@ public class DashBoard extends JFrame{
         p1.setBounds(0,0,1920,65);
         add(p1);
         
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/dashboard.png"));
-        Image i2 = i1.getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT);
-        ImageIcon i3 = new ImageIcon(i2);
-        JLabel icon = new JLabel(i3);
-        icon.setBounds(5,0,70,70);
-        p1.add(icon);
+
         
         
         
         
         JLabel heading = new JLabel("DashBoard");
-        heading.setBounds(80,10,300,40);
+        heading.setBounds(15,10,300,40);
         heading.setForeground(Color.WHITE);
         heading.setFont(new Font("Tahoma" , Font.BOLD , 30));
         p1.add(heading);
@@ -40,24 +35,22 @@ public class DashBoard extends JFrame{
         //search button structure
         JButton search = new JButton("Search");
         search.setBounds(1580,10,150,40);
-        //login.setForeground(Color.WHITE);
         search.setFont(new Font("Tahoma" , Font.BOLD , 20));
         p1.add(search);
         search.addActionListener(e -> {
             new destination.ui.Search().setVisible(true);
-            setVisible(false);
+            dispose();
         });
         
         
         //Log out button structure
         JButton logout = new JButton("Log Out");
         logout.setBounds(1750,10,150,40);
-        //signup.setForeground(Color.WHITE);
         logout.setFont(new Font("Tahoma" , Font.BOLD , 20));
         p1.add(logout);
         logout.addActionListener(e -> {
             new login.LoginPage().setVisible(true);
-            setVisible(false);
+            dispose();
         });
         
         
@@ -81,7 +74,7 @@ public class DashBoard extends JFrame{
         p2.add(addCustomer);
         addCustomer.addActionListener(e -> {
             new desktopapplication.databaseConn.NewCustomer().setVisible(true);
-            setVisible(false);
+            dispose();
         });
 
 
@@ -96,7 +89,7 @@ public class DashBoard extends JFrame{
         p2.add(viewCustomer);
         viewCustomer.addActionListener(e -> {
 //            new desktopapplication.databaseConn.
-            setVisible(false);
+            dispose();
         });
 
 
@@ -110,8 +103,8 @@ public class DashBoard extends JFrame{
         viewDetails.setMargin(new Insets(0,15,0,0));
         p2.add(viewDetails);
         viewDetails.addActionListener(e -> {
-            new destination.ui.ViewDetails().setVisible(true);
-            setVisible(false);
+
+            dispose();
         });
 
 
@@ -126,7 +119,7 @@ public class DashBoard extends JFrame{
         p2.add(bookHotel);
         bookHotel.addActionListener(e -> {
             new project.Bookpackage().setVisible(true);
-            setVisible(false);
+            dispose();
         });
 
         //book destination button structure
@@ -140,7 +133,7 @@ public class DashBoard extends JFrame{
         p2.add(bookDestinations);
         bookDestinations.addActionListener(e -> {
             new destination.ui.Book().setVisible(true);
-            setVisible(false);
+            dispose();
         });
 
 
@@ -155,7 +148,7 @@ public class DashBoard extends JFrame{
         p2.add(checkPackage);
         checkPackage.addActionListener(e -> {
             new project.Checkpackage().setVisible(true);
-            setVisible(false);
+            dispose();
         });
 
 
@@ -169,8 +162,8 @@ public class DashBoard extends JFrame{
         viewDestination.setMargin(new Insets(0,15,0,0));
         p2.add(viewDestination);
         viewDestination.addActionListener(e -> {
-//            new AddDetails();
-            setVisible(false);
+            new destination.ui.ViewDetails().setVisible(true);
+            dispose();
         });
 
 
@@ -202,11 +195,11 @@ public class DashBoard extends JFrame{
         p2.add(viewHotel);
         viewHotel.addActionListener(e -> {
             new destination.ui.Book();
-            setVisible(false);
+            dispose();
         });
 
 
-        //update map button structure
+        //about us button structure
         JButton aboutUS = new JButton("About US");
         aboutUS.setBounds(0,540,300,50);
         aboutUS.setBackground(new Color(0,0,102));

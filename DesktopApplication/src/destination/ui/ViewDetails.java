@@ -18,11 +18,11 @@ private class GradientPanel extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
         int width = getWidth();
         int height = getHeight();
-        
+
 
         Color color1 = Color.decode("#5b247a");
         Color color2 = Color.decode("#1bcedf");
-        
+
         GradientPaint gp = new GradientPaint(0, 0, color1, 0, height, color2);
         g2d.setPaint(gp);
         g2d.fillRect(0, 0, width, height);
@@ -41,42 +41,42 @@ private class GradientPanel extends JPanel {
     }
 });
     }
-    
-    
-    
-    
+
+
+
+
      private Timer timer;
-    
+
     private int imageIndex = 0;
-    
+
     private String[] imageUnawatuna = {
         "/images/unawatuna/u2.jpg",
         "/images/unawatuna/u3.jpg",
         "/images/unawatuna/u1.jpg",
         "/images/unawatuna/u4.jpg"
     };
-    
+
     private String[] imageNilaveli = {
        "/images/nilaveli/n1.jpg",
        "/images/nilaveli/n2.jpg",
        "/images/nilaveli/n3.jpg",
        "/images/nilaveli/n4.jpg"
     };
-    
+
     private String[] imageMirissa = {
         "/images/mirissa/m2.jpg",
         "/images/mirissa/m3.jpg",
         "/images/mirissa/m1.jpg",
         "/images/mirissa/m4.jpg"
     };
-    
+
     private String[] imageArugam = {
         "/images/arugam/a2.jpg",
         "/images/arugam/a3.jpg",
         "/images/arugam/a1.jpg",
         "/images/arugam/a4.jpg"
     };
-    
+
    private void startSlideshow() {
     showImage(); // show the first image right away
 
@@ -91,9 +91,10 @@ private class GradientPanel extends JPanel {
 
    private void showImage() {
     ImageIcon icon = null;
-    
+
     if (namelbl.getText().equalsIgnoreCase("unawatuna beach")) {
-        icon = new ImageIcon(getClass().getResource(imageUnawatuna[imageIndex]));
+        String img = imageUnawatuna[imageIndex];
+        icon = new ImageIcon(getClass().getResource(img));
     } else if (namelbl.getText().equalsIgnoreCase("nilaveli beach")) {
         icon = new ImageIcon(getClass().getResource(imageNilaveli[imageIndex]));
     } else if (namelbl.getText().equalsIgnoreCase("arugam bay")) {
@@ -106,7 +107,7 @@ private class GradientPanel extends JPanel {
         Image scaledImage = icon.getImage().getScaledInstance(slideshowLbl.getWidth(), slideshowLbl.getHeight(), Image.SCALE_SMOOTH);
         slideshowLbl.setIcon(new ImageIcon(scaledImage));
     }
-    
+
     slideshowLbl.revalidate();
 slideshowLbl.repaint();
 
@@ -116,7 +117,7 @@ slideshowLbl.repaint();
 
 
 
- 
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -271,22 +272,22 @@ slideshowLbl.repaint();
     }//GEN-LAST:event_bookbtnActionPerformed
 
     private void weatherbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_weatherbtnActionPerformed
-        
+
         Dashboard dashboard = new Dashboard();
 
         dashboard.setVisible(true);
 
-        
+
     }//GEN-LAST:event_weatherbtnActionPerformed
 
     private void bookbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookbtnMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_bookbtnMouseClicked
 
-   
+
     public static void main(String args[]) {
-        
-           
+
+
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -312,14 +313,14 @@ slideshowLbl.repaint();
             }
         });
     }
-    
+
     public void setInformation(String name,String description,int bookings,String Activities){
         namelbl.setText(name);
         descriptionlbl.setText(description);
         bookinglbl.setText( Integer.toString(bookings));
         activitieslbl.setText(Activities);
     }
-    
+
 
 
 

@@ -16,10 +16,12 @@ public class Book extends javax.swing.JFrame {
         
         this.destinationName=destinationName;
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     public Book() {
         new Book(destinationName).setVisible(true);
+
         
     }
 
