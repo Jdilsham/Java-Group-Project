@@ -1,126 +1,200 @@
- 
 package project;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Checkpackage extends JFrame {
-    
-    public Checkpackage(){
-        //setBounds(450,200,900,600);
-        
-        Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Dimension screenSize = toolkit.getScreenSize();
-        setSize(screenSize.width, screenSize.height);
-        setLocation(0, 0);
-        
-        String[] package1 ={"BRONZE PACKAGE","🏝 Duration: 7 Days and 6 Nights","📍 Locations: Colombo, Galle, Bentota, Mirissa","🛎 Included Services:","✅ - Airport Pickup & Drop","🍽 - Daily Breakfast + Dinner Buffets","🏨 - 4-Star Hotel Accommodation","🧃 - Welcome Drinks on Arrival","🗣 - English / Sinhala Speaking Tour Guide","💰 Price: Rs. 12,000/- per person (All Inclusive)","📞 Book via tab or call: ‪+94 77 123 4567‬","Book Now"};
-        String[] package2 ={"SILVER PACKAGE","🏝 Duration: 5 Days and 6 Nights","📍 Locations: Colombo, Galle, Bentota, Mirissa","🛎 Included Services:","✅ - Airport Pickup & Drop", "🍽 - All Meals Included","🏨 - 5-Star Hotel Accommodation","🧖‍♂ - Spa & Wellness Sessions","🗣 - Multilingual Tour Guide","💰 Price: Rs. 25,000/- per person (All Inclusive)","📞 Book via tab or call: ‪‪+94 76 987 6543‬‬","Book Now"};
+    CardLayout cardLayout = new CardLayout();
+    JPanel contentPanel;
 
-        String[] package3 ={"GOLD PACKAGE","🏝 Duration: 5 Days and 4 Nights","📍 Locations: Colombo, Galle, Bentota, Mirissa","🛎 Included Services:","🎁 Special Offers: Free Entry Tickets for Turtle Hatchery & Museum","🍽 - All Meals Included","🏨 - 5-Star Hotel Accommodation", "📸 Professional Photography Session","🔖 Summer Promo – 10% Off for Groups (3+)","💰 Price: Rs. 30,000/- per person (All Inclusive)","📞 Book via tab or call: ‪‪+94 76 987 6543‬‬","Book Now"};
+    public Checkpackage() {
+        setUndecorated(true);
+        setTitle("Tour Packages");
+        setSize(800, 800);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
 
+        setLayout(new BorderLayout());
 
-        
-        JTabbedPane tab = new JTabbedPane();
-             
-        JPanel p1 = createPackage(package1);
-        tab.addTab("Package 1", null,p1);
-                
-        JPanel p2 = createPackage(package2);
-        tab.addTab("Package 2", null,p2);
-        
-        JPanel p3 = createPackage(package3);
-        tab.addTab("Package 3", null,p3);
-        add(tab);
-        
+        // Package data
+        String[] bronze = {
+                "BRONZE PACKAGE",
+                "🏝 Duration: 7 Days and 6 Nights",
+                "📍 Locations: Colombo, Galle, Bentota, Mirissa",
+                "🛎 Included Services:",
+                "✅ Airport Pickup & Drop",
+                "🍽 Daily Breakfast + Dinner Buffets",
+                "🏨 4-Star Hotel Accommodation",
+                "🧃 Welcome Drinks on Arrival",
+                "🗣 English / Sinhala Speaking Tour Guide",
+                "💰 Price: Rs. 12,000/- per person (All Inclusive)",
+                "📞 Book via tab or call: ‪+94 77 123 4567‬"
+        };
+
+        String[] silver = {
+                "SILVER PACKAGE",
+                "🏝 Duration: 5 Days and 6 Nights",
+                "📍 Locations: Colombo, Galle, Bentota, Mirissa",
+                "🛎 Included Services:",
+                "✅ Airport Pickup & Drop",
+                "🍽 All Meals Included",
+                "🏨 5-Star Hotel Accommodation",
+                "🧖‍♂ Spa & Wellness Sessions",
+                "🗣 Multilingual Tour Guide",
+                "💰 Price: Rs. 25,000/- per person (All Inclusive)",
+                "📞 Book via tab or call: ‪‪+94 76 987 6543‬‬"
+        };
+
+        String[] gold = {
+                "GOLD PACKAGE",
+                "🏝 Duration: 5 Days and 4 Nights",
+                "📍 Locations: Colombo, Galle, Bentota, Mirissa",
+                "🛎 Included Services:",
+                "🎁 Free Tickets: Turtle Hatchery & Museum",
+                "🍽 All Meals Included",
+                "🏨 5-Star Hotel Accommodation",
+                "📸 Professional Photography Session",
+                "🔖 10% Off for Groups (3+)",
+                "💰 Price: Rs. 30,000/- per person (All Inclusive)",
+                "📞 Book via tab or call: ‪‪+94 76 987 6543‬‬"
+        };
+
+        // Card layout for switching views
+        contentPanel = new JPanel(cardLayout);
+        contentPanel.add(new JScrollPane(createPackagePanel(bronze)), "Bronze");
+        contentPanel.add(new JScrollPane(createPackagePanel(silver)), "Silver");
+        contentPanel.add(new JScrollPane(createPackagePanel(gold)), "Gold");
+        add(contentPanel, BorderLayout.CENTER);
+
+        // Bottom navigation bar with colored buttons
+        JPanel navBar = new JPanel(new GridLayout(1, 3));
+        navBar.setPreferredSize(new Dimension(0, 50));
+
+        JButton bronzeTab = createNavButton("🥉 Bronze", new Color(205, 127, 50), Color.WHITE);
+        JButton silverTab = createNavButton("🥈 Silver", new Color(192, 192, 192), Color.BLACK);
+        JButton goldTab = createNavButton("🥇 Gold", new Color(255, 215, 0), Color.BLACK);
+
+        bronzeTab.addActionListener(e -> cardLayout.show(contentPanel, "Bronze"));
+        silverTab.addActionListener(e -> cardLayout.show(contentPanel, "Silver"));
+        goldTab.addActionListener(e -> cardLayout.show(contentPanel, "Gold"));
+
+        navBar.add(bronzeTab);
+        navBar.add(silverTab);
+        navBar.add(goldTab);
+        add(navBar, BorderLayout.SOUTH);
+
         setVisible(true);
     }
-    
-    public JPanel createPackage(String[] pack){
-        
-        JPanel p1 = new JPanel();
-        p1.setBackground(Color.WHITE);
-        p1.setLayout(null);
-     
-        
-        
+
+    private JPanel createPackagePanel(String[] pack) {
+        GradientPanel panel = new GradientPanel();
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setBorder(BorderFactory.createEmptyBorder(30, 40, 30, 40));
+
         JLabel title = new JLabel(pack[0]);
-        title.setFont(new Font("Segoe UI Emoji", Font.BOLD, 45)); 
-        title.setForeground(new Color(218, 165, 32)); // gold color
-        title.setBounds(600, 60, 1500, 50);
-        p1.add(title);
-        
-        
-        JLabel duration = new JLabel(pack[1]);
-        duration.setFont(new Font("Segoe UI Emoji", Font.BOLD, 25));
-        duration.setBounds(50, 100, 1500, 25);
-        p1.add(duration);
-        
-        JLabel locations = new JLabel(pack[2]);
-        locations.setFont(new Font("Segoe UI Emoji", Font.BOLD, 25));
-        locations.setBounds(50, 150, 1500, 25);
-        p1.add(locations);
+        title.setOpaque(true);
+        title.setBackground(new Color(255, 215, 0));
+        title.setForeground(Color.DARK_GRAY);
+        title.setFont(new Font("Segoe UI", Font.BOLD, 32));
+        title.setHorizontalAlignment(SwingConstants.CENTER);
+        title.setAlignmentX(Component.CENTER_ALIGNMENT);
+        title.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+        panel.add(title);
+        panel.add(Box.createRigidArea(new Dimension(0, 20)));
 
-        JLabel serviceTitle = new JLabel(pack[3]);
-        serviceTitle.setFont(new Font("Segoe UI Emoji", Font.BOLD, 25));
-        serviceTitle.setBounds(50, 200, 1500, 25);
-        p1.add(serviceTitle);
-        
-        
-        JLabel service1 = new JLabel(pack[4]);
-        service1.setFont(new Font("Segoe UI Emoji", Font.BOLD, 20));
-        service1.setForeground(new Color(0, 128, 0));
-        service1.setBounds(80, 250, 1400, 25);
-        p1.add(service1);
-        
-        JLabel service2 = new JLabel(pack[5]);
-        service2.setFont(new Font("Segoe UI Emoji", Font.BOLD, 20));
-        service2.setForeground(new Color(0, 128, 0));
-        service2.setBounds(80, 290, 1400, 25);
-        p1.add(service2);
-        
-        JLabel service3 = new JLabel(pack[6]);
-        service3.setFont(new Font("Segoe UI Emoji", Font.BOLD, 20));
-        service3.setForeground(new Color(0, 128, 0));
-        service3.setBounds(80, 330, 1400, 25);
-        p1.add(service3);
-        
-        JLabel service4 = new JLabel(pack[7]);
-        service4.setFont(new Font("Segoe UI Emoji", Font.BOLD, 20));
-        service4.setForeground(new Color(0, 128, 0));
-        service4.setBounds(80, 370, 1400, 25);
-        p1.add(service4);
-        
-        JLabel service5 = new JLabel(pack[8]);
-        service5.setFont(new Font("Segoe UI Emoji", Font.BOLD, 20));
-        service5.setForeground(new Color(0, 128, 0));
-        service5.setBounds(80, 410, 1400, 25);
-        p1.add(service5);
-        
-        
+        for (int i = 1; i < pack.length; i++) {
+            JLabel label = new JLabel(pack[i]);
+            label.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+            label.setForeground(new Color(40, 40, 40));
+            label.setAlignmentX(Component.LEFT_ALIGNMENT);
+            label.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+            panel.add(label);
+        }
 
+        panel.add(Box.createRigidArea(new Dimension(0, 30)));
 
-        JLabel price = new JLabel(pack[9]);
-        price.setFont(new Font("Segoe UI Emoji", Font.BOLD, 25));
-        //price.setForeground(new Color(0, 128, 0)); // dark green
-        price.setBounds(50, 500, 1500, 30);
-        p1.add(price);
-        
-        JLabel contact = new JLabel(pack[10]);
-        contact.setFont(new Font("Segoe UI Emoji", Font.BOLD, 25));
-        contact.setBounds(50, 600, 1500, 25);
-        p1.add(contact);
-        
-        JLabel book = new JLabel(pack[11]);
-        book.setFont(new Font("Tahoma", Font.BOLD, 30));
-        book.setBounds(50, 750, 1500, 25);
-        p1.add(book);
-        
-        return p1;
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 0));
+        buttonPanel.setOpaque(false);
+
+        JButton bookNow = createStyledButton(" Book Now", new Color(60, 179, 113));
+        JButton backButton = createStyledButton(" Back", new Color(70, 130, 180));
+        bookNow.addActionListener(e -> {
+            new project.Bookpackage().setVisible(true);
+            dispose();
+        });
+        backButton.addActionListener(e -> {
+            new desktopapplication.DashBoard().setVisible(true);
+            dispose();
+        });
+
+        buttonPanel.add(bookNow);
+        buttonPanel.add(backButton);
+        panel.add(buttonPanel);
+
+        return panel;
     }
-    
+
+    private JButton createNavButton(String text, Color bgColor, Color fgColor) {
+        JButton button = new JButton(text);
+        button.setFont(new Font("Segoe UI", Font.BOLD, 18));
+        button.setBackground(bgColor);
+        button.setForeground(fgColor);
+        button.setFocusPainted(false);
+        button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        button.setBorder(BorderFactory.createLineBorder(bgColor.darker(), 1));
+
+        button.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent evt) {
+                button.setBackground(bgColor.darker());
+            }
+
+            public void mouseExited(MouseEvent evt) {
+                button.setBackground(bgColor);
+            }
+        });
+
+        return button;
+    }
+
+    private JButton createStyledButton(String text, Color bgColor) {
+        JButton button = new JButton(text);
+        button.setFont(new Font("Segoe UI", Font.BOLD, 18));
+        button.setBackground(bgColor);
+        button.setForeground(Color.WHITE);
+        button.setFocusPainted(false);
+        button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        button.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+
+        button.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent evt) {
+                button.setBackground(bgColor.darker());
+            }
+
+            public void mouseExited(MouseEvent evt) {
+                button.setBackground(bgColor);
+            }
+        });
+        return button;
+    }
+
+    class GradientPanel extends JPanel {
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            Graphics2D g2d = (Graphics2D) g;
+            Color top = new Color(173, 216, 230);   // Light cyan
+            Color bottom = new Color(0, 105, 148);  // Sea blue
+            int w = getWidth();
+            int h = getHeight();
+            GradientPaint gp = new GradientPaint(0, 0, top, 0, h, bottom);
+            g2d.setPaint(gp);
+            g2d.fillRect(0, 0, w, h);
+        }
+    }
 
     public static void main(String[] args) {
-        new Checkpackage();
+        SwingUtilities.invokeLater(Checkpackage::new);
     }
 }

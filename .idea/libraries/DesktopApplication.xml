@@ -8,6 +8,30 @@
       <root url="jar://$PROJECT_DIR$/DesktopApplication/Beprocode.jar!/" />
       <root url="jar://$PROJECT_DIR$/DesktopApplication/json-20231013.jar!/" />
       <root url="jar://$PROJECT_DIR$/DesktopApplication/flatlaf-2.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/AbsoluteLayout.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/MapLib/graphhopper-web-api-5.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/commons-logging-1.1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/jxmapviewer2-2.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/MapLib/commons-compiler-3.1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/MapLib/commons-io-1.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/MapLib/graphhopper-core-5.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/MapLib/hppc-0.8.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/MapLib/jackson-annotations-2.10.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/MapLib/jackson-core-2.10.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/MapLib/jackson-databind-2.10.5.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/MapLib/jackson-dataformat-xml-2.10.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/MapLib/jackson-datatype-jts-0.12-2.5-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/MapLib/jackson-module-jaxb-annotations-2.10.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/MapLib/jakarta.activation-api-1.2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/MapLib/jakarta.xml.bind-api-2.3.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/MapLib/janino-3.1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/MapLib/jts-core-1.15.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/MapLib/osmosis-osm-binary-0.47.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/MapLib/protobuf-java-3.11.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/MapLib/slf4j-api-1.7.30.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/MapLib/stax2-api-4.2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/MapLib/woodstox-core-6.2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/DesktopApplication/MapLib/xmlgraphics-commons-2.7.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
