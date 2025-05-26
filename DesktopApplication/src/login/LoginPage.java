@@ -58,13 +58,15 @@ public class LoginPage extends JFrame implements ActionListener {
         JLabel passLabel = new JLabel("Password:");
         passLabel.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 
-        usernameField = new JTextField(15);
-        usernameField.setOpaque(true);
-        usernameField.setBackground(Color.WHITE);
+        usernameField = new JTextField(10);
+       // usernameField.setOpaque(true);
+        //  usernameField.setBackground(Color.WHITE);
 
         passwordField = new JPasswordField(15);
-        passwordField.setOpaque(true);
+       /*
+         passwordField.setOpaque(true);
         passwordField.setBackground(Color.WHITE);
+        */
 
 
         showPassword = new JCheckBox("Show Password");
