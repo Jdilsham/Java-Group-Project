@@ -10,11 +10,11 @@ import destination.ui.ViewDetails;
 
 public class ViewDestination {
     private static Connection conn;
-    private String name;
+    private final String name;
     
     public ViewDestination(Connection conn, String name) {
         this.name = name;
-        this.conn = conn;
+        ViewDestination.conn = conn;
     }
     
     ViewDetails detailsFrame = new ViewDetails();
@@ -23,9 +23,9 @@ public class ViewDestination {
         String sql="select * from destination where Name=?";
         
         try {
-            PreparedStatement psmt=(PreparedStatement) conn.prepareStatement(sql);
+            PreparedStatement psmt= conn.prepareStatement(sql);
             psmt.setString(1,name);
-            ResultSet rs = (ResultSet) psmt.executeQuery();
+            ResultSet rs = psmt.executeQuery();
             while(rs.next()){
                
                 detailsFrame.setInformation(rs.getString("name"),rs.getString("Description"), rs.getInt("Bookings"), rs.getString("Activities"));

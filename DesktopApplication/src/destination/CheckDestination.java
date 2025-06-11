@@ -10,7 +10,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class CheckDestination {
     public String name;
-    private Connection conn;
+    private final Connection conn;
 
     public CheckDestination(String name,Connection conn) {
         this.conn=conn;
@@ -22,11 +22,11 @@ public class CheckDestination {
     public void display(DefaultTableModel tableModel) throws SQLException{
        
         String sql="select Name,Bookings,Id from destination where Region=?";
-        PreparedStatement psmt=(PreparedStatement) conn.prepareStatement(sql);
+        PreparedStatement psmt= conn.prepareStatement(sql);
         
         
             psmt.setString(1,name);
-            ResultSet rs= (ResultSet) psmt.executeQuery();
+            ResultSet rs= psmt.executeQuery();
             
             while(rs.next()){
                 tableModel.addRow(new Object[]{rs.getString("Name"),rs.getInt("Bookings")});

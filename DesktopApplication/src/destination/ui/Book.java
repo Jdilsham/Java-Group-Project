@@ -14,7 +14,7 @@ public class Book extends javax.swing.JFrame {
     
     public Book(String destinationName) {
         
-        this.destinationName=destinationName;
+        Book.destinationName =destinationName;
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -48,7 +48,7 @@ public class Book extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
-        jPanel1 = new GradientPanel(); ;
+        jPanel1 = new GradientPanel();
         jLabel10 = new javax.swing.JLabel();
         nameField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -277,7 +277,7 @@ public class Book extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_bookbtnActionPerformed
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

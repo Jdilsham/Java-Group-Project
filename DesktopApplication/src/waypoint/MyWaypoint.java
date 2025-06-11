@@ -56,7 +56,7 @@ public class MyWaypoint extends DefaultWaypoint {
         });
     }
 
-    public static enum PointType {
+    public enum PointType {
         START, END
     }
 }

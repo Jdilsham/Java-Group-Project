@@ -38,7 +38,7 @@ public final class Dashboard extends javax.swing.JFrame {
      */
     private CardLayout cardLayout;
     private static final Logger LOGGER = Logger.getLogger(Dashboard.class.getName()); 
-    private String apiKey = "9f8f1b21597fd8f27c01fc532cbf4a66"; // API key here.
+    private final String apiKey = "9f8f1b21597fd8f27c01fc532cbf4a66"; // API key here.
 
     public Dashboard() {
         initComponents();
@@ -357,7 +357,7 @@ public final class Dashboard extends javax.swing.JFrame {
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_searchActionPerformed
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

@@ -49,28 +49,28 @@ private class GradientPanel extends JPanel {
 
     private int imageIndex = 0;
 
-    private String[] imageUnawatuna = {
+    private final String[] imageUnawatuna = {
         "/images/unawatuna/u2.jpg",
         "/images/unawatuna/u3.jpg",
         "/images/unawatuna/u1.jpg",
         "/images/unawatuna/u4.jpg"
     };
 
-    private String[] imageNilaveli = {
+    private final String[] imageNilaveli = {
        "/images/nilaveli/n1.jpg",
        "/images/nilaveli/n2.jpg",
        "/images/nilaveli/n3.jpg",
        "/images/nilaveli/n4.jpg"
     };
 
-    private String[] imageMirissa = {
+    private final String[] imageMirissa = {
         "/images/mirissa/m2.jpg",
         "/images/mirissa/m3.jpg",
         "/images/mirissa/m1.jpg",
         "/images/mirissa/m4.jpg"
     };
 
-    private String[] imageArugam = {
+    private final String[] imageArugam = {
         "/images/arugam/a2.jpg",
         "/images/arugam/a3.jpg",
         "/images/arugam/a1.jpg",
@@ -285,7 +285,7 @@ slideshowLbl.repaint();
     }//GEN-LAST:event_bookbtnMouseClicked
 
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
 
 
         try {

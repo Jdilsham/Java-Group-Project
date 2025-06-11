@@ -6,12 +6,12 @@ import java.awt.event.*;
 
 public class LoginPage extends JFrame implements ActionListener {
 
-    private JTextField usernameField;
-    private JPasswordField passwordField;
-    private JCheckBox showPassword;
-    private RoundedButton loginButton;
-    private RoundedButton signupButton;
-    private RoundedButton forgotPasswordButton;
+    private final JTextField usernameField;
+    private final JPasswordField passwordField;
+    private final JCheckBox showPassword;
+    private final RoundedButton loginButton;
+    private final RoundedButton signupButton;
+    private final RoundedButton forgotPasswordButton;
     private float opacity = 0f;
 
     public LoginPage() {
@@ -58,15 +58,9 @@ public class LoginPage extends JFrame implements ActionListener {
         JLabel passLabel = new JLabel("Password:");
         passLabel.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 
-        usernameField = new JTextField(10);
-       // usernameField.setOpaque(true);
-        //  usernameField.setBackground(Color.WHITE);
+        usernameField = new JTextField(15);
 
         passwordField = new JPasswordField(15);
-       /*
-         passwordField.setOpaque(true);
-        passwordField.setBackground(Color.WHITE);
-        */
 
 
         showPassword = new JCheckBox("Show Password");
@@ -187,8 +181,8 @@ public class LoginPage extends JFrame implements ActionListener {
 
 class ForgotPasswordPage extends JFrame implements ActionListener {
 
-    private JTextField emailField;
-    private RoundedButton recoverButton;
+    private final JTextField emailField;
+    private final RoundedButton recoverButton;
 
     public ForgotPasswordPage() {
         setTitle("Forgot Password");

@@ -6,12 +6,12 @@ import java.awt.event.*;
 
 public class SignUpPage extends JFrame implements ActionListener {
 
-    private JTextField emailField;
-    private JTextField newUsernameField;
-    private JPasswordField newPasswordField;
-    private JPasswordField confirmPasswordField;
-    private JCheckBox showPassword;
-    private RoundedButton registerButton;
+    private final JTextField emailField;
+    private final JTextField newUsernameField;
+    private final JPasswordField newPasswordField;
+    private final JPasswordField confirmPasswordField;
+    private final JCheckBox showPassword;
+    private final RoundedButton registerButton;
 
     public SignUpPage() {
         setTitle("Sign Up Page");
@@ -144,7 +144,7 @@ public class SignUpPage extends JFrame implements ActionListener {
            
             
             dispose();
-            new desktopapplication.DashBoard().setVisible(true);
+
         }
     }
 

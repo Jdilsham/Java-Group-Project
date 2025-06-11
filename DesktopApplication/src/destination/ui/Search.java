@@ -45,7 +45,7 @@ public class Search extends javax.swing.JFrame {
             int selectedRow = tableResults.getSelectedRow();
             if (selectedRow != -1) {
                 String name = tableResults.getValueAt(selectedRow, 0).toString();
-                ViewDestination view= new ViewDestination((Connection) DBConnection.getConnection(), name);
+                ViewDestination view= new ViewDestination(DBConnection.getConnection(), name);
                 try {
                     view.showDetails();
                     
@@ -135,7 +135,7 @@ public class Search extends javax.swing.JFrame {
                 "Name", "Bookings"
             }
         ) {
-            Class[] types = new Class [] {
+            final Class[] types = new Class [] {
                 java.lang.String.class, java.lang.Integer.class
             };
 
@@ -238,7 +238,7 @@ public class Search extends javax.swing.JFrame {
     }//GEN-LAST:event_backBtnActionPerformed
 
    
-    public static void main(String args[]) {
+    public static void main(String[] args) {
 //        new Search().setVisible(true);
         
         java.awt.EventQueue.invokeLater(new Runnable() {

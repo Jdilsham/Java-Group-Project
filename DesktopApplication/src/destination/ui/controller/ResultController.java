@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class ResultController {
 
     public void getResults(String destination, DefaultTableModel tableModel) throws SQLException {
-            CheckDestination check=new CheckDestination(destination, (Connection) DBConnection.getConnection());
+            CheckDestination check=new CheckDestination(destination, DBConnection.getConnection());
             check.display(tableModel);
           
     }

@@ -14,7 +14,7 @@ public class BookDestination {
     public Connection conn;
 
     public BookDestination() {
-        this.conn=(Connection) DBConnection.getConnection();
+        this.conn= DBConnection.getConnection();
     }
     
     public void setBooking(int id, String destinationName,String name, String email, Date date, int count, String note, String guide,String nationality) throws SQLException{
@@ -22,15 +22,15 @@ public class BookDestination {
         String sql="Insert into Booking values(?,?,?,?,?,?,?,?,?)";
         String query="UPDATE destination SET Bookings = Bookings+1 where  UPPER(name) =?";
 
-        PreparedStatement smt=(PreparedStatement) conn.prepareStatement(query);
-        PreparedStatement psmt=(PreparedStatement) conn.prepareStatement(sql);
+        PreparedStatement smt= conn.prepareStatement(query);
+        PreparedStatement psmt= conn.prepareStatement(sql);
         
         smt.setString(1,destinationName.toUpperCase());
         psmt.setInt(1, id);
         psmt.setString(2,destinationName);
         psmt.setString(3, name);
         psmt.setString(4,email);
-        psmt.setDate(5, (java.sql.Date) date);
+        psmt.setDate(5, date);
         psmt.setInt(6, count);
         psmt.setString(7,note);
         psmt.setString(8, guide);
