@@ -3,6 +3,7 @@ package destination;
 
 import java.sql.*;
 import Connection.DBConnection;
+import desktopapplication.databaseConn.DatabaseCon;
 /*import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
@@ -14,13 +15,13 @@ public class BookDestination {
     public Connection conn;
 
     public BookDestination() {
-        this.conn= DBConnection.getConnection();
+        this.conn = DatabaseCon.getConnection();
     }
     
-    public void setBooking(int id, String destinationName,String name, String email, Date date, int count, String note, String guide,String nationality) throws SQLException{
+    public void setBooking(int id,String destinationName,String name, String email, Date date, int count, String note, String guide,String nationality) throws SQLException{
         conn.setAutoCommit(false);
-        String sql="Insert into Booking values(?,?,?,?,?,?,?,?,?)";
-        String query="UPDATE destination SET Bookings = Bookings+1 where  UPPER(name) =?";
+        String sql="Insert into book_destination values(?,?,?,?,?,?,?,?,?)";
+        String query="UPDATE customer_data SET Booking_destination = Bookings+1 where  UPPER(name) =?";
 
         PreparedStatement smt= conn.prepareStatement(query);
         PreparedStatement psmt= conn.prepareStatement(sql);

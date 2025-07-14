@@ -1,8 +1,14 @@
 package login;
 
+import desktopapplication.databaseConn.DatabaseCon;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SignUpPage extends JFrame implements ActionListener {
 
@@ -127,6 +133,15 @@ public class SignUpPage extends JFrame implements ActionListener {
         add(mainPanel);
     }
 
+    
+    private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
+
+    public static boolean isValidEmail(String email) {
+        Pattern pattern = Pattern.compile(EMAIL_REGEX);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         String email = emailField.getText();
@@ -134,18 +149,47 @@ public class SignUpPage extends JFrame implements ActionListener {
         String newPassword = String.valueOf(newPasswordField.getPassword());
         String confirmPassword = String.valueOf(confirmPasswordField.getPassword());
 
-        if (email.isEmpty() || newUsername.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please fill all fields", "Error", JOptionPane.ERROR_MESSAGE);
-        } else if (!newPassword.equals(confirmPassword)) {
-            JOptionPane.showMessageDialog(this, "Passwords do not match", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(this, "Registered Successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
-
-           
+        if(isValidEmail(email)){
             
-            dispose();
+            if (email.isEmpty() || newUsername.isEmpty() || newPassword.isEmpty() || confirmPassword.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill all fields", "Error", JOptionPane.ERROR_MESSAGE);
+            } else if (!newPassword.equals(confirmPassword)) {
+                JOptionPane.showMessageDialog(this, "Passwords do not match", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+
+                try{
+                    Connection conn = DatabaseCon.getConnection();
+
+                    String sql = "INSERT INTO user_data (Email,userName,password) VALUES (?, ?, ?)";
+                    PreparedStatement pstmt = conn.prepareStatement(sql);
+                    pstmt.setString(1, email);
+                    pstmt.setString(2, newUsername);
+                    pstmt.setString(3, newPassword);
+
+
+                    int result = pstmt.executeUpdate();
+
+                    JOptionPane.showMessageDialog(this, "Registered Successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+
+
+                    dispose();
+                    new LoginPage().setVisible(true);
+                }
+                catch(SQLException error){
+
+                    JOptionPane.showMessageDialog(SignUpPage.this,"Database Error !!!");
+                    System.out.println(error);
+                }
+
+            }
 
         }
+        else{
+            JOptionPane.showMessageDialog(SignUpPage.this,"Invalid Email !!!");
+        }
+        
+        
     }
 
     public static void main(String[] args) {

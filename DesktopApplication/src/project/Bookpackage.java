@@ -1,5 +1,6 @@
 package project;
 
+import desktopapplication.databaseConn.DatabaseCon;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -19,13 +20,8 @@ public class Bookpackage extends JFrame implements ActionListener {
         setLayout(null);
         setResizable(false);
 
-        // JDBC connection setup
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hotel_bookings", "root", "");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+      
+        
 
         // Create a gradient background panel
         JPanel backgroundPanel = new JPanel() {
@@ -138,9 +134,11 @@ public class Bookpackage extends JFrame implements ActionListener {
             String phone = tphone.getText();
             String packageSelected = cpackage.getSelectedItem();
             String totalPerson = tperson.getText();
-
+            
             try {
-                String query = "INSERT INTO bookings (first_name, last_name, nic, contact_number, package, persons) VALUES (?, ?, ?, ?, ?, ?)";
+                Connection conn = DatabaseCon.getConnection();
+                
+                String query = "INSERT INTO bookings(first_name, last_name, nic, contact_number, package, persons) VALUES (?, ?, ?, ?, ?, ?)";
                 PreparedStatement pstmt = conn.prepareStatement(query);
                 pstmt.setString(1, fname);
                 pstmt.setString(2, lname);
@@ -149,17 +147,20 @@ public class Bookpackage extends JFrame implements ActionListener {
                 pstmt.setString(5, packageSelected);
                 pstmt.setString(6, totalPerson);
                 pstmt.executeUpdate();
+                
+                JOptionPane.showMessageDialog(this, "Booked Successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                
             } catch (SQLException e) {
-                e.printStackTrace();
+                JOptionPane.showMessageDialog(this, "Error !!!", "Error", JOptionPane.INFORMATION_MESSAGE);
             }
 
-            JOptionPane.showMessageDialog(null, "Package Booked Successfully:\n" +
+            /*JOptionPane.showMessageDialog(null, "Package Booked Successfully:\n" +
                     "First Name: " + fname +
                     "\nLast Name: " + lname +
                     "\nNIC: " + nic +
                     "\nPhone: " + phone +
                     "\nPackage: " + packageSelected +
-                    "\nPersons: " + totalPerson);
+                    "\nPersons: " + totalPerson);*/
         } else if (ae.getSource() == back) {
             new desktopapplication.DashBoard().setVisible(true);
             setVisible(false);

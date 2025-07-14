@@ -1,8 +1,15 @@
 package login;
 
+import desktopapplication.DashBoard;
+import desktopapplication.databaseConn.DatabaseCon;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+
 
 public class LoginPage extends JFrame implements ActionListener {
 
@@ -159,11 +166,33 @@ public class LoginPage extends JFrame implements ActionListener {
         String username = usernameField.getText();
         String password = String.valueOf(passwordField.getPassword());
 
-        if (username.equals("admin") && password.equals("password")) {
-            JOptionPane.showMessageDialog(this, "Login Successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(this, "Invalid Credentials", "Error", JOptionPane.ERROR_MESSAGE);
+        try{
+            Connection conn = DatabaseCon.getConnection();
+            
+            String query = "SELECT password FROM user_data WHERE userName = ?";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            stmt.setString(1, username);
+            
+            ResultSet rs = stmt.executeQuery();
+            
+            if (rs.next()) {
+                String storedPass = rs.getString("password");
+                if (storedPass.equals(password)) {
+                    JOptionPane.showMessageDialog(this, "Login successful!");
+                    
+                    new DashBoard().setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Invalid password.");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "User not found.");
+            }
         }
+        catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Database error: ");
+        }
+        
     }
 
     public static void main(String[] args) {
