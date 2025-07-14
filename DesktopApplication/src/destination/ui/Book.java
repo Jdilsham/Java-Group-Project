@@ -14,13 +14,13 @@ public class Book extends javax.swing.JFrame {
     
     public Book(String destinationName) {
         
-        Book.destinationName =destinationName;
+        Book.destinationName = destinationName;
         initComponents();
         setLocationRelativeTo(null);
     }
 
     public Book() {
-        new Book(destinationName).setVisible(true);
+        new Book("Sigiriya").setVisible(true);
 
         
     }
@@ -48,7 +48,7 @@ public class Book extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
-        jPanel1 = new GradientPanel();
+        jPanel1 = new GradientPanel(); ;
         jLabel10 = new javax.swing.JLabel();
         nameField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -79,6 +79,7 @@ public class Book extends javax.swing.JFrame {
 
         nameField.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         nameField.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 3, 1, 1));
+        nameField.setName(""); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));

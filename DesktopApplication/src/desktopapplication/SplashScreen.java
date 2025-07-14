@@ -203,9 +203,6 @@ public class SplashScreen extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         frame.setIcon(new javax.swing.ImageIcon(getClass().getResource("/desktopapplication/orange_sky.jpg"))); // NOI18N
-        frame.setMaximumSize(new java.awt.Dimension(0, 0));
-        frame.setMinimumSize(new java.awt.Dimension(0, 0));
-        frame.setPreferredSize(new java.awt.Dimension(0, 0));
         getContentPane().add(frame, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1920, 1080));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 

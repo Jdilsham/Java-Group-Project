@@ -73,6 +73,12 @@ public class NewCustomer extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(38, 50, 56));
         jLabel2.setText("First Name");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+
+        first_name.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                first_nameActionPerformed(evt);
+            }
+        });
         jPanel1.add(first_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 290, -1));
 
         jLabel3.setForeground(new java.awt.Color(38, 50, 56));
@@ -299,6 +305,10 @@ public class NewCustomer extends javax.swing.JFrame {
         new desktopapplication.DashBoard().setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_cancelMouseClicked
+
+    private void first_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_first_nameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_first_nameActionPerformed
 
     private static final String EMAIL_REGEX = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
 
