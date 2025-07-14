@@ -1,4 +1,4 @@
-package API;
+package Weather;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -19,7 +19,7 @@ import java.util.List;
 
 public class SeaConditionPanel extends JPanel {
 
-    private static final String API_KEY = "40d9020a-60e1-11f0-80b9-0242ac130006-40d902c8-60e1-11f0-80b9-0242ac13000"; //add 6
+    private static final String API_KEY = "40d9020a-60e1-11f0-80b9-0242ac130006-40d902c8-60e1-11f0-80b9-0242ac130006"; //add 6
     private static final String API_URL = "https://api.stormglass.io/v2/weather/point?lat=58.7984&lng=17.8081&params=waveHeight,waterTemperature,windSpeed,precipitation";
 
     public SeaConditionPanel() {

@@ -1,7 +1,8 @@
 
 package destination.ui;
 
-import GUI.Dashboard;
+import Weather.SeaConditionPanel;
+import Weather.WeatherApp;
 
 import javax.swing.*;
 import java.awt.*;
@@ -136,6 +137,7 @@ slideshowLbl.repaint();
         weatherbtn = new javax.swing.JButton();
         backbtn = new javax.swing.JButton();
         bookbtn = new javax.swing.JButton();
+        weatherbtn1 = new javax.swing.JButton();
 
         jLabel3.setText("jLabel3");
 
@@ -210,13 +212,13 @@ slideshowLbl.repaint();
 
         weatherbtn.setBackground(new java.awt.Color(0, 51, 51));
         weatherbtn.setForeground(new java.awt.Color(255, 255, 255));
-        weatherbtn.setText(" Check Weather");
+        weatherbtn.setText(" Check Sea Condition");
         weatherbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 weatherbtnActionPerformed(evt);
             }
         });
-        jPanel2.add(weatherbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 540, -1, -1));
+        jPanel2.add(weatherbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 540, -1, -1));
 
         backbtn.setBackground(new java.awt.Color(0, 51, 51));
         backbtn.setForeground(new java.awt.Color(255, 255, 255));
@@ -242,6 +244,16 @@ slideshowLbl.repaint();
             }
         });
         jPanel2.add(bookbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 540, -1, -1));
+
+        weatherbtn1.setBackground(new java.awt.Color(0, 51, 51));
+        weatherbtn1.setForeground(new java.awt.Color(255, 255, 255));
+        weatherbtn1.setText(" Check Weather");
+        weatherbtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                weatherbtn1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(weatherbtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 540, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -272,17 +284,27 @@ slideshowLbl.repaint();
     }//GEN-LAST:event_bookbtnActionPerformed
 
     private void weatherbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_weatherbtnActionPerformed
+        JFrame seaConditionFrame = new JFrame("Sea Conditions");
+        seaConditionFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        seaConditionFrame.setSize(800, 600); // Set the size of the frame
+        seaConditionFrame.setLocationRelativeTo(null); // Center the frame
 
-        Dashboard dashboard = new Dashboard();
+        // Create and add the SeaConditionPanel to the frame
+        SeaConditionPanel seaConditionPanel = new SeaConditionPanel();
+        seaConditionFrame.add(seaConditionPanel);
 
-        dashboard.setVisible(true);
-
-
+        // Make the frame visible
+        seaConditionFrame.setVisible(true);
     }//GEN-LAST:event_weatherbtnActionPerformed
 
     private void bookbtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bookbtnMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_bookbtnMouseClicked
+
+    private void weatherbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_weatherbtn1ActionPerformed
+        WeatherApp weather = new WeatherApp();
+        weather.setVisible(true);
+    }//GEN-LAST:event_weatherbtn1ActionPerformed
 
 
     public static void main(String[] args) {
@@ -339,5 +361,6 @@ slideshowLbl.repaint();
     private javax.swing.JLabel namelbl;
     private javax.swing.JLabel slideshowLbl;
     private javax.swing.JButton weatherbtn;
+    private javax.swing.JButton weatherbtn1;
     // End of variables declaration//GEN-END:variables
 }

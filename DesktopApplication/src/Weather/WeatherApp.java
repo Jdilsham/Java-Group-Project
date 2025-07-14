@@ -1,4 +1,4 @@
-package API;
+package Weather;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,30 +9,33 @@ import java.util.Date;
 import java.util.TimeZone;
 import org.json.*;
 
-public class WeatherApp {
+public class WeatherApp extends JFrame {  // Extends JFrame
 
     private static JPanel weatherPanel;
     private static JTextField locationTextField;
     private static JLabel currentLocationLabel;
     private static String currentLocation = "";
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(WeatherApp::createAndShowGUI);
+    public WeatherApp() {
+        // Constructor: Set up the JFrame properties
+        setTitle("Weather App");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Close the app when window is closed
+        setSize(1000, 700);  // Set the window size
+        setLocationRelativeTo(null);  // Center the window on screen
+
+        // Set up the components
+        createAndShowGUI();
     }
 
-    private static void createAndShowGUI() {
-        JFrame frame = new JFrame("Weather App");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1000, 700);
-        frame.setLayout(new BorderLayout());
-        frame.setLocationRelativeTo(null);
+    public void createAndShowGUI() {
+        // Use 'this' to add components directly to the current JFrame (WeatherApp)
+        setLayout(new BorderLayout());
 
         // Background panel with gradient
         JPanel backgroundPanel = new JPanel(new BorderLayout()) {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                // Gradient Background (light blue to white)
                 Graphics2D g2d = (Graphics2D) g;
                 GradientPaint gp = new GradientPaint(0, 0, new Color(0, 137, 255), 0, getHeight(), Color.white);
                 g2d.setPaint(gp);
@@ -40,7 +43,7 @@ public class WeatherApp {
             }
         };
         backgroundPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        frame.add(backgroundPanel);
+        add(backgroundPanel, BorderLayout.CENTER);  // Add to the main frame
 
         try {
             ImageIcon logoIcon = new ImageIcon("resources/logo.png");
@@ -50,16 +53,9 @@ public class WeatherApp {
             backgroundPanel.add(logoLabel, BorderLayout.NORTH);
         } catch (Exception ignored) {}
 
-        try {
-            ImageIcon bannerIcon = new ImageIcon("resources/banner.png");
-            Image banner = bannerIcon.getImage().getScaledInstance(150, 600, Image.SCALE_SMOOTH);
-            JLabel bannerLabel = new JLabel(new ImageIcon(banner));
-            backgroundPanel.add(bannerLabel, BorderLayout.WEST);
-        } catch (Exception ignored) {}
-
         JLabel titleLabel = new JLabel("Weather Forecast", SwingConstants.CENTER);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 36));
-        titleLabel.setForeground(Color.white);  // White text for better contrast on gradient background
+        titleLabel.setForeground(Color.white);
         titleLabel.setBorder(BorderFactory.createEmptyBorder(20, 0, 10, 0));
         backgroundPanel.add(titleLabel, BorderLayout.PAGE_START);
 
@@ -108,11 +104,9 @@ public class WeatherApp {
         JScrollPane scrollPane = new JScrollPane(weatherPanel);
         scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         backgroundPanel.add(scrollPane, BorderLayout.CENTER);
-
-        frame.setVisible(true);
     }
 
-    private static void searchWeather() {
+    public static void searchWeather() {
         String location = locationTextField.getText().trim();
         if (!location.isEmpty()) {
             currentLocation = location;
@@ -124,7 +118,7 @@ public class WeatherApp {
         }
     }
 
-    private static void loadWeatherForecast(String location) {
+    public static void loadWeatherForecast(String location) {
         try {
             String API_KEY = "db7b78d271405bb6e4f6343f49a523f2";
             String encodedLoc = URLEncoder.encode(location, "UTF-8");
@@ -147,7 +141,7 @@ public class WeatherApp {
         }
     }
 
-    private static void parseAndDisplayWeather(String jsonData) {
+    public static void parseAndDisplayWeather(String jsonData) {
         try {
             JSONObject root = new JSONObject(jsonData);
             if (root.has("cod") && root.getString("cod").equals("404")) {
@@ -164,7 +158,7 @@ public class WeatherApp {
             weatherPanel.repaint();
 
             // Add search bar again
-            createAndAddSearchBar();
+            createAndAddSearchBar(); // Add search bar back
 
             JSONObject now = list.getJSONObject(0);
             JSONObject main = now.getJSONObject("main");
@@ -260,7 +254,8 @@ public class WeatherApp {
         }
     }
 
-    private static void createAndAddSearchBar() {
+    // Method to re-add the search bar back to the panel after weather data is displayed
+    public static void createAndAddSearchBar() {
         JPanel searchBar = new JPanel(new FlowLayout(FlowLayout.LEFT));
         searchBar.setMaximumSize(new Dimension(950, 60));
         searchBar.setBackground(new Color(240, 240, 240)); // Soft light gray background
@@ -279,7 +274,7 @@ public class WeatherApp {
         weatherPanel.add(searchBar);
     }
 
-    private static JPanel detailCell(String title, String value) {
+    public static JPanel detailCell(String title, String value) {
         JPanel p = new JPanel(new BorderLayout());
         p.setBackground(Color.white);
         JLabel t = new JLabel(title, SwingConstants.CENTER);
@@ -293,14 +288,14 @@ public class WeatherApp {
         return p;
     }
 
-    private static JLabel centeredLabel(String text, int size, Color color) {
+    public static JLabel centeredLabel(String text, int size, Color color) {
         JLabel l = new JLabel(text, SwingConstants.CENTER);
         l.setFont(new Font("Arial", Font.PLAIN, size));
         l.setForeground(color);
         return l;
     }
 
-    private static JPanel createWeatherCard(String title, String value) {
+    public static JPanel createWeatherCard(String title, String value) {
         JPanel card = new JPanel(new BorderLayout());
         card.setBackground(Color.white);
         card.setPreferredSize(new Dimension(250, 150));
@@ -319,7 +314,7 @@ public class WeatherApp {
         return card;
     }
 
-    private static ImageIcon loadWeatherIcon(String code) {
+    public static ImageIcon loadWeatherIcon(String code) {
         try {
             String url = "https://openweathermap.org/img/wn/" + code + "@2x.png";
             Image img = new ImageIcon(new URL(url)).getImage().getScaledInstance(80, 80, Image.SCALE_SMOOTH);
@@ -329,14 +324,14 @@ public class WeatherApp {
         }
     }
 
-    private static String formatUnix(long utcSeconds, int tzOffsetSeconds) {
+    public static String formatUnix(long utcSeconds, int tzOffsetSeconds) {
         Date date = new Date((utcSeconds + tzOffsetSeconds) * 1000L);
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
         return sdf.format(date);
     }
 
-    private static void showError(String msg) {
+    public static void showError(String msg) {
         weatherPanel.removeAll();
         createAndAddSearchBar();
         JLabel err = new JLabel(msg, SwingConstants.CENTER);
@@ -345,5 +340,13 @@ public class WeatherApp {
         weatherPanel.add(err);
         weatherPanel.revalidate();
         weatherPanel.repaint();
+    }
+
+    // Main method to launch the WeatherApp
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            WeatherApp weather = new WeatherApp();
+            weather.setVisible(true);  // Only call once
+        });
     }
 }
