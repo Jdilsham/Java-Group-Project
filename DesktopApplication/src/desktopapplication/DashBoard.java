@@ -1,174 +1,84 @@
 package desktopapplication;
 
-
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.border.Border; // Add this import
+import java.awt.event.*;
 import MAPmain.Main;
 
-public class DashBoard extends JFrame{
+public class DashBoard extends JFrame {
     public DashBoard() {
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        setMinimumSize(new Dimension(1000,700));
+        setMinimumSize(new Dimension(1000, 700));
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE); //after closing the program the process will be terminated
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLayout(null);
-        
-        //top panel
+
+        // Top Panel
         JPanel p1 = new JPanel();
         p1.setLayout(null);
-        p1.setBackground(new Color(0,0,102));
-        p1.setBounds(0,0,1920,65);
+        p1.setBackground(new Color(0, 0, 102)); // Dark Blue
+        p1.setBounds(0, 0, 1920, 65);
         add(p1);
-        
 
-        
-        
-        
-        
-        JLabel heading = new JLabel("DashBoard");
-        heading.setBounds(15,10,300,40);
+        JLabel heading = new JLabel("Dashboard");
+        heading.setBounds(15, 10, 300, 40);
         heading.setForeground(Color.WHITE);
-        heading.setFont(new Font("Tahoma" , Font.BOLD , 30));
+        heading.setFont(new Font("Tahoma", Font.BOLD, 30));
         p1.add(heading);
-        
-        
-        //search button structure
-        JButton search = new JButton("Search");
-        search.setBounds(1580,10,150,40);
-        search.setFont(new Font("Tahoma" , Font.BOLD , 20));
+
+        // Search Button
+        JButton search = createButton("Search", 1580, 10, 150, 40);
         p1.add(search);
         search.addActionListener(e -> {
             new destination.ui.Search().setVisible(true);
             dispose();
         });
-        
-        
-        //Log out button structure
-        JButton logout = new JButton("Log Out");
-        logout.setBounds(1750,10,150,40);
-        logout.setFont(new Font("Tahoma" , Font.BOLD , 20));
+
+        // Log Out Button
+        JButton logout = createButton("Log Out", 1750, 10, 150, 40);
         p1.add(logout);
         logout.addActionListener(e -> {
             new login.LoginPage().setVisible(true);
             dispose();
         });
-        
-        
-        
-        //side panel structure containing the navigation buttons
+
+        // Side Panel
         JPanel p2 = new JPanel();
         p2.setLayout(null);
-        p2.setBackground(new Color(0,0,102));
-        p2.setBounds(0,65,300,1015);
+        p2.setBackground(new Color(0, 0, 102)); // Dark Blue
+        p2.setBounds(0, 65, 300, 1015);
         add(p2);
 
+        // Navigation Buttons
+        String[] buttonLabels = {
+            "Add Customer", "Check Packages", "Book Hotels", "Book Destinations", 
+            "View Destination", "Check Map", "About Us"
+        };
+        Class[] actions = {
+            desktopapplication.databaseConn.NewCustomer.class, project.Checkpackage.class,
+            project.Bookpackage.class, destination.ui.Book.class, destination.ui.ViewDetails.class, 
+            MAPmain.Main.class, login.AboutPage.class
+        };
 
-        //add customer details button structure
-        JButton addCustomer = new JButton("Add  Customer");
-        addCustomer.setBounds(0,0,300,50);
-        addCustomer.setBackground(new Color(0,0,102));
-        addCustomer.setForeground(Color.WHITE);
-        addCustomer.setFont(new Font("Tahoma" , Font.PLAIN , 20));
-        addCustomer.setHorizontalAlignment(SwingConstants.LEFT);
-        addCustomer.setMargin(new Insets(0,15,0,0));
-        p2.add(addCustomer);
-        addCustomer.addActionListener(e -> {
-            new desktopapplication.databaseConn.NewCustomer().setVisible(true);
-            dispose();
-        });
+        int yPosition = 0;
+        for (int i = 0; i < buttonLabels.length; i++) {
+            JButton button = createButton(buttonLabels[i], 0, yPosition, 300, 50);
+            p2.add(button);
+            int finalI = i;
+            button.addActionListener(e -> {
+                try {
+                    JFrame newWindow = (JFrame) actions[finalI].newInstance();
+                    newWindow.setVisible(true);
+                    dispose();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            });
+            yPosition += 60; // Increase the y-position for the next button
+        }
 
-        //check package button structure
-        JButton checkPackage = new JButton("Check Packages");
-        checkPackage.setBounds(0,60,300,50);
-        checkPackage.setBackground(new Color(0,0,102));
-        checkPackage.setForeground(Color.WHITE);
-        checkPackage.setFont(new Font("Tahoma" , Font.PLAIN , 20));
-        checkPackage.setHorizontalAlignment(SwingConstants.LEFT);
-        checkPackage.setMargin(new Insets(0,15,0,0));
-        p2.add(checkPackage);
-        checkPackage.addActionListener(e -> {
-            new project.Checkpackage().setVisible(true);
-            dispose();
-        });
-
-
-        //book package button structure
-        JButton bookHotel = new JButton("Book Hotels");
-        bookHotel.setBounds(0,120,300,50);
-        bookHotel.setBackground(new Color(0,0,102));
-        bookHotel.setForeground(Color.WHITE);
-        bookHotel.setFont(new Font("Tahoma" , Font.PLAIN , 20));
-        bookHotel.setHorizontalAlignment(SwingConstants.LEFT);
-        bookHotel.setMargin(new Insets(0,15,0,0));
-        p2.add(bookHotel);
-        bookHotel.addActionListener(e -> {
-            new project.Bookpackage().setVisible(true);
-            dispose();
-        });
-
-        //book destination button structure
-        JButton bookDestinations = new JButton("Book Destinations");
-        bookDestinations.setBounds(0,180,300,50);
-        bookDestinations.setBackground(new Color(0,0,102));
-        bookDestinations.setForeground(Color.WHITE);
-        bookDestinations.setFont(new Font("Tahoma" , Font.PLAIN , 20));
-        bookDestinations.setHorizontalAlignment(SwingConstants.LEFT);
-        bookDestinations.setMargin(new Insets(0,15,0,0));
-        p2.add(bookDestinations);
-        bookDestinations.addActionListener(e -> {
-            new destination.ui.Book().setVisible(true);
-            dispose();
-        });
-
-
-
-
-
-        //view destination button structure
-        JButton viewDestination = new JButton("View Destination");
-        viewDestination.setBounds(0,240,300,50);
-        viewDestination.setBackground(new Color(0,0,102));
-        viewDestination.setForeground(Color.WHITE);
-        viewDestination.setFont(new Font("Tahoma" , Font.PLAIN , 20));
-        viewDestination.setHorizontalAlignment(SwingConstants.LEFT);
-        viewDestination.setMargin(new Insets(0,15,0,0));
-        p2.add(viewDestination);
-        viewDestination.addActionListener(e -> {
-            new destination.ui.ViewDetails().setVisible(true);
-            dispose();
-        });
-
-
-        //view package button structure
-        JButton checkMap = new JButton("Check Map");
-        checkMap.setBounds(0,300,300,50);
-        checkMap.setBackground(new Color(0,0,102));
-        checkMap.setForeground(Color.WHITE);
-        checkMap.setFont(new Font("Tahoma" , Font.PLAIN , 20));
-        checkMap.setHorizontalAlignment(SwingConstants.LEFT);
-        checkMap.setMargin(new Insets(0,15,0,0));
-        p2.add(checkMap);
-        checkMap.addActionListener(e -> {
-            Main map = new Main();
-            map.setVisible(true);
-            this.dispose();
-            
-        });
-
-        //about us button structure
-        JButton aboutUS = new JButton("About US");
-        aboutUS.setBounds(0,360,300,50);
-        aboutUS.setBackground(new Color(0,0,102));
-        aboutUS.setForeground(Color.WHITE);
-        aboutUS.setFont(new Font("Tahoma" , Font.PLAIN , 20));
-        aboutUS.setHorizontalAlignment(SwingConstants.LEFT);
-        aboutUS.setMargin(new Insets(0,15,0,0));
-        p2.add(aboutUS);
-        aboutUS.addActionListener(e -> {
-            new login.AboutPage().setVisible(true);
-            setVisible(false);
-        });
-
+        // Background Image
         ImageIcon i4 = new ImageIcon(ClassLoader.getSystemResource("imagepath/home.jpg"));
         Image i5 = i4.getImage().getScaledInstance(1620, 1015, Image.SCALE_SMOOTH);
         ImageIcon i6 = new ImageIcon(i5);
@@ -176,11 +86,59 @@ public class DashBoard extends JFrame{
         image.setBounds(300, 0, 1620, 1015);
         add(image);
 
-        
-        setVisible(true);  
+        setVisible(true);
     }
-    
-     
+
+    // Helper method to create creative and modern buttons
+    private JButton createButton(String text, int x, int y, int width, int height) {
+        JButton button = new JButton(text);
+        button.setBounds(x, y, width, height);
+        button.setFont(new Font("Tahoma", Font.BOLD, 20));
+        button.setForeground(Color.WHITE);
+        button.setFocusPainted(false);
+        button.setOpaque(true);
+        button.setBorder(createButtonBorder());
+        button.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+        // Set Initial Background with Gradient
+        button.setBackground(new Color(0, 102, 204)); // Dark Blue
+        
+        // Add Hover Animation Effect (Scale the button)
+        button.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                button.setBackground(new Color(0, 153, 255)); // Lighter Blue
+                button.setBorder(createButtonHoverBorder());
+                button.setFont(new Font("Tahoma", Font.BOLD, 22)); // Increase font size on hover
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                button.setBackground(new Color(0, 102, 204)); // Revert to Original Color
+                button.setBorder(createButtonBorder());
+                button.setFont(new Font("Tahoma", Font.BOLD, 20)); // Revert font size
+            }
+        });
+
+        return button;
+    }
+
+    // Method to create creative button border with rounded corners
+    private Border createButtonBorder() {
+        return BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(new Color(0, 51, 102), 3), // Dark Blue border
+            BorderFactory.createEmptyBorder(10, 20, 10, 20) // Padding
+        );
+    }
+
+    // Method to create hover button border (glow effect)
+    private Border createButtonHoverBorder() {
+        return BorderFactory.createCompoundBorder(
+            BorderFactory.createLineBorder(new Color(255, 255, 255), 3), // White border on hover
+            BorderFactory.createEmptyBorder(10, 20, 10, 20) // Padding
+        );
+    }
+
     public static void main(String[] args) {
         new DashBoard();
     }
