@@ -118,69 +118,82 @@ public class SplashScreen extends javax.swing.JFrame {
         public AuthenticationWindow(SplashScreen splashScreen) {
 
             setUndecorated(true);
-
-            setTitle("authentication");
-            setSize(500,300);
-
+            setTitle("Authentication");
+            setSize(500, 300);
             setLocationRelativeTo(null);
-            setOpacity(0.85f);
+            setOpacity(0.95f);
+            setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 40, 40)); 
 
-            setShape(new RoundRectangle2D.Double(0,0,getWidth(),getHeight(),45,45));
+            
+            JPanel panel = new JPanel() {
+                @Override
+                protected void paintComponent(Graphics g) {
+                    super.paintComponent(g);
+                    Graphics2D g2d = (Graphics2D) g;
+                    GradientPaint gradient = new GradientPaint(0, 0, new Color(0, 0, 0, 150), 0, getHeight(), new Color(0, 0, 0, 200));
+                    g2d.setPaint(gradient);
+                    g2d.fillRect(0, 0, getWidth(), getHeight());
+                }
+            };
+            panel.setLayout(new GridBagLayout());
+            panel.setOpaque(false);
 
-            setBackground(new Color(0,0,0,50));
-
-            JPanel panel = new JPanel(new GridBagLayout());
-            panel.setBackground(new Color(0,0,0,200));
-
-            JLabel text = new JLabel("TOURIST MANAGEMENT SYSTEM",JLabel.CENTER);
-            JLabel text1 = new JLabel("Welcome to Sri Lanka",JLabel.CENTER);
+            
+            JLabel text = new JLabel("TOURIST MANAGEMENT SYSTEM", JLabel.CENTER);
+            JLabel text1 = new JLabel("Welcome to Sri Lanka", JLabel.CENTER);
             JButton login = new JButton("LOG IN");
             JButton signup = new JButton("SIGN UP");
 
+            
             GridBagConstraints gbc = new GridBagConstraints();
             gbc.insets = new Insets(10, 20, 10, 20);
             gbc.gridx = 0;
             gbc.fill = GridBagConstraints.HORIZONTAL;
 
-
+           
             text.setForeground(Color.WHITE);
-            text.setFont(new Font("serif", Font.BOLD, 18)) ;
-            gbc.gridy=0;
-            panel.add(text,gbc);
+            text.setFont(new Font("Helvetica Neue", Font.BOLD, 24));
+            gbc.gridy = 0;
+            panel.add(text, gbc);
 
             text1.setForeground(Color.WHITE);
-            text1.setFont(new Font("serif", Font.BOLD, 18)) ;
-            gbc.gridy=1;
-            panel.add(text1,gbc);
+            text1.setFont(new Font("Helvetica Neue", Font.BOLD, 18));
+            gbc.gridy = 1;
+            panel.add(text1, gbc);
 
-            login.setForeground(Color.BLUE);
-            login.setFont(new Font("",Font.BOLD,14));
-            gbc.gridy=2;
-            panel.add(login,gbc);
-            login.addActionListener( e -> {
+            
+            login.setForeground(Color.WHITE);
+            login.setFont(new Font("Helvetica Neue", Font.BOLD, 14));
+            login.setBackground(new Color(0, 123, 255)); 
+            login.setFocusPainted(false);
+            login.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+            login.setCursor(new Cursor(Cursor.HAND_CURSOR));
+            login.setPreferredSize(new Dimension(200, 40));
+
+            gbc.gridy = 2;
+            panel.add(login, gbc);
+            login.addActionListener(e -> {
                 new login.LoginPage().setVisible(true);
                 this.dispose();
-                splashScreen.setVisible(false);
             });
 
+            
+            signup.setForeground(Color.WHITE);
+            signup.setFont(new Font("Helvetica Neue", Font.BOLD, 14));
+            signup.setBackground(new Color(40, 167, 69)); 
+            signup.setFocusPainted(false);
+            signup.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+            signup.setCursor(new Cursor(Cursor.HAND_CURSOR)); 
+            signup.setPreferredSize(new Dimension(200, 40));
 
-            signup.setForeground(Color.BLUE);
-            signup.setFont(new Font("",Font.BOLD,14));
-            gbc.gridy =3 ;
-            panel.add(signup,gbc);
-            signup.addActionListener( e -> {
+            gbc.gridy = 3;
+            panel.add(signup, gbc);
+            signup.addActionListener(e -> {
                 new login.SignUpPage().setVisible(true);
                 this.dispose();
-                splashScreen.setVisible(false);
             });
 
-
-
-
-
-
             add(panel);
-
 
         }
 
