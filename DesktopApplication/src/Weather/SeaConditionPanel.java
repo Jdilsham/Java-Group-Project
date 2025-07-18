@@ -1,7 +1,6 @@
 package Weather;
 
-import destination.ui.ViewDetails; // Import ViewDetails class from the destination.ui package
-
+import desktopapplication.DashBoard;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.jfree.chart.ChartFactory;
@@ -14,6 +13,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -29,10 +30,14 @@ public class SeaConditionPanel extends JPanel {
 
     private JTextField cityField;
     private JButton searchButton;
+    private JButton backButton;  // Back button for navigation
 
     private JPanel headerPanel; // Declare headerPanel here so it can be reused
+    private JFrame topFrame; // Declare the JFrame for the top frame reference
 
-    public SeaConditionPanel() {
+    public SeaConditionPanel(JFrame parentFrame) {
+        this.topFrame = parentFrame; // Set the topFrame reference passed from the parent frame
+
         setLayout(new BorderLayout());
         setBackground(new Color(50, 50, 50)); // Subtle darker background for contrast
 
@@ -106,17 +111,64 @@ public class SeaConditionPanel extends JPanel {
 
         add(searchPanel, BorderLayout.NORTH);
 
-        // Main panel to display charts side by side
-        JPanel chartsPanel = new JPanel();
-        chartsPanel.setLayout(new GridLayout(1, 2, 20, 0)); // 1 row, 2 columns, 20px spacing
-        chartsPanel.setBackground(new Color(50, 50, 50));
+        // Add a "Back" Button to go back to the Dashboard
+        backButton = new JButton("Back");
+        backButton.setFont(new Font("Arial", Font.BOLD, 16));
+        backButton.setBackground(new Color(255, 87, 34)); // Orange background for the Back button
+        backButton.setForeground(Color.WHITE);
+        backButton.setFocusPainted(false); // Remove border on focus
+        backButton.setPreferredSize(new Dimension(100, 30));
+        backButton.setBorder(BorderFactory.createLineBorder(new Color(255, 87, 34), 2)); // Border styling
+        backButton.setCursor(new Cursor(Cursor.HAND_CURSOR)); // Hand cursor on hover
 
-        // Data and Table Panel
-        JPanel dataPanel = new JPanel();
-        dataPanel.setLayout(new BorderLayout());
-        dataPanel.setBackground(new Color(30, 30, 30));
+        // Add hover effect for the back button
+        backButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                backButton.setBackground(new Color(255, 112, 67)); // Change color on hover
+            }
 
-        // Remove the Back Button section (no need to add it)
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                backButton.setBackground(new Color(255, 87, 34)); // Reset color on mouse exit
+            }
+        });
+
+        // Add ActionListener to the Back button
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Assuming the dashboard is a different panel, you could close the current window
+                topFrame.dispose();  // Close the current window (SeaConditionPanel)
+
+                // If you are navigating back to a different screen, like a Dashboard:
+                // Here we create the dashboard window, for example:
+                DashBoard dashboardPanel = new DashBoard();  // Assuming a DashboardPanel exists
+                JFrame dashboardFrame = new JFrame("Dashboard");
+                dashboardFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                dashboardFrame.setSize(1200, 700);
+                dashboardFrame.add(dashboardPanel);
+                dashboardFrame.setVisible(true);
+            }
+        });
+
+        // Add the Back button to the bottom-right of the panel
+        JPanel backButtonPanel = new JPanel();
+        backButtonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));  // Aligning to the right
+        backButtonPanel.setBackground(new Color(50, 50, 50));  // Panel background color
+        backButtonPanel.add(backButton);
+
+        // Add the backButtonPanel to the SOUTH region for bottom-right positioning
+        add(backButtonPanel, BorderLayout.SOUTH);
+
+        // Add window close listener to perform the same action as the "Back" button
+        topFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE); // Disable default close operation
+
+        topFrame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                // Perform the same action as clicking the back button
+                backButton.doClick(); // Simulate the "Back" button click
+            }
+        });
     }
 
     // Method to fetch coordinates (latitude and longitude) for a given city
@@ -288,7 +340,10 @@ public class SeaConditionPanel extends JPanel {
         JFrame frame = new JFrame("Sea Conditions");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1200, 700);  // Set size of the JFrame
-        frame.add(new SeaConditionPanel());  // Add the panel to the frame
+
+        // Create and pass the frame to the SeaConditionPanel constructor
+        SeaConditionPanel panel = new SeaConditionPanel(frame);  // Pass the frame to the panel
+        frame.add(panel);  // Add the panel to the frame
         frame.setVisible(true);  // Make the frame visible
     }
 
