@@ -23,11 +23,11 @@ import java.util.List;
 
 public class SeaConditionPanel extends JPanel {
 
-    private static final String API_KEY = "40d9020a-60e1-11f0-80b9-0242ac130006-40d902c8-60e1-11f0-80b9-0242ac13000"; // API
+    private static final String API_KEY = "eaa3bb36-29cd-11f0-863c-0242ac130003-eaa3bb9a-29cd-11f0-863c-0242ac130003"; // API Key
     private String apiUrlTemplate = "https://api.stormglass.io/v2/weather/point?lat=%s&lng=%s&params=waveHeight,waterTemperature,windSpeed,precipitation"; // API URL template
+    private String geocodingApiUrl = "https://api.opencagedata.com/geocode/v1/json?q=%s&key=59b5d3d38d2f4a22a29773986735754a"; // Geocoding API (replace YOUR_API_KEY with your OpenCage API key)
 
-    private JTextField latitudeField;
-    private JTextField longitudeField;
+    private JTextField cityField;
     private JButton searchButton;
 
     private JPanel headerPanel; // Declare headerPanel here so it can be reused
@@ -54,31 +54,54 @@ public class SeaConditionPanel extends JPanel {
         searchPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         searchPanel.setBackground(new Color(80, 80, 80, 180)); // Semi-transparent background
 
-        JLabel searchLabel = new JLabel("Enter Latitude and Longitude:");
+        JLabel searchLabel = new JLabel("Enter City Name:");
         searchLabel.setForeground(Color.WHITE);
         searchPanel.add(searchLabel);
 
-        latitudeField = new JTextField(10);
-        longitudeField = new JTextField(10);
+        // Create the city search field with enhanced design
+        cityField = new JTextField(20);
+        cityField.setFont(new Font("Arial", Font.PLAIN, 14));
+        cityField.setBackground(new Color(240, 240, 240)); // Light background color
+        cityField.setForeground(Color.DARK_GRAY); // Text color
+        cityField.setBorder(BorderFactory.createLineBorder(new Color(100, 100, 100), 2)); // Border styling
+        cityField.setPreferredSize(new Dimension(200, 30)); // Adjust field size
+
+        // Create the search button with enhanced design
         searchButton = new JButton("Search");
+        searchButton.setFont(new Font("Arial", Font.BOLD, 16));
+        searchButton.setBackground(new Color(0, 123, 255)); // Blue background
+        searchButton.setForeground(Color.WHITE); // White text color
+        searchButton.setFocusPainted(false); // Remove border on focus
+        searchButton.setPreferredSize(new Dimension(100, 30)); // Adjust button size
+        searchButton.setBorder(BorderFactory.createLineBorder(new Color(0, 123, 255), 2)); // Border styling
+        searchButton.setCursor(new Cursor(Cursor.HAND_CURSOR)); // Hand cursor on hover
+
+        // Add hover effect for the search button
+        searchButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                searchButton.setBackground(new Color(0, 105, 217)); // Change color on hover
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                searchButton.setBackground(new Color(0, 123, 255)); // Reset color on mouse exit
+            }
+        });
 
         searchButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String latitude = latitudeField.getText().trim();
-                String longitude = longitudeField.getText().trim();
+                String city = cityField.getText().trim();
 
-                if (!latitude.isEmpty() && !longitude.isEmpty()) {
-                    // Fetch and update data based on search
-                    fetchSeaConditions(latitude, longitude);
+                if (!city.isEmpty()) {
+                    // Fetch the coordinates for the city and then fetch the sea conditions
+                    fetchCoordinates(city);
                 } else {
-                    JOptionPane.showMessageDialog(SeaConditionPanel.this, "Please enter both Latitude and Longitude.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(SeaConditionPanel.this, "Please enter a city name.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
 
-        searchPanel.add(latitudeField);
-        searchPanel.add(longitudeField);
+        // Add the styled components to the search panel
+        searchPanel.add(cityField);
         searchPanel.add(searchButton);
 
         add(searchPanel, BorderLayout.NORTH);
@@ -94,6 +117,50 @@ public class SeaConditionPanel extends JPanel {
         dataPanel.setBackground(new Color(30, 30, 30));
 
         // Remove the Back Button section (no need to add it)
+    }
+
+    // Fetch coordinates (latitude and longitude) for a given city
+    private void fetchCoordinates(String city) {
+        try {
+            String geocodingUrl = String.format(geocodingApiUrl, city);
+            URL url = new URL(geocodingUrl);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            StringBuilder content = new StringBuilder();
+            String line;
+            while ((line = in.readLine()) != null) {
+                content.append(line);
+            }
+            in.close();
+            conn.disconnect();
+
+            // Print the response for debugging
+            System.out.println(content.toString());
+
+            // Parse the response and extract latitude and longitude
+            JSONObject json = new JSONObject(content.toString());
+            JSONArray results = json.getJSONArray("results");
+
+            if (results.length() > 0) {
+                JSONObject firstResult = results.getJSONObject(0);
+                JSONObject geometry = firstResult.getJSONObject("geometry");
+
+                // Updated: Use correct field names for lat/lng
+                double lat = geometry.getDouble("lat");
+                double lng = geometry.getDouble("lng");
+
+                // Now that we have the coordinates, fetch the sea conditions
+                fetchSeaConditions(String.valueOf(lat), String.valueOf(lng));
+            } else {
+                JOptionPane.showMessageDialog(SeaConditionPanel.this, "City not found. Please check the name and try again.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(SeaConditionPanel.this, "Error fetching city data.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private void fetchSeaConditions(String latitude, String longitude) {
@@ -216,6 +283,7 @@ public class SeaConditionPanel extends JPanel {
         return new JTable(data, columnNames);
     }
 
+    // Main method to launch the application
     public static void main(String[] args) {
         JFrame frame = new JFrame("Sea Conditions");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
