@@ -344,6 +344,10 @@ public class SeaConditionPanel extends JPanel {
         // Create and pass the frame to the SeaConditionPanel constructor
         SeaConditionPanel panel = new SeaConditionPanel(frame);  // Pass the frame to the panel
         frame.add(panel);  // Add the panel to the frame
+
+        // Center the frame on the screen
+        frame.setLocationRelativeTo(null);
+
         frame.setVisible(true);  // Make the frame visible
     }
 
