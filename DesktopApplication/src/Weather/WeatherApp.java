@@ -8,6 +8,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 import org.json.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import desktopapplication.DashBoard;
 
 public class WeatherApp extends JFrame {  // Extends JFrame
 
@@ -19,9 +22,17 @@ public class WeatherApp extends JFrame {  // Extends JFrame
     public WeatherApp() {
         // Constructor: Set up the JFrame properties
         setTitle("Weather App");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Close the app when window is closed
         setSize(1000, 700);  // Set the window size
         setLocationRelativeTo(null);  // Center the window on screen
+
+        // Add a WindowListener to detect when the window is closed
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                // When the close button is clicked, load the Dashboard.java class
+                loadDashboard();
+            }
+        });
 
         // Set up the components
         createAndShowGUI();
@@ -157,9 +168,6 @@ public class WeatherApp extends JFrame {  // Extends JFrame
             weatherPanel.revalidate();
             weatherPanel.repaint();
 
-            // Add search bar again
-            createAndAddSearchBar(); // Add search bar back
-
             JSONObject now = list.getJSONObject(0);
             JSONObject main = now.getJSONObject("main");
             JSONObject wind = now.getJSONObject("wind");
@@ -254,24 +262,15 @@ public class WeatherApp extends JFrame {  // Extends JFrame
         }
     }
 
-    // Method to re-add the search bar back to the panel after weather data is displayed
-    public static void createAndAddSearchBar() {
-        JPanel searchBar = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        searchBar.setMaximumSize(new Dimension(950, 60));
-        searchBar.setBackground(new Color(240, 240, 240)); // Soft light gray background
-
-        searchBar.add(new JLabel("Enter City:"));
-        searchBar.add(locationTextField);
-        searchBar.add(new JButton("Search") {{
-            setFont(new Font("Arial", Font.PLAIN, 16));
-            setBackground(new Color(0, 137, 255)); // Blue button color
-            setForeground(Color.white);
-            setBorder(BorderFactory.createLineBorder(new Color(0, 137, 255), 2));
-            setPreferredSize(new Dimension(100, 35));
-            addActionListener(e -> searchWeather());
-        }});
-
-        weatherPanel.add(searchBar);
+    public static void loadDashboard() {
+        try {
+            // Assuming you have a class `Dashboard` with a `main` method
+            // You may need to update the code based on how your dashboard is structured
+            DashBoard.main(new String[]{}); // This will launch the Dashboard application
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Failed to load Dashboard", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     public static JPanel detailCell(String title, String value) {
@@ -333,7 +332,6 @@ public class WeatherApp extends JFrame {  // Extends JFrame
 
     public static void showError(String msg) {
         weatherPanel.removeAll();
-        createAndAddSearchBar();
         JLabel err = new JLabel(msg, SwingConstants.CENTER);
         err.setFont(new Font("Arial", Font.BOLD, 16));
         err.setForeground(Color.red);

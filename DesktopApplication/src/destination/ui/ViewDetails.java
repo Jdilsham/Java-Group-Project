@@ -290,8 +290,8 @@ slideshowLbl.repaint();
         seaConditionFrame.setLocationRelativeTo(null); // Center the frame
 
         // Create and add the SeaConditionPanel to the frame
-        SeaConditionPanel seaConditionPanel = new SeaConditionPanel();
-        seaConditionFrame.add(seaConditionPanel);
+        //SeaConditionPanel seaConditionPanel = new SeaConditionPanel();
+        //seaConditionFrame.add(seaConditionPanel);
 
         // Make the frame visible
         seaConditionFrame.setVisible(true);
