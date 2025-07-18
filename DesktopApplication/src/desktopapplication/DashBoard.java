@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.Border; // Add this import
 import java.awt.event.*;
-import MAPmain.Main;
+import Weather.SeaConditionPanel; // Import SeaConditionPanel
 
 public class DashBoard extends JFrame {
     public DashBoard() {
@@ -53,12 +53,12 @@ public class DashBoard extends JFrame {
         // Navigation Buttons
         String[] buttonLabels = {
             "Add Customer", "Check Packages", "Book Hotels", "Book Destinations", 
-            "View Destination", "Check Map", "About Us"
+            "Check Weather","Check Sea Condition", "Check Map", "About Us"
         };
         Class[] actions = {
             desktopapplication.databaseConn.NewCustomer.class, project.Checkpackage.class,
-            project.Bookpackage.class, destination.ui.Book.class, destination.ui.ViewDetails.class, 
-            MAPmain.Main.class, login.AboutPage.class
+            project.Bookpackage.class, destination.ui.Book.class, Weather.WeatherApp.class, 
+            Weather.SeaConditionPanel.class, MAPmain.Main.class, login.AboutPage.class
         };
 
         int yPosition = 0;
@@ -68,8 +68,12 @@ public class DashBoard extends JFrame {
             int finalI = i;
             button.addActionListener(e -> {
                 try {
-                    JFrame newWindow = (JFrame) actions[finalI].newInstance();
-                    newWindow.setVisible(true);
+                    if (actions[finalI] == Weather.SeaConditionPanel.class) {
+                        SeaConditionPanel.launch();  // Launch the SeaConditionPanel
+                    } else {
+                        JFrame newWindow = (JFrame) actions[finalI].newInstance();
+                        newWindow.setVisible(true);
+                    }
                     dispose();
                 } catch (Exception ex) {
                     ex.printStackTrace();

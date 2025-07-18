@@ -119,7 +119,7 @@ public class SeaConditionPanel extends JPanel {
         // Remove the Back Button section (no need to add it)
     }
 
-    // Fetch coordinates (latitude and longitude) for a given city
+    // Method to fetch coordinates (latitude and longitude) for a given city
     private void fetchCoordinates(String city) {
         try {
             String geocodingUrl = String.format(geocodingApiUrl, city);
@@ -283,13 +283,16 @@ public class SeaConditionPanel extends JPanel {
         return new JTable(data, columnNames);
     }
 
-    // Main method to launch the application
-    public static void main(String[] args) {
+    // Method to launch SeaConditionPanel inside a JFrame
+    public static void launch() {
         JFrame frame = new JFrame("Sea Conditions");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1200, 700);
-        frame.setLocationRelativeTo(null);
-        frame.add(new SeaConditionPanel());
-        frame.setVisible(true);
+        frame.setSize(1200, 700);  // Set size of the JFrame
+        frame.add(new SeaConditionPanel());  // Add the panel to the frame
+        frame.setVisible(true);  // Make the frame visible
+    }
+
+    public static void main(String[] args) {
+        launch();  // Launch SeaConditionPanel inside a JFrame
     }
 }
