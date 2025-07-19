@@ -57,7 +57,7 @@ public class AboutPage extends JFrame {
                 "Developed by:\n" +
                 "• Anupa Supul \t (SC/2022/12867)\n" +
                 "• P.H.S. Fernando \t (SC/2022/12890)\n" +
-                "• Jayani \t (SC/2022/)\n" +
+                "• J.A. Dahanayaka \t (SC/2022/12843)\n" +
                 "• M.K.K.L. Jayashan \t (SC/2022/12868)\n" +
                 "• Wanniarachchi J.D. \t (SC/2022/12911)\n" +
                 "• Maheshi Wickramarathna \t (SC/2022/12903)\n\n" +
