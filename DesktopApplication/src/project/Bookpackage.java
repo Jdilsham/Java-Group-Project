@@ -9,19 +9,18 @@ import java.sql.*;
 public class Bookpackage extends JFrame implements ActionListener {
 
     Choice cpackage;
-    TextField tperson, tfname, tlname, tnic, tphone;
+    JTextField tperson, tfname, tlname, tnic, tphone;
     JLabel labeluname1, labeluname2, labelid, labelphone;
     JButton bookpackage, back;
 
     Connection conn;
 
     public Bookpackage() {
-        setBounds(500, 200, 500, 500);
+        // Set window properties
+        setBounds(500, 150, 500, 600); // Adjust window size
         setLayout(null);
         setResizable(false);
-
-      
-        
+        setLocationRelativeTo(null); // Center the window on the screen
 
         // Create a gradient background panel
         JPanel backgroundPanel = new JPanel() {
@@ -41,89 +40,145 @@ public class Bookpackage extends JFrame implements ActionListener {
         backgroundPanel.setLayout(null);
         setContentPane(backgroundPanel);
 
+        // Package Title
         JLabel pack = new JLabel("BOOK PACKAGE");
-        pack.setFont(new Font("Segoe UI Emoji", Font.BOLD, 20));
+        pack.setFont(new Font("Segoe UI Emoji", Font.BOLD, 24));
         pack.setForeground(Color.BLACK);
-        pack.setBounds(150, 10, 200, 30);
+        pack.setBounds(150, 20, 200, 30);
         add(pack);
 
+        // First Name Label and JTextField
         JLabel uname1 = new JLabel("First Name");
         uname1.setFont(new Font("Segoe UI Emoji", Font.BOLD, 16));
-        uname1.setBounds(30, 60, 150, 25);
+        uname1.setBounds(30, 70, 150, 25);
         add(uname1);
 
-        tfname = new TextField();
-        tfname.setBounds(200, 60, 150, 25);
-        tfname.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        tfname = new JTextField();  // Changed to JTextField
+        tfname.setBounds(200, 70, 250, 30);
+        tfname.setFont(new Font("Segoe UI", Font.PLAIN, 14)); 
+        tfname.setBackground(new Color(240, 248, 255)); 
+        tfname.setForeground(Color.BLACK);
+        tfname.setBorder(BorderFactory.createLineBorder(new Color(173, 216, 230), 2)); 
         add(tfname);
 
+        // Last Name Label and JTextField
         JLabel uname2 = new JLabel("Last Name");
         uname2.setFont(new Font("Segoe UI Emoji", Font.BOLD, 16));
-        uname2.setBounds(30, 110, 150, 25);
+        uname2.setBounds(30, 120, 150, 25);
         add(uname2);
 
-        tlname = new TextField();
-        tlname.setBounds(200, 110, 150, 25);
-        tlname.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        tlname = new JTextField();  // Changed to JTextField
+        tlname.setBounds(200, 120, 250, 30);
+        tlname.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        tlname.setBackground(new Color(240, 248, 255));
+        tlname.setForeground(Color.BLACK);
+        tlname.setBorder(BorderFactory.createLineBorder(new Color(173, 216, 230), 2));
         add(tlname);
 
+        // NIC Label and JTextField
         JLabel id = new JLabel("NIC");
         id.setFont(new Font("Segoe UI Emoji", Font.BOLD, 16));
-        id.setBounds(30, 160, 150, 25);
+        id.setBounds(30, 170, 150, 25);
         add(id);
 
-        tnic = new TextField();
-        tnic.setBounds(200, 160, 150, 25);
-        tnic.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        tnic = new JTextField();  // Changed to JTextField
+        tnic.setBounds(200, 170, 250, 30);
+        tnic.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        tnic.setBackground(new Color(240, 248, 255));
+        tnic.setForeground(Color.BLACK);
+        tnic.setBorder(BorderFactory.createLineBorder(new Color(173, 216, 230), 2));
         add(tnic);
 
+        // Phone Number Label and JTextField
         JLabel phone = new JLabel("Phone No");
         phone.setFont(new Font("Segoe UI Emoji", Font.BOLD, 16));
-        phone.setBounds(30, 210, 150, 25);
+        phone.setBounds(30, 220, 150, 25);
         add(phone);
 
-        tphone = new TextField();
-        tphone.setBounds(200, 210, 150, 25);
-        tphone.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        tphone = new JTextField();  // Changed to JTextField
+        tphone.setBounds(200, 220, 250, 30);
+        tphone.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        tphone.setBackground(new Color(240, 248, 255));
+        tphone.setForeground(Color.BLACK);
+        tphone.setBorder(BorderFactory.createLineBorder(new Color(173, 216, 230), 2));
         add(tphone);
 
+        // Select Package Label and Choice
         JLabel sec = new JLabel("Select Package");
         sec.setFont(new Font("Segoe UI Emoji", Font.BOLD, 16));
-        sec.setBounds(30, 260, 150, 25);
+        sec.setBounds(30, 270, 150, 25);
         add(sec);
 
         cpackage = new Choice();
         cpackage.add("Gold Package");
         cpackage.add("Silver Package");
         cpackage.add("Bronze Package");
-        cpackage.setBounds(200, 260, 150, 25);
+        cpackage.setBounds(200, 270, 250, 30);
         add(cpackage);
 
+        // Total Person Label and JTextField
         JLabel number = new JLabel("Total Person");
         number.setFont(new Font("Segoe UI Emoji", Font.BOLD, 16));
-        number.setBounds(30, 310, 150, 25);
+        number.setBounds(30, 320, 150, 25);
         add(number);
 
-        tperson = new TextField();
-        tperson.setBounds(200, 310, 150, 25);
-        tperson.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        tperson = new JTextField();  // Changed to JTextField
+        tperson.setBounds(200, 320, 250, 30);
+        tperson.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        tperson.setBackground(new Color(240, 248, 255));
+        tperson.setForeground(Color.BLACK);
+        tperson.setBorder(BorderFactory.createLineBorder(new Color(173, 216, 230), 2));
         add(tperson);
 
-        bookpackage = new JButton("Book Package");
-        bookpackage.setBackground(Color.BLACK);
-        bookpackage.setForeground(Color.WHITE);
-        bookpackage.setBounds(50, 380, 150, 30);
-        bookpackage.addActionListener(this);
-        add(bookpackage);
+        // Align buttons with a custom JPanel layout using GridBagLayout
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new GridBagLayout()); // Use GridBagLayout for more control
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10); // Add spacing between buttons
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 1; // Make sure buttons do not overlap
 
+        // Book Package Button
+        bookpackage = new JButton("Book Package");
+        styleButton(bookpackage, new Color(60, 179, 113), Color.WHITE);
+        bookpackage.addActionListener(this);
+        buttonPanel.add(bookpackage, gbc);
+
+        // Back Button
+        gbc.gridx = 1; // Position back button next to the first one
         back = new JButton("Back");
-        back.setBackground(Color.BLACK);
-        back.setForeground(Color.WHITE);
-        back.setBounds(220, 380, 150, 30);
+        styleButton(back, new Color(70, 130, 180), Color.WHITE);
         back.addActionListener(this);
-        add(back);
+        buttonPanel.add(back, gbc);
+
+        // Set bounds for the button panel
+        buttonPanel.setBounds(0, 380, 500, 60);  // Ensure proper positioning
+        add(buttonPanel);
 
         setVisible(true);
+    }
+
+    private void styleButton(JButton button, Color bgColor, Color fgColor) {
+        button.setBackground(bgColor);
+        button.setForeground(fgColor);
+        button.setFont(new Font("Segoe UI", Font.BOLD, 16));
+        button.setFocusPainted(false);  // Remove focus paint
+        // No borders here, we avoid them completely
+        button.setPreferredSize(new Dimension(150, 40));
+        button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+        button.addMouseListener(new MouseAdapter() {
+            public void mouseEntered(MouseEvent evt) {
+                // Keep background color the same on hover
+                button.setBackground(bgColor);  // No color change on hover
+            }
+
+            public void mouseExited(MouseEvent evt) {
+                // Keep background color the same when mouse exits
+                button.setBackground(bgColor);  // No color change when hover ends
+            }
+        });
     }
 
     public void actionPerformed(ActionEvent ae) {
@@ -148,19 +203,13 @@ public class Bookpackage extends JFrame implements ActionListener {
                 pstmt.setString(6, totalPerson);
                 pstmt.executeUpdate();
                 
+                pstmt.close();
                 JOptionPane.showMessageDialog(this, "Booked Successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
                 
             } catch (SQLException e) {
-                JOptionPane.showMessageDialog(this, "Error !!!", "Error", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Error", JOptionPane.INFORMATION_MESSAGE);
             }
 
-            /*JOptionPane.showMessageDialog(null, "Package Booked Successfully:\n" +
-                    "First Name: " + fname +
-                    "\nLast Name: " + lname +
-                    "\nNIC: " + nic +
-                    "\nPhone: " + phone +
-                    "\nPackage: " + packageSelected +
-                    "\nPersons: " + totalPerson);*/
         } else if (ae.getSource() == back) {
             new desktopapplication.DashBoard().setVisible(true);
             setVisible(false);

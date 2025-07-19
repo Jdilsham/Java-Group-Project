@@ -9,8 +9,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-
-
 public class LoginPage extends JFrame implements ActionListener {
 
     private final JTextField usernameField;
@@ -31,6 +29,7 @@ public class LoginPage extends JFrame implements ActionListener {
 
         JPanel mainPanel = new JPanel(new GridLayout(1, 2));
 
+        // Left Panel with Background Image
         JPanel leftPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
@@ -41,12 +40,13 @@ public class LoginPage extends JFrame implements ActionListener {
         };
         leftPanel.setLayout(new BorderLayout());
 
+        // Right Panel with Gradient Background
         JPanel rightPanel = new JPanel() {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 Graphics2D g2d = (Graphics2D) g;
-                Color color1 = new Color(255, 200, 200);
-                Color color2 = new Color(200, 200, 255);
+                Color color1 = new Color(255, 182, 193);  // Light Pink
+                Color color2 = new Color(173, 216, 230);  // Light Blue
                 GradientPaint gp = new GradientPaint(0, 0, color1, 0, getHeight(), color2);
                 g2d.setPaint(gp);
                 g2d.fillRect(0, 0, getWidth(), getHeight());
@@ -54,8 +54,10 @@ public class LoginPage extends JFrame implements ActionListener {
         };
         rightPanel.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10);  // Add some space between components
 
-        JLabel titleLabel = new JLabel("Welcome");
+        // Labels and Inputs
+        JLabel titleLabel = new JLabel("Welcome Back!");
         titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 28));
         titleLabel.setForeground(new Color(80, 0, 80));
 
@@ -66,22 +68,28 @@ public class LoginPage extends JFrame implements ActionListener {
         passLabel.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 
         usernameField = new JTextField(15);
+        usernameField.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+        usernameField.setBorder(BorderFactory.createLineBorder(new Color(173, 216, 230), 2));
 
         passwordField = new JPasswordField(15);
-
+        passwordField.setFont(new Font("Segoe UI", Font.PLAIN, 16));
+        passwordField.setBorder(BorderFactory.createLineBorder(new Color(173, 216, 230), 2));
 
         showPassword = new JCheckBox("Show Password");
+        showPassword.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+        showPassword.setForeground(new Color(80, 0, 80));
         showPassword.addActionListener(e -> passwordField.setEchoChar(showPassword.isSelected() ? (char) 0 : '•'));
 
+        
         loginButton = new RoundedButton("Login");
         loginButton.setFont(new Font("Segoe UI", Font.BOLD, 16));
-        loginButton.setBackground(new Color(0, 153, 255));
+        loginButton.setBackground(new Color(0, 123, 255)); // Vibrant blue
         loginButton.setForeground(Color.WHITE);
         loginButton.addActionListener(this);
 
         signupButton = new RoundedButton("Sign Up");
         signupButton.setFont(new Font("Segoe UI", Font.BOLD, 16));
-        signupButton.setBackground(new Color(0, 204, 102));
+        signupButton.setBackground(new Color(0, 204, 102)); // Fresh green
         signupButton.setForeground(Color.WHITE);
         signupButton.addActionListener(e -> {
             new SignUpPage().setVisible(true);
@@ -91,13 +99,13 @@ public class LoginPage extends JFrame implements ActionListener {
         forgotPasswordButton = new RoundedButton("Forgot Password?");
         forgotPasswordButton.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         forgotPasswordButton.setForeground(Color.WHITE);
-        forgotPasswordButton.setBackground(new Color(153, 0, 153));
+        forgotPasswordButton.setBackground(new Color(255, 87, 34)); // Warm orange
         forgotPasswordButton.addActionListener(e -> {
             new ForgotPasswordPage().setVisible(true);
             dispose();
         });
 
-        gbc.insets = new Insets(10, 10, 10, 10);
+        // Arrange components using GridBagLayout
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridwidth = 2;
@@ -122,22 +130,26 @@ public class LoginPage extends JFrame implements ActionListener {
         gbc.gridx = 1;
         rightPanel.add(passwordField, gbc);
 
+        // Position Show Password Checkbox below Password field
         gbc.gridx = 1;
         gbc.gridy = 3;
         rightPanel.add(showPassword, gbc);
 
+        
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 60, 10)); // Increased spacing between buttons
+        buttonPanel.setOpaque(false);
+        buttonPanel.add(loginButton);
+        buttonPanel.add(signupButton);
         gbc.gridx = 0;
         gbc.gridy = 4;
         gbc.gridwidth = 2;
-        gbc.anchor = GridBagConstraints.CENTER;
-        rightPanel.add(loginButton, gbc);
+        rightPanel.add(buttonPanel, gbc);
 
-        gbc.gridx = 2;
-        gbc.gridy = 4;
-        rightPanel.add(signupButton, gbc);
-
-        gbc.gridx = 1;
+        // Positioning Forgot Password Button below Login and Sign Up buttons, centered
+        gbc.gridx = 0;
         gbc.gridy = 6;
+        gbc.gridwidth = 2;
+        gbc.anchor = GridBagConstraints.CENTER;
         rightPanel.add(forgotPasswordButton, gbc);
 
         mainPanel.add(leftPanel);
@@ -166,20 +178,18 @@ public class LoginPage extends JFrame implements ActionListener {
         String username = usernameField.getText();
         String password = String.valueOf(passwordField.getPassword());
 
-        try{
+        try {
             Connection conn = DatabaseCon.getConnection();
-            
             String query = "SELECT password FROM user_data WHERE userName = ?";
             PreparedStatement stmt = conn.prepareStatement(query);
             stmt.setString(1, username);
-            
+
             ResultSet rs = stmt.executeQuery();
-            
+
             if (rs.next()) {
                 String storedPass = rs.getString("password");
                 if (storedPass.equals(password)) {
                     JOptionPane.showMessageDialog(this, "Login successful!");
-                    
                     new DashBoard().setVisible(true);
                 } else {
                     JOptionPane.showMessageDialog(this, "Invalid password.");
@@ -187,12 +197,10 @@ public class LoginPage extends JFrame implements ActionListener {
             } else {
                 JOptionPane.showMessageDialog(this, "User not found.");
             }
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(this, "Database error: ");
         }
-        
     }
 
     public static void main(String[] args) {
@@ -204,83 +212,7 @@ public class LoginPage extends JFrame implements ActionListener {
     }
 }
 
-
-
-
-
-class ForgotPasswordPage extends JFrame implements ActionListener {
-
-    private final JTextField emailField;
-    private final RoundedButton recoverButton;
-
-    public ForgotPasswordPage() {
-        setTitle("Forgot Password");
-        setSize(450, 350);
-        setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(false);
-
-        JPanel panel = new JPanel() {
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                Graphics2D g2d = (Graphics2D) g;
-                GradientPaint gp = new GradientPaint(0, 0, new Color(200, 255, 255), 0, getHeight(), new Color(255, 200, 110));
-                g2d.setPaint(gp);
-                g2d.fillRect(0, 0, getWidth(), getHeight());
-            }
-        };
-
-        panel.setLayout(new GridBagLayout());
-        GridBagConstraints gbc = new GridBagConstraints();
-
-        JLabel titleLabel = new JLabel("Recover Password");
-        titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 24));
-        titleLabel.setForeground(new Color(102, 0, 102));
-
-        JLabel emailLabel = new JLabel("Enter your email:");
-
-        emailField = new JTextField(15);
-
-        recoverButton = new RoundedButton("Recover");
-        recoverButton.setFont(new Font("Segoe UI", Font.BOLD, 16));
-        recoverButton.setBackground(new Color(255, 102, 102));
-        recoverButton.setForeground(Color.WHITE);
-        recoverButton.addActionListener(this);
-
-        gbc.insets = new Insets(10, 10, 10, 10);
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.gridwidth = 2;
-        panel.add(titleLabel, gbc);
-
-        gbc.gridwidth = 1;
-        gbc.gridy++;
-        panel.add(emailLabel, gbc);
-
-        gbc.gridx = 1;
-        panel.add(emailField, gbc);
-
-        gbc.gridx = 0;
-        gbc.gridy++;
-        gbc.gridwidth = 2;
-        panel.add(recoverButton, gbc);
-
-        add(panel);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        String email = emailField.getText();
-        if (email.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please enter your email", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(this, "Recovery email sent (simulation)", "Success", JOptionPane.INFORMATION_MESSAGE);
-            new LoginPage().setVisible(true);
-            dispose();
-        }
-    }
-}
-
+// Custom RoundedButton Class
 class RoundedButton extends JButton {
     public RoundedButton(String text) {
         super(text);
@@ -288,24 +220,41 @@ class RoundedButton extends JButton {
         setFocusPainted(false);
         setOpaque(false);
         setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+
+        // Add hover effect using mouse listener
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                setBackground(getBackground().darker());
+                setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                setBackground(getBackground().brighter());
+                setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+            }
+        });
     }
 
     @Override
     protected void paintComponent(Graphics g) {
+        // Adding gradient effect
         Graphics2D g2 = (Graphics2D) g.create();
-        g2.setColor(getBackground());
+        GradientPaint gradient = new GradientPaint(0, 0, new Color(0, 123, 255), 0, getHeight(), new Color(0, 204, 255)); // Blue gradient
+        g2.setPaint(gradient);
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2.fillRoundRect(0, 0, getWidth(), getHeight(), 40, 40);
-        super.paintComponent(g);
+        g2.fillRoundRect(0, 0, getWidth(), getHeight(), 40, 40); // Rounded corners
+        super.paintComponent(g); // Paint the text and other components
         g2.dispose();
     }
 
     @Override
     protected void paintBorder(Graphics g) {
         Graphics2D g2 = (Graphics2D) g.create();
-        g2.setColor(getForeground());
+        g2.setColor(new Color(0, 102, 204)); // Border color
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 40, 40);
+        g2.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 40, 40); // Rounded border
         g2.dispose();
     }
 }

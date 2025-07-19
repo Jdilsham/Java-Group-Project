@@ -18,7 +18,7 @@ public class Checkpackage extends JFrame {
 
         setLayout(new BorderLayout());
 
-        // Package data
+        // Package data (Same as before)
         String[] bronze = {
                 "BRONZE PACKAGE",
                 "🏝 Duration: 7 Days and 6 Nights",
@@ -70,7 +70,7 @@ public class Checkpackage extends JFrame {
 
         // Bottom navigation bar with colored buttons
         JPanel navBar = new JPanel(new GridLayout(1, 3));
-        navBar.setPreferredSize(new Dimension(0, 50));
+        navBar.setPreferredSize(new Dimension(0, 70));
 
         JButton bronzeTab = createNavButton("🥉 Bronze", new Color(205, 127, 50), Color.WHITE);
         JButton silverTab = createNavButton("🥈 Silver", new Color(192, 192, 192), Color.BLACK);
@@ -93,29 +93,36 @@ public class Checkpackage extends JFrame {
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setBorder(BorderFactory.createEmptyBorder(30, 40, 30, 40));
 
+        // Package title with shadow
         JLabel title = new JLabel(pack[0]);
         title.setOpaque(true);
         title.setBackground(new Color(255, 215, 0));
         title.setForeground(Color.DARK_GRAY);
-        title.setFont(new Font("Segoe UI", Font.BOLD, 32));
+        title.setFont(new Font("Segoe UI", Font.BOLD, 36));
         title.setHorizontalAlignment(SwingConstants.CENTER);
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
         title.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+        title.setPreferredSize(new Dimension(0, 60));
+        title.setForeground(new Color(40, 40, 40));
+        title.setFont(new Font("Segoe UI", Font.BOLD, 36));
+        title.setBorder(BorderFactory.createLineBorder(Color.ORANGE, 3));
         panel.add(title);
         panel.add(Box.createRigidArea(new Dimension(0, 20)));
 
         for (int i = 1; i < pack.length; i++) {
             JLabel label = new JLabel(pack[i]);
-            label.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 20));
+            label.setFont(new Font("Segoe UI Emoji", Font.PLAIN, 22));
             label.setForeground(new Color(40, 40, 40));
             label.setAlignmentX(Component.LEFT_ALIGNMENT);
             label.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+            label.setPreferredSize(new Dimension(0, 40));
             panel.add(label);
         }
 
         panel.add(Box.createRigidArea(new Dimension(0, 30)));
 
-        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 0));
+        // Stylish buttons with gradient and shadow effects
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 30, 0));
         buttonPanel.setOpaque(false);
 
         JButton bookNow = createStyledButton(" Book Now", new Color(60, 179, 113));
@@ -143,15 +150,17 @@ public class Checkpackage extends JFrame {
         button.setForeground(fgColor);
         button.setFocusPainted(false);
         button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
-        button.setBorder(BorderFactory.createLineBorder(bgColor.darker(), 1));
+        button.setBorder(BorderFactory.createLineBorder(bgColor.darker(), 2));
 
         button.addMouseListener(new MouseAdapter() {
             public void mouseEntered(MouseEvent evt) {
                 button.setBackground(bgColor.darker());
+                button.setForeground(Color.WHITE);
             }
 
             public void mouseExited(MouseEvent evt) {
                 button.setBackground(bgColor);
+                button.setForeground(Color.BLACK);
             }
         });
 
@@ -160,12 +169,13 @@ public class Checkpackage extends JFrame {
 
     private JButton createStyledButton(String text, Color bgColor) {
         JButton button = new JButton(text);
-        button.setFont(new Font("Segoe UI", Font.BOLD, 18));
+        button.setFont(new Font("Segoe UI", Font.BOLD, 20));
         button.setBackground(bgColor);
         button.setForeground(Color.WHITE);
         button.setFocusPainted(false);
         button.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         button.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+        button.setPreferredSize(new Dimension(200, 50));
 
         button.addMouseListener(new MouseAdapter() {
             public void mouseEntered(MouseEvent evt) {
