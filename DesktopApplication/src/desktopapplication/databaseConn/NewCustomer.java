@@ -59,7 +59,6 @@ public class NewCustomer extends javax.swing.JFrame {
         submit = new javax.swing.JButton();
         cancel = new javax.swing.JButton();
         loadingLabel = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -177,10 +176,6 @@ public class NewCustomer extends javax.swing.JFrame {
         loadingLabel.setMaximumSize(new java.awt.Dimension(40, 40));
         loadingLabel.setMinimumSize(new java.awt.Dimension(40, 40));
         jPanel1.add(loadingLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 80, 100));
-
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/desktopapplication/images/coconut-tree-4389028_1280 (1).png"))); // NOI18N
-        jLabel11.setText("jLabel11");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 800, 530));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -365,7 +360,6 @@ public class NewCustomer extends javax.swing.JFrame {
     private javax.swing.ButtonGroup gender;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
