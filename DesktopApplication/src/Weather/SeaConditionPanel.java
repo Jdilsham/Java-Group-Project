@@ -25,8 +25,8 @@ import java.util.List;
 public class SeaConditionPanel extends JPanel {
 
     private static final String API_KEY = "eaa3bb36-29cd-11f0-863c-0242ac130003-eaa3bb9a-29cd-11f0-863c-0242ac130003"; // API Key
-    private String apiUrlTemplate = "https://api.stormglass.io/v2/weather/point?lat=%s&lng=%s&params=waveHeight,waterTemperature,windSpeed,precipitation"; // API URL template
-    private String geocodingApiUrl = "https://api.opencagedata.com/geocode/v1/json?q=%s&key=59b5d3d38d2f4a22a29773986735754a"; // Geocoding API (replace YOUR_API_KEY with your OpenCage API key)
+    private String apiUrlTemplate = "https://api.stormglass.io/v2/weather/point?lat=%s&lng=%s&params=waveHeight,waterTemperature,windSpeed,precipitation"; 
+    private String geocodingApiUrl = "https://api.opencagedata.com/geocode/v1/json?q=%s&key=59b5d3d38d2f4a22a29773986735754a";
 
     private JTextField cityField;
     private JButton searchButton;
