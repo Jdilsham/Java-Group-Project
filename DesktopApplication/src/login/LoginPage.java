@@ -101,7 +101,7 @@ public class LoginPage extends JFrame implements ActionListener {
         forgotPasswordButton.setForeground(Color.WHITE);
         forgotPasswordButton.setBackground(new Color(255, 87, 34)); // Warm orange
         forgotPasswordButton.addActionListener(e -> {
-            new ForgotPasswordPage().setVisible(true);
+            //new ForgotPasswordPage().setVisible(true);
             dispose();
         });
 
