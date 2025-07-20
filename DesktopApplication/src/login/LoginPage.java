@@ -191,6 +191,7 @@ public class LoginPage extends JFrame implements ActionListener {
                 if (storedPass.equals(password)) {
                     JOptionPane.showMessageDialog(this, "Login successful!");
                     new DashBoard().setVisible(true);
+                    dispose(); // Close LoginPage after successful login
                 } else {
                     JOptionPane.showMessageDialog(this, "Invalid password.");
                 }
