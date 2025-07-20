@@ -2,7 +2,7 @@
 package destination;
 
 import java.sql.*;
-import Connection.DBConnection;
+//import Connection.DBConnection;
 import desktopapplication.databaseConn.DatabaseCon;
 /*import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;

@@ -39,25 +39,23 @@ public class Search extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         scrollPane.setVisible(false);
-        
+
         tableResults.addMouseListener(new java.awt.event.MouseAdapter() {
-    public void mouseClicked(java.awt.event.MouseEvent evt) {
-        if (evt.getClickCount() == 1) {
-            int selectedRow = tableResults.getSelectedRow();
-            if (selectedRow != -1) {
-                String name = tableResults.getValueAt(selectedRow, 0).toString();
-                ViewDestination view= new ViewDestination(DBConnection.getConnection(), name);
-                try {
-                    view.showDetails();
-                    
-                } catch (SQLException error) {
-                     System.out.println(error.getMessage());
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                if (evt.getClickCount() == 1) {
+                    int selectedRow = tableResults.getSelectedRow();
+                    if (selectedRow != -1) {
+                        String name = tableResults.getValueAt(selectedRow, 0).toString();
+                        ViewDestination view = new ViewDestination(DBConnection.getConnection(), name);
+                        try {
+                            view.showDetails();
+                        } catch (SQLException error) {
+                            System.out.println(error.getMessage());
+                        }
+                    }
                 }
             }
-        }
-    }
-});
-
+        });
 
     }
     
@@ -206,31 +204,24 @@ public class Search extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
-        // TODO add your handling code here:
-
-        ResultController control=new ResultController();
-        
-        
+           ResultController control = new ResultController();
         DefaultTableModel model = (DefaultTableModel) tableResults.getModel();
         model.setRowCount(0); // clear previous results
+
         try {
-            control.getResults(destinationField.getText(), model);// passing the destination to display the destination list according to the region
+            control.getResults(destinationField.getText(), model);
 
             if (model.getRowCount() > 0) {
                 scrollPane.setVisible(true);
-                scrollPane.revalidate();
-                scrollPane.repaint();
-                this.revalidate(); // re-layout whole JFrame
-                this.repaint();
+                tableResults.revalidate();
+                tableResults.repaint();
             } else {
-                scrollPane.setVisible(false); // hide if no results
+                System.out.println("No results found.");
+                scrollPane.setVisible(false);
             }
-
         } catch (SQLException error) {
-            System.out.println(error.getMessage());
+            System.out.println("Error during search: " + error.getMessage());
         }
-        
-
     }//GEN-LAST:event_searchBtnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
