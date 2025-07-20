@@ -2,10 +2,10 @@
 package destination;
 
 import java.sql.*;
-/*import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
-import com.mysql.jdbc.ResultSet;
-import java.sql.SQLException;*/
+//import com.mysql.jdbc.Connection;
+//import com.mysql.jdbc.PreparedStatement;
+//import com.mysql.jdbc.ResultSet;
+import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 
 public class CheckDestination {

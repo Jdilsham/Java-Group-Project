@@ -32,6 +32,7 @@ public class DBConnection {
 
                 // Step 3: Connect to the actual database
                 conn = DriverManager.getConnection(URL_WITH_DB, USER, PASSWORD);
+                System.out.println("connected successfully for travel db !!");
             }
         } catch (ClassNotFoundException | SQLException ex) {
             System.out.println("Database Connection Error: " + ex.getMessage());
