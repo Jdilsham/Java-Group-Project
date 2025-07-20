@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+
 public class LoginPage extends JFrame implements ActionListener {
 
     private final JTextField usernameField;
