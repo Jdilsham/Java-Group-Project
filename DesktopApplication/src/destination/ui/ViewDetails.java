@@ -36,6 +36,7 @@ private class GradientPanel extends JPanel {
     public ViewDetails() {
 //        new ViewDetails().setVisible(true);
         initComponents();
+        this.setLocationRelativeTo(null);
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 startSlideshow(); // Now starts after the GUI is shown

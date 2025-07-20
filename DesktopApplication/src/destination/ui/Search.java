@@ -37,6 +37,7 @@ public class Search extends javax.swing.JFrame {
     public Search() {
         
         initComponents();
+        this.setLocationRelativeTo(null);
         scrollPane.setVisible(false);
         
         tableResults.addMouseListener(new java.awt.event.MouseAdapter() {
