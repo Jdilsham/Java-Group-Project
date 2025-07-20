@@ -188,10 +188,10 @@ public class SeaConditionPanel extends JPanel {
             in.close();
             conn.disconnect();
 
-            // Print the response for debugging
+           
             System.out.println(content.toString());
 
-            // Parse the response and extract latitude and longitude
+            
             JSONObject json = new JSONObject(content.toString());
             JSONArray results = json.getJSONArray("results");
 
@@ -199,11 +199,11 @@ public class SeaConditionPanel extends JPanel {
                 JSONObject firstResult = results.getJSONObject(0);
                 JSONObject geometry = firstResult.getJSONObject("geometry");
 
-                // Updated: Use correct field names for lat/lng
+                
                 double lat = geometry.getDouble("lat");
                 double lng = geometry.getDouble("lng");
 
-                // Now that we have the coordinates, fetch the sea conditions
+               
                 fetchSeaConditions(String.valueOf(lat), String.valueOf(lng));
             } else {
                 JOptionPane.showMessageDialog(SeaConditionPanel.this, "City not found. Please check the name and try again.", "Error", JOptionPane.ERROR_MESSAGE);
