@@ -59,6 +59,7 @@ public class NewCustomer extends javax.swing.JFrame {
         submit = new javax.swing.JButton();
         cancel = new javax.swing.JButton();
         loadingLabel = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,6 +70,7 @@ public class NewCustomer extends javax.swing.JFrame {
         jLabel1.setText("Personal Information");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 390, 30));
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(38, 50, 56));
         jLabel2.setText("First Name");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
@@ -80,6 +82,7 @@ public class NewCustomer extends javax.swing.JFrame {
         });
         jPanel1.add(first_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 290, -1));
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(38, 50, 56));
         jLabel3.setText("Last Name");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
@@ -91,13 +94,16 @@ public class NewCustomer extends javax.swing.JFrame {
         });
         jPanel1.add(last_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 290, -1));
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Gender");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(38, 50, 56));
         jLabel5.setText("Country");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(38, 50, 56));
         jLabel6.setText("Address");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 270, -1, -1));
@@ -110,12 +116,12 @@ public class NewCustomer extends javax.swing.JFrame {
                 maleActionPerformed(evt);
             }
         });
-        jPanel1.add(male, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
+        jPanel1.add(male, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
 
         gender.add(female);
         female.setForeground(new java.awt.Color(38, 50, 56));
         female.setText("Female");
-        jPanel1.add(female, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, -1, -1));
+        jPanel1.add(female, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 270, -1, -1));
 
         country.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "United States", "Canada", "Brazil", "Mexico", "Argentina", "United Kingdom", "Germany", "France", "Italy", "Spain", "Sri Lanka", "Australia", "Japan", "China", "India", "Russia", "South Africa", "Egypt", "Saudi Arabia", "South Korea", "New Zealand", " " }));
         country.addActionListener(new java.awt.event.ActionListener() {
@@ -133,16 +139,19 @@ public class NewCustomer extends javax.swing.JFrame {
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, -1, -1));
         jPanel1.add(phone_number, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, 290, -1));
 
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(38, 50, 56));
         jLabel8.setText("Email");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 170, -1, -1));
         jPanel1.add(email, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, 290, -1));
 
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(38, 50, 56));
         jLabel9.setText("NIC/Passport Number");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, -1, -1));
         jPanel1.add(nic, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 290, -1));
 
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(38, 50, 56));
         jLabel10.setText("Mobile Number");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 90, -1, -1));
@@ -176,6 +185,10 @@ public class NewCustomer extends javax.swing.JFrame {
         loadingLabel.setMaximumSize(new java.awt.Dimension(40, 40));
         loadingLabel.setMinimumSize(new java.awt.Dimension(40, 40));
         jPanel1.add(loadingLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 80, 100));
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/desktopapplication/images/beach-1846449_1280.jpg"))); // NOI18N
+        jLabel12.setText("jLabel12");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 600));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -360,6 +373,7 @@ public class NewCustomer extends javax.swing.JFrame {
     private javax.swing.ButtonGroup gender;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

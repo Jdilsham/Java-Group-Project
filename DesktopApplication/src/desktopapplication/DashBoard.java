@@ -8,6 +8,7 @@ import Weather.SeaConditionPanel; // Import SeaConditionPanel
 
 public class DashBoard extends JFrame {
     public DashBoard() {
+
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setMinimumSize(new Dimension(1000, 700));
         setLocationRelativeTo(null);
