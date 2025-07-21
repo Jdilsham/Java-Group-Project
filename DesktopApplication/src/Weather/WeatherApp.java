@@ -20,21 +20,19 @@ public class WeatherApp extends JFrame {  // Extends JFrame
     private static String currentLocation = "";
 
     public WeatherApp() {
-        // Constructor: Set up the JFrame properties
+       
         setTitle("Weather App");
-        setSize(1000, 700);  // Set the window size
-        setLocationRelativeTo(null);  // Center the window on screen
+        setSize(1000, 700);  
+        setLocationRelativeTo(null);  
 
-        // Add a WindowListener to detect when the window is closed
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                // When the close button is clicked, load the Dashboard.java class
+                
                 loadDashboard();
             }
         });
-
-        // Set up the components
+        
         createAndShowGUI();
     }
 
