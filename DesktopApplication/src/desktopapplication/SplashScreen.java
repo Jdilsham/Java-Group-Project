@@ -175,6 +175,7 @@ public class SplashScreen extends javax.swing.JFrame {
             login.addActionListener(e -> {
                 new login.LoginPage().setVisible(true);
                 this.dispose();
+                splashScreen.setVisible(false);
             });
 
             
@@ -191,6 +192,7 @@ public class SplashScreen extends javax.swing.JFrame {
             signup.addActionListener(e -> {
                 new login.SignUpPage().setVisible(true);
                 this.dispose();
+                splashScreen.setVisible(false);
             });
 
             add(panel);

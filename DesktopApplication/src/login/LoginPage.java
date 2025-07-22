@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 
+
 public class LoginPage extends JFrame implements ActionListener {
 
     private final JTextField usernameField;
@@ -102,7 +103,7 @@ public class LoginPage extends JFrame implements ActionListener {
         forgotPasswordButton.setForeground(Color.WHITE);
         forgotPasswordButton.setBackground(new Color(255, 87, 34)); // Warm orange
         forgotPasswordButton.addActionListener(e -> {
-            //new ForgotPasswordPage().setVisible(true);
+            //new ForgotPasswordPage.setVisible(true);
             dispose();
         });
 
@@ -238,6 +239,67 @@ class RoundedButton extends JButton {
             }
         });
     }
+//    
+//    class ForgotPasswordPage extends JFrame implements ActionListener {
+//
+//    private final JTextField emailField;
+//    private final RoundedButton recoverButton;
+//
+//    public ForgotPasswordPage() {
+//        setTitle("Forgot Password");
+//        setSize(450, 350);
+//        setLocationRelativeTo(null);
+//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        setResizable(false);
+//
+//        JPanel panel = new JPanel() {
+//            protected void paintComponent(Graphics g) {
+//                super.paintComponent(g);
+//                Graphics2D g2d = (Graphics2D) g;
+//                GradientPaint gp = new GradientPaint(0, 0, new Color(200, 255, 255), 0, getHeight(), new Color(255, 200, 110));
+//                g2d.setPaint(gp);
+//                g2d.fillRect(0, 0, getWidth(), getHeight());
+//            }
+//        };
+//
+//        panel.setLayout(new GridBagLayout());
+//        GridBagConstraints gbc = new GridBagConstraints();
+//
+//        JLabel titleLabel = new JLabel("Recover Password");
+//        titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 24));
+//        titleLabel.setForeground(new Color(102, 0, 102));
+//
+//        JLabel emailLabel = new JLabel("Enter your email:");
+//
+//        emailField = new JTextField(15);
+//
+//        recoverButton = new RoundedButton("Recover");
+//        recoverButton.setFont(new Font("Segoe UI", Font.BOLD, 16));
+//        recoverButton.setBackground(new Color(255, 102, 102));
+//        recoverButton.setForeground(Color.WHITE);
+//        recoverButton.addActionListener(this);
+//
+//        gbc.insets = new Insets(10, 10, 10, 10);
+//        gbc.gridx = 0;
+//        gbc.gridy = 0;
+//        gbc.gridwidth = 2;
+//        panel.add(titleLabel, gbc);
+//
+//        gbc.gridwidth = 1;
+//        gbc.gridy++;
+//        panel.add(emailLabel, gbc);
+//
+//        gbc.gridx = 1;
+//        panel.add(emailField, gbc);
+//
+//        gbc.gridx = 0;
+//        gbc.gridy++;
+//        gbc.gridwidth = 2;
+//        panel.add(recoverButton, gbc);
+//
+//        add(panel);
+//    }
+    
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -259,4 +321,12 @@ class RoundedButton extends JButton {
         g2.drawRoundRect(0, 0, getWidth() - 1, getHeight() - 1, 40, 40); // Rounded border
         g2.dispose();
     }
+
+        public void actionPerformed(ActionEvent e) {
+            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        }
+    
+    
+    
+    
 }

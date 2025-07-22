@@ -274,7 +274,7 @@ slideshowLbl.repaint();
     }// </editor-fold>//GEN-END:initComponents
 
     private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
-       new desktopapplication.DashBoard().setVisible(true);
+//       new Search().setVisible(true);
        dispose();
     }//GEN-LAST:event_backbtnActionPerformed
 
