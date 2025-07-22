@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 
 public class CheckDestination {
-    public String name;
+    private String name;
     private final Connection conn;
 
     public CheckDestination(String name,Connection conn) {
